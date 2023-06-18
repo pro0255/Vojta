@@ -29,4 +29,9 @@
 
 - Proc lidi v akamdemicke svere maji nasobky mene nez my?
 
+# Vytvoreni textur
 
+- https://www.youtube.com/watch?v=xIk3gF53cig&ab_channel=PixelicaCG
+
+- (vytvoreni vlasu) - https://www.youtube.com/watch?v=_xRSoLtfTDs&ab_channel=PixelicaCG
+ 
