@@ -1,3 +1,5 @@
-import Page from './home/page'
+const Page = () => {
+  return <div>test</div>
+}
 
 export default Page

@@ -14,7 +14,19 @@
 - https://www.youtube.com/watch?v=9xAumJRKV6A&ab_channel=PIXXO3D
 - https://www.youtube.com/watch?v=eSqb6II3WMM&ab_channel=Soyaa
 - https://www.youtube.com/watch?v=_OwJV2xL8M8&ab_channel=developedbyed
- 
+
 # Inspiration
 
 - https://www.nikdo.cz/
+
+# How to use APP folder inside next framework?
+
+- https://www.youtube.com/watch?v=xXwxEudjiAY&ab_channel=TuomoKankaanp%C3%A4%C3%A4
+
+- In previous versions it was created inside of pages directory.
+
+# Blog post
+
+- Proc lidi v akamdemicke svere maji nasobky mene nez my?
+
+
