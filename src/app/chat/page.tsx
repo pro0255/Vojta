@@ -1,3 +1,7 @@
+import { ChatWithMe } from '@/components/Chat/ChatWithMe'
+
 const Chat = () => {
-  return <div>Chat</div>
+  return <ChatWithMe />
 }
+
+export default Chat

@@ -1,17 +1,3 @@
-import { Header, Text } from '@/components/DesignSystem'
+import Chat from './chat/page'
 
-const Home = () => {
-  return (
-    <main>
-      <Header.One>Vojta Prokop</Header.One>
-      <p>
-        <Text>
-          Hey there stranger! I am <strong>medior developer at Ataccama</strong>{' '}
-          I am part of team which take care about core application modules.
-        </Text>
-      </p>
-    </main>
-  )
-}
-
-export default Home
+export default Chat

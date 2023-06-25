@@ -1,12 +1,9 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
-import { Navigation } from '@/components/Navigation/Navigation'
 import { FC, ReactNode } from 'react'
 import { Metadata } from 'next'
 import Head from 'next/head'
 import { PageContainer } from '@/components/DesignSystem/Layout/PageContainer'
-import { NavContentContainer } from '@/components/DesignSystem/Layout'
-import { ContentContainer } from '@/components/DesignSystem/Layout/ContentContainer'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -23,12 +20,7 @@ const RootLayout: FC<LayoutProps> = ({ children }) => {
         <link rel="icon" href="/favicon/favicon-16x16.png" />
       </Head>
       <body className={inter.className}>
-        <PageContainer>
-          <NavContentContainer
-            nav={<Navigation />}
-            content={<ContentContainer>{children}</ContentContainer>}
-          />
-        </PageContainer>
+        <PageContainer>{children}</PageContainer>
       </body>
     </html>
   )

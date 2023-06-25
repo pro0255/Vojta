@@ -6,7 +6,10 @@ export const Navigation = () => {
       <div className="sticky top-20">
         <ul>
           <li>
-            <Link href={'/'}>Home</Link>
+            <Link href={'/'}>Chat with me!</Link>
+          </li>
+          <li>
+            <Link href={'/home'}>Home</Link>
           </li>
           <li>
             <Link href={'/about'}>About</Link>
