@@ -1,9 +1,10 @@
-import { Messages } from '@/components/Chat/Messages'
+import { ChatWrapper } from '@/components/Chat/ChatWrapper/ChatWrapper'
 
 export const ChatWithMe = () => {
   return (
     <main>
-      <Messages />
+      <ChatWrapper />
+      {/*<NextLevel />*/}
     </main>
   )
 }

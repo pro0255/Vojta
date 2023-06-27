@@ -1,8 +1,8 @@
 'use client'
 
-import { RotatingBox } from '@/Three/components/RotatingBox'
 import React from 'react'
+import { ModelRenderer } from '@/Three/ModelRenderer/ModelRenderer'
 
 export const Guess = () => {
-  return <RotatingBox color={'blue'} />
+  return <ModelRenderer position={[-3.5, 0, 0]} color={'blue'} />
 }
