@@ -1,4 +1,4 @@
-import { allSmall } from '@/text/allSmall'
+import { allSmall } from '@/helpers/text/allSmall'
 
 export const tUtils = {
   allSmall,

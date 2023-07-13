@@ -1,5 +1,5 @@
 import { Navigation, NavigationItem } from '@/components/Navigation/types'
-import { tu } from '@/text'
+import { tu } from '@/helpers/text'
 import { pipe } from 'fp-ts/function'
 import { navigation } from '@/components/Navigation/constants'
 

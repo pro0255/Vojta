@@ -1,6 +1,6 @@
 import { Author, MessageType } from '@/components/Chat/types'
 import { GeneralAgent } from '@/components/Chat/domain/agent/types'
-import { date } from '@/date'
+import { date } from '@/helpers/date'
 
 const MOCK_MESSAGE = 'LOL'
 

@@ -1,6 +1,8 @@
 import { Header, NormalText } from '@/components/DesignSystem'
 import { Paragraph } from '@/components/DesignSystem/Blocks/Paragraph'
 import { InteractiveItem } from '@/components/DesignSystem/Blocks/InteractiveItem'
+import { Factory } from '@/helpers/factories/Factory'
+import { c } from '@/constants'
 
 const Home = () => {
   return (
@@ -10,13 +12,9 @@ const Home = () => {
         <NormalText>
           I am a software engineer specializing in frontend development,
           currently employed at
-          <InteractiveItem
-            text={'Ataccama'}
-            link={'https://www.seznam.cz/'}
-            thumbnailLink={'/work/ataccama.jpeg'}
-          />
-          . Within the company, I am an integral member of a team responsible
-          for overseeing the development of core application modules.
+          <InteractiveItem {...Factory.interactiveItemsProps(c.ataccama)} />.
+          Within the company, I am an integral member of a team responsible for
+          overseeing the development of core application modules.
         </NormalText>
       </Paragraph>
 

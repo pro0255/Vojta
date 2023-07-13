@@ -1,9 +1,11 @@
-import { webLinks } from '@/constants/webLinks'
-import { altTexts } from '@/constants/alt'
-import { publicLink } from '@/constants/publicLink'
+import { Ataccama } from '@/constants/entities/Ataccama'
+import { Atlas } from '@/constants/entities/Atlas'
+import { Czechitas } from '@/constants/entities/Czechitas'
+import { VSB } from '@/constants/entities/VSB'
 
 export const c = {
-  webLinks,
-  altTexts,
-  publicLink,
+  ataccama: new Ataccama(),
+  atlas: new Atlas(),
+  czechitas: new Czechitas(),
+  master: new VSB(),
 }
