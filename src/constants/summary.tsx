@@ -1,13 +1,10 @@
 import { EmojiItem } from '@/components/DesignSystem/Blocks/EmojiList'
 import { NormalText } from '@/components/DesignSystem'
-
-// <li>
-// <NormalText>💼 Looking for a job.</NormalText>
-// </li>
-// <li>
-// <NormalText>🌱 Open to learn something new.</NormalText>
-// </li>
-// </ul>
+import { Python } from '@/constants/entities/Python'
+import { Factory } from '@/helpers/factories/Factory'
+import { InteractiveItem } from '@/components/DesignSystem/Blocks/InteractiveItem'
+import { TypeScript } from '@/constants/entities/TypeScript'
+import { VSB } from '@/constants/entities/VSB'
 
 const highMedicalSchool: EmojiItem = {
   text: <NormalText>High school with medical focus</NormalText>,
@@ -18,22 +15,32 @@ const programming: EmojiItem = {
   text: (
     <NormalText>
       I like programming in{' '}
-      {/*<InteractiveItem {...Factory.interactiveItemsProps(c.python)} /> and*/}
-      JavaScript{' '}
-      {/*<InteractiveItem {...Factory.interactiveItemsProps(c.typescript)} />.*/}
-      ML/AI enthusiast
+      <InteractiveItem {...Factory.interactiveItemsProps(new Python())} /> and
+      <InteractiveItem
+        {...Factory.interactiveItemsProps(new TypeScript())}
+      />{' '}
     </NormalText>
   ),
   emoji: '👨‍💻',
 }
 
+const vsb = new VSB()
 const university: EmojiItem = {
   text: (
     <NormalText>
-      Studied Computer Science (Data Analysis) on (master).
+      Data Analysis on
+      <InteractiveItem
+        {...Factory.interactiveItemsProps(vsb)}
+        text={vsb.wholeName}
+      />{' '}
     </NormalText>
   ),
   emoji: '🎓',
+}
+
+const ai: EmojiItem = {
+  text: <NormalText>ML/AI enthusiast</NormalText>,
+  emoji: '🤖',
 }
 
 const dream: EmojiItem = {
@@ -48,11 +55,7 @@ const dream: EmojiItem = {
 export const summary: Array<EmojiItem> = [
   highMedicalSchool,
   programming,
+  ai,
   university,
   dream,
 ]
-//
-//
-// {/*  {...Factory.interactiveItemsProps(c.master)}*/}
-// {/*  text={c.master.wholeName}*/}
-// {/*/>*/}
