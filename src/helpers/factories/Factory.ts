@@ -7,7 +7,7 @@ export class Factory {
   ): InteractiveItemProps => {
     return {
       link: entity.webLink,
-      text: entity.abbreviatedName,
+      text: entity.getInteractiveLabel(),
       thumbnailLink: entity.getImage(),
     }
   }

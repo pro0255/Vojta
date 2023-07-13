@@ -1,10 +1,10 @@
 import { testWebLink } from '@/constants/mocks'
 import { NotSpecificEntity } from '@/constants/entities/NotSpecificEntity'
 
-export class NextJS extends NotSpecificEntity {
-  abbreviatedName: string = 'NEXT'
-  iconLink: string = 'nextjs.svg'
+export class TypeScript extends NotSpecificEntity {
+  abbreviatedName: string = 'TS'
+  iconLink: string = 'typescript.png'
   webLink: string = testWebLink
-  wholeName: string = 'Next.js'
+  wholeName: string = 'TypeScript'
   altText: string = this.wholeName
 }

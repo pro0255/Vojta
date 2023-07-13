@@ -5,6 +5,8 @@ import { VSB } from '@/constants/entities/VSB'
 import { NextJS } from '@/constants/entities/NextJS'
 import { Langchain } from '@/constants/entities/Langchain'
 import { R3F } from '@/constants/entities/R3F'
+import { Python } from '@/constants/entities/Python'
+import { TypeScript } from '@/constants/entities/TypeScript'
 
 export const c = {
   ataccama: new Ataccama(),
@@ -14,4 +16,8 @@ export const c = {
   nextjs: new NextJS(),
   langchain: new Langchain(),
   r3f: new R3F(),
+  python: new Python(),
+  typescript: new TypeScript(),
 }
+
+export * from './summary'

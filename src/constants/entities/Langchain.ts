@@ -1,14 +1,10 @@
 import { testWebLink } from '@/constants/mocks'
-import { Entity } from '@/constants/entities/Entity'
+import { NotSpecificEntity } from '@/constants/entities/NotSpecificEntity'
 
-export class Langchain extends Entity {
+export class Langchain extends NotSpecificEntity {
   abbreviatedName: string = 'LangChain'
   iconLink: string = 'langchain.ico'
   webLink: string = testWebLink
   wholeName: string = 'LangChain'
   altText: string = this.wholeName
-
-  override getImage = () => {
-    return `/assets/icons/${this.iconLink}`
-  }
 }

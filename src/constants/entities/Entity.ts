@@ -10,4 +10,8 @@ export abstract class Entity implements IEntity {
   getImage = () => {
     return `/work/${this.iconLink}`
   }
+
+  getInteractiveLabel = () => {
+    return this.abbreviatedName
+  }
 }
