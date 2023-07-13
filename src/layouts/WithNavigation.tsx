@@ -1,5 +1,5 @@
 import { NavContentContainer } from '@/components/DesignSystem/Layout'
-import { Navigation } from '@/components'
+import { NavigationView } from '@/components'
 import { ContentContainer } from '@/components/DesignSystem/Layout/ContentContainer'
 import { FC, ReactNode } from 'react'
 import { LayoutVojta } from '@/layouts/Vojta'
@@ -12,7 +12,7 @@ export const LayoutWithNavigation: FC<Props> = ({ children }) => {
   return (
     <LayoutVojta>
       <NavContentContainer
-        nav={<Navigation />}
+        nav={<NavigationView />}
         content={<ContentContainer>{children}</ContentContainer>}
       />
     </LayoutVojta>
