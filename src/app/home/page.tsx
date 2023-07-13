@@ -23,16 +23,20 @@ const Home = () => {
           In addition to my professional endeavors, I actively seek
           opportunities to share information and knowledge. One of my current
           endeavors involves coaching within the wonderful community known as
-          Czechitas. As I progress, I aspire to contribute valuable blog posts
-          in the future.
+          <InteractiveItem {...Factory.interactiveItemsProps(c.czechitas)} />.
+          As I progress, I aspire to contribute valuable blog posts in the
+          future.
         </NormalText>
       </Paragraph>
 
       <Paragraph>
         <NormalText>
           The foundation of this portfolio was laid by acquiring proficiency in
-          Next.js and Langchain, R3F, as well as setting up a platform for
-          disseminating information through blog posts.
+          <InteractiveItem {...Factory.interactiveItemsProps(c.nextjs)} /> and
+          <InteractiveItem {...Factory.interactiveItemsProps(c.langchain)} />,
+          <InteractiveItem {...Factory.interactiveItemsProps(c.r3f)} />, as well
+          as setting up a platform for disseminating information through blog
+          posts.
         </NormalText>
       </Paragraph>
 
