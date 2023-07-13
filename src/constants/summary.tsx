@@ -1,8 +1,5 @@
 import { EmojiItem } from '@/components/DesignSystem/Blocks/EmojiList'
 import { NormalText } from '@/components/DesignSystem'
-import { InteractiveItem } from '@/components/DesignSystem/Blocks/InteractiveItem'
-import { Factory } from '@/helpers/factories/Factory'
-import { c } from '@/constants/index'
 
 // <li>
 // <NormalText>💼 Looking for a job.</NormalText>
@@ -21,9 +18,9 @@ const programming: EmojiItem = {
   text: (
     <NormalText>
       I like programming in{' '}
-      <InteractiveItem {...Factory.interactiveItemsProps(c.python)} /> and
+      {/*<InteractiveItem {...Factory.interactiveItemsProps(c.python)} /> and*/}
       JavaScript{' '}
-      <InteractiveItem {...Factory.interactiveItemsProps(c.typescript)} />.
+      {/*<InteractiveItem {...Factory.interactiveItemsProps(c.typescript)} />.*/}
       ML/AI enthusiast
     </NormalText>
   ),
@@ -33,12 +30,7 @@ const programming: EmojiItem = {
 const university: EmojiItem = {
   text: (
     <NormalText>
-      Studied Computer Science (Data Analysis) on{' '}
-      <InteractiveItem
-        {...Factory.interactiveItemsProps(c.master)}
-        text={c.master.wholeName}
-      />
-      (master).
+      Studied Computer Science (Data Analysis) on (master).
     </NormalText>
   ),
   emoji: '🎓',
@@ -59,3 +51,8 @@ export const summary: Array<EmojiItem> = [
   university,
   dream,
 ]
+//
+//
+// {/*  {...Factory.interactiveItemsProps(c.master)}*/}
+// {/*  text={c.master.wholeName}*/}
+// {/*/>*/}

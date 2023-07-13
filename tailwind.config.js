@@ -19,7 +19,7 @@ module.exports = {
       minWidth: {
         '3xl': '48rem',
         '2xl': '30rem',
-        xl: '10rem',
+        xl: '9rem',
       },
     },
   },

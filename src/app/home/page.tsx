@@ -3,6 +3,7 @@ import { Paragraph } from '@/components/DesignSystem/Blocks/Paragraph'
 import { InteractiveItem } from '@/components/DesignSystem/Blocks/InteractiveItem'
 import { Factory } from '@/helpers/factories/Factory'
 import { c } from '@/constants'
+import { ContactContainer } from '@/components'
 
 const Home = () => {
   return (
@@ -47,6 +48,10 @@ const Home = () => {
           section! However, I kindly request that you be considerate in your
           interactions with me. 😬
         </NormalText>
+      </Paragraph>
+
+      <Paragraph>
+        <ContactContainer />
       </Paragraph>
     </main>
   )

@@ -3,6 +3,7 @@ import { Paragraph } from '@/components/DesignSystem/Blocks/Paragraph'
 import { PickAvatar } from '@/Three/components/PickAvatar'
 import { EmojiList } from '@/components/DesignSystem/Blocks/EmojiList'
 import { summary } from '@/constants/summary'
+import { FooterButton } from '@/components/DesignSystem/FooterButtons/FooterButton'
 
 const About = () => {
   return (
@@ -72,6 +73,10 @@ const About = () => {
         <Paragraph>
           <EmojiList items={summary} />
         </Paragraph>
+      </section>
+
+      <section>
+        <FooterButton />
       </section>
     </main>
   )
