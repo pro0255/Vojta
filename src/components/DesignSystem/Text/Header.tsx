@@ -4,13 +4,13 @@ type Props = {
   children: string
 }
 export const HeaderOne: FC<Props> = ({ children }) => {
-  return <span>{children}</span>
+  return <h1>{children}</h1>
 }
 export const HeaderTwo: FC<Props> = ({ children }) => {
-  return <span>{children}</span>
+  return <h2>{children}</h2>
 }
 export const HeaderThree: FC<Props> = ({ children }) => {
-  return <span>{children}</span>
+  return <h3>{children}</h3>
 }
 
 export const Header = {
