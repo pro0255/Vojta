@@ -37,4 +37,17 @@
 
 # HTML to React
 
-- https://www.npmjs.com/package/html-to-react 
+- https://www.npmjs.com/package/html-to-react
+
+# Speech to text
+
+- https://www.tutorialspoint.com/how-to-convert-speech-to-text-using-javascript
+
+# Chat UI
+
+- https://www.tidio.com/blog/chatbot-ui/
+
+https://www.mixamo.com/
+https://readyplayer.me/cs/avatar
+https://gltf.pmnd.rs/
+https://www.media.io/avatar-creator.html

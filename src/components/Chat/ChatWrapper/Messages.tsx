@@ -1,12 +1,10 @@
 import React, { FC } from 'react'
-import { MessageType } from '@/components/Chat/types'
 import { Message } from '@/components/Chat/ChatWrapper/Message'
+import { useChatStore } from '@/components/Chat/store/chat'
 
-type Props = {
-  messages: Array<MessageType>
-}
+export const Messages: FC = () => {
+  const messages = useChatStore(state => state.messages)
 
-export const Messages: FC<Props> = ({ messages }) => {
   return (
     <ul>
       {messages.map((message, index) => {

@@ -1,37 +1,44 @@
-import { Messages } from '@/components/Chat/ChatWrapper/Messages'
-import { Guess } from '@/Three/Guess/Guess'
-import { Vojta } from '@/Three/Vojta/Vojta'
-import { Input } from '@/components/DesignSystem'
 import { Canvas } from '@react-three/fiber'
-import { createMockedMessages } from '@/components/Chat/mock/mockedMessages'
-import { useMemo } from 'react'
+import React, { useEffect } from 'react'
 import { MessagesContainer } from '@/components/Chat/ChatWrapper/MessagesContainer'
+import { Messages } from '@/components/Chat/ChatWrapper/Messages'
+import { Model } from '@/Three/models'
+import { Guess } from '@/Three/Guess'
 
 export const ChatWrapper = () => {
-  const m = useMemo(() => createMockedMessages(60), [])
+  useEffect(() => {
+    const call = async () => {
+      console.log('Calling')
+      // const res = await AIModel.call(
+      //   'What would be a good company name a company that makes colorful socks?'
+      // )
+      // console.log(res)
+    }
+
+    call()
+  })
+
   return (
     <div className="flex flex-row">
-      <Canvas
-        style={{
-          position: 'sticky',
-          top: '30%',
-        }}
-      >
-        <Guess />
-      </Canvas>
       <MessagesContainer>
-        <>
-          <Messages messages={m} />
-          <Input />
-        </>
+        <Messages />
       </MessagesContainer>
       <Canvas
+        shadows
+        camera={{
+          fov: 30,
+        }}
         style={{
-          position: 'sticky',
-          top: '30%',
+          position: 'fixed',
+          top: '0',
+          left: '0',
         }}
       >
-        <Vojta />
+        <Guess.models.man scale={[0.5, 0.5, 0.5]} position={[-1.5, -0.5, 0]} />
+        <ambientLight intensity={1} />
+        <group position-y={-1}>
+          <Model scale={[0.5, 0.5, 0.5]} position={[1.5, 0.5, 0]} />
+        </group>
       </Canvas>
     </div>
   )

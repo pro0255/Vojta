@@ -9,7 +9,6 @@ import { ModelRenderer } from '@/Three/ModelRenderer/ModelRenderer'
 export const Vojta = () => {
   const isScrollBar = useIsScrollbar()
   const pathName = usePathname()
-  console.log(isScrollBar, pathName)
 
   if (!isScrollBar && pathName !== '/') {
     return <InCorner />

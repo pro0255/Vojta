@@ -1,8 +1,12 @@
 'use client'
 
 import React from 'react'
-import { ModelRenderer } from '@/Three/ModelRenderer/ModelRenderer'
 
 export const Guess = () => {
-  return <ModelRenderer position={[-3.5, 0, 0]} color={'blue'} />
+  return (
+    <mesh scale={[0.5, 0.5, 0.5]} position={[-1.5, 0, 0]}>
+      <boxGeometry />
+      <meshBasicMaterial color={'blue'} />
+    </mesh>
+  )
 }
