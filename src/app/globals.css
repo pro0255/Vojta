@@ -2,7 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+    @font-face {
+        font-family: 'futura';
+        src: url('../../public/assets/fonts/futura.otf') format('opentype');
+    }
+}
+
 html {
+    font-size: 18px;
+    font-weight: bold;
 }
 
 body {
