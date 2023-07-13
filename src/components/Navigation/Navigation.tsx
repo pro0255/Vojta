@@ -1,24 +1,45 @@
 import Link from 'next/link'
+import { Anchor, NormalText } from '@/components/DesignSystem'
 
 export const Navigation = () => {
   return (
-    <nav className="px-14">
+    <nav className="px-4 min-w-xl">
       <div className="sticky top-20">
         <ul>
           <li>
-            <Link href={'/'}>Chat with me!</Link>
+            <Anchor>
+              <Link href={'/'}>
+                <NormalText>talk with me!</NormalText>
+              </Link>
+            </Anchor>
           </li>
           <li>
-            <Link href={'/home'}>Home</Link>
+            <Anchor>
+              <Link href={'/home'}>
+                <NormalText>Home</NormalText>
+              </Link>
+            </Anchor>
           </li>
           <li>
-            <Link href={'/about'}>About</Link>
+            <Anchor>
+              <Link href={'/about'}>
+                <NormalText>About</NormalText>
+              </Link>
+            </Anchor>
           </li>
           <li>
-            <Link href={'/blog'}>Blog</Link>
+            <Anchor>
+              <Link href={'/blog'}>
+                <NormalText>Blog</NormalText>
+              </Link>
+            </Anchor>
           </li>
           <li>
-            <Link href={'/work'}>Work</Link>
+            <Anchor>
+              <Link href={'/work'}>
+                <NormalText>Work</NormalText>
+              </Link>
+            </Anchor>
           </li>
         </ul>
       </div>
