@@ -1,11 +1,11 @@
 import { WorkName, WorkTag, WorkType } from '@/work/types'
 
-export const masterDegree: WorkType = {
-  title: 'Master degree',
+export const bachelorDegree: WorkType = {
+  title: 'Bachelor degree',
   description: 'this is description',
-  name: WorkName.company,
+  name: WorkName.school,
   work: [],
   tags: [WorkTag.FE, WorkTag.MOBX, WorkTag.React],
-  thumbnail: 'masterDegree.png',
+  thumbnail: 'bachelorDegree.png',
   link: 'https://www.seznam.cz/',
 }

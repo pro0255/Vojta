@@ -4,5 +4,5 @@ type Props = {
   children: ReactNode
 }
 export const ContentContainer: FC<Props> = ({ children }) => {
-  return <div className="flex flex-col items-center">{children}</div>
+  return <div className="flex flex-col w-full">{children}</div>
 }

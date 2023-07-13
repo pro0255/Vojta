@@ -7,4 +7,5 @@ export const atlas: WorkType = {
   work: [],
   tags: [WorkTag.FE, WorkTag.MOBX, WorkTag.React],
   thumbnail: 'atlas.jpeg',
+  link: 'https://www.seznam.cz/',
 }

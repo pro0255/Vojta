@@ -7,7 +7,7 @@ type Props = {
 }
 export const List: FC<Props> = ({ work }) => {
   return (
-    <ul>
+    <ul className="w-full">
       {work.map(work => (
         <Item item={work} key={work.title} />
       ))}

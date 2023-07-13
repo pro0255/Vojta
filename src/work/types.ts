@@ -18,6 +18,7 @@ type Link = {
 }
 
 type GeneralType = {
+  link: string
   name: WorkName
   thumbnail: string
   title: string

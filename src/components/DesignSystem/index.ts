@@ -1,3 +1,5 @@
-export * from './Text/Text'
+export * from './Text/NormalText'
 export * from './Text/Header'
+export * from './Text/GrayText'
 export * from './Input/Input'
+export * from './Tag/Tag'
