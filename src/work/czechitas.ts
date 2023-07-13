@@ -6,4 +6,5 @@ export const czechitas: WorkType = {
   name: WorkName.company,
   work: [],
   tags: [],
+  thumbnail: 'czechitas.jpg',
 }

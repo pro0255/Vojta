@@ -6,4 +6,5 @@ export const ataccama: WorkType = {
   name: WorkName.company,
   work: [],
   tags: [],
+  thumbnail: 'ataccama.jpeg',
 }

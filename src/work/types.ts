@@ -4,7 +4,11 @@ export enum WorkName {
   learn = 'learn',
 }
 
-export enum WorkTag {}
+export enum WorkTag {
+  FE = 'Frontend',
+  React = 'React',
+  MOBX = 'MobX',
+}
 
 type Link = {
   thumbnail: string
@@ -15,6 +19,7 @@ type Link = {
 
 type GeneralType = {
   name: WorkName
+  thumbnail: string
   title: string
   description: string
   tags: Array<WorkTag>

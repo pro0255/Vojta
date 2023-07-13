@@ -6,4 +6,5 @@ export const masterDegree: WorkType = {
   name: WorkName.company,
   work: [],
   tags: [],
+  thumbnail: 'masterDegree.png',
 }

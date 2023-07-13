@@ -1,9 +1,10 @@
-import { WorkName, WorkType } from '@/work/types'
+import { WorkName, WorkTag, WorkType } from '@/work/types'
 
 export const atlas: WorkType = {
   title: 'ATLAS GROUP',
   description: 'this is description',
   name: WorkName.company,
   work: [],
-  tags: [],
+  tags: [WorkTag.FE, WorkTag.MOBX, WorkTag.React],
+  thumbnail: 'atlas.jpeg',
 }
