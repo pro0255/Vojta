@@ -3,18 +3,26 @@
 import { Canvas } from '@react-three/fiber'
 import { Guess } from '@/Three/Guess'
 import React, { CSSProperties, FC, ReactNode, useEffect, useState } from 'react'
-import { NormalText } from '@/components/DesignSystem'
+import { HeaderThree, NormalText } from '@/components/DesignSystem'
 import { Model } from '@/Three/models'
 
 type Slide = {
   avatar: ReactNode
-  description: string
+  personaName: Persona
+  personaDescription?: string
 }
 
 type CarouselContent = Array<Slide>
 
 enum MovementTranslate {
   Default = 'transform 1s linear',
+}
+
+enum Persona {
+  FeDeveloper = 'Frontend Developer',
+  MLAIEnthusiast = 'ML/AI Enthusiast',
+  GuitarLerner = 'Taylor Swift v2',
+  FPVDronLerner = 'Future FPV pilot',
 }
 
 const carousel: CarouselContent = [
@@ -25,7 +33,8 @@ const carousel: CarouselContent = [
         <Guess.models.man position={[0, -0.8, 0]} />
       </Canvas>
     ),
-    description: 'Ahoj 1',
+    personaName: Persona.FeDeveloper,
+    personaDescription: 'Ahoj 1',
   },
   {
     avatar: (
@@ -34,7 +43,8 @@ const carousel: CarouselContent = [
         <Model position={[0, -0.8, 0]} />
       </Canvas>
     ),
-    description: 'Ahoj 2',
+    personaName: Persona.FPVDronLerner,
+    personaDescription: 'Ahoj 2',
   },
   {
     avatar: (
@@ -43,7 +53,8 @@ const carousel: CarouselContent = [
         <Guess.models.man position={[0, -0.8, 0]} />
       </Canvas>
     ),
-    description: 'Ahoj 3',
+    personaName: Persona.GuitarLerner,
+    personaDescription: 'Ahoj 3',
   },
   {
     avatar: (
@@ -52,25 +63,8 @@ const carousel: CarouselContent = [
         <Model position={[0, -0.8, 0]} />
       </Canvas>
     ),
-    description: 'Ahoj 4',
-  },
-  {
-    avatar: (
-      <Canvas camera={{ fov: 30 }}>
-        <ambientLight intensity={1} />
-        <Guess.models.man position={[0, -0.8, 0]} />
-      </Canvas>
-    ),
-    description: 'Ahoj 5',
-  },
-  {
-    avatar: (
-      <Canvas camera={{ fov: 30 }}>
-        <ambientLight intensity={1} />
-        <Model position={[0, -0.8, 0]} />
-      </Canvas>
-    ),
-    description: 'Ahoj 6',
+    personaName: Persona.MLAIEnthusiast,
+    personaDescription: 'Ahoj 4',
   },
 ]
 
@@ -149,16 +143,13 @@ export const PickAvatar = () => {
   const slide = carousel[avatarIndex]
 
   return (
-    <div>
-      <Carousel
-        slide={slide}
-        animation={animating}
-        endAnimation={endAnimation}
-      />
-      <button onClick={prev}>Prev</button>
-      <button onClick={next}>Next</button>
-      {avatarIndex}
-    </div>
+    <Carousel
+      next={next}
+      prev={prev}
+      slide={slide}
+      animation={animating}
+      endAnimation={endAnimation}
+    />
   )
 }
 
@@ -166,15 +157,15 @@ type CarouselProps = {
   slide: Omit<SlideProps, 'slideId'>
   animation: Animating | null
   endAnimation: () => void
+  next: () => void
+  prev: () => void
 }
 
 type SlideProps = {
   slideId: string
-  description: string
-  avatar: ReactNode
   endAnimation?: () => void
   animation?: SlideAnimation
-}
+} & Slide
 
 enum Translate {
   Zero = 'translateX(0%)',
@@ -184,7 +175,8 @@ enum Translate {
 
 const Slide: FC<SlideProps> = ({
   avatar,
-  description,
+  personaDescription,
+  personaName,
   endAnimation,
   animation,
   slideId,
@@ -210,7 +202,8 @@ const Slide: FC<SlideProps> = ({
     >
       <div style={{ height: '500px' }}>{avatar}</div>
       <div className={'flex flex-col items-center'}>
-        <NormalText>{description}</NormalText>
+        <HeaderThree>{personaName}</HeaderThree>
+        <NormalText>{personaDescription}</NormalText>
       </div>
     </div>
   )
@@ -254,6 +247,39 @@ type SlideAnimation = {
   end: Translate
 }
 
+const ArrowLeft = () => {
+  return (
+    <div
+      style={{
+        content: '',
+        borderLeft: '2px solid #000',
+        borderBottom: '2px solid #000',
+        width: '20px',
+        height: '20px',
+        transform: 'rotate(45deg)',
+        cursor: 'pointer',
+        display: 'block',
+      }}
+    ></div>
+  )
+}
+const ArrowRight = () => {
+  return (
+    <div
+      style={{
+        content: '',
+        borderRight: '2px solid #000',
+        borderTop: '2px solid #000',
+        width: '20px',
+        height: '20px',
+        transform: 'rotate(45deg)',
+        cursor: 'pointer',
+        display: 'block',
+      }}
+    ></div>
+  )
+}
+
 const useSlideTranslate = (
   animation: Animating | null
 ): {
@@ -288,13 +314,19 @@ const useSlideTranslate = (
   return { goingToScene }
 }
 
-const Carousel: FC<CarouselProps> = ({ slide, animation, endAnimation }) => {
+const Carousel: FC<CarouselProps> = ({
+  slide,
+  animation,
+  endAnimation,
+  prev,
+  next,
+}) => {
   const slideTranslate = useSlideTranslate(animation)
 
   return (
     <div style={{ position: 'relative', height: '600px', overflow: 'hidden' }}>
       <Slide
-        key={slide.description}
+        key={slide.personaName}
         {...slide}
         animation={slideTranslate?.goingToScene}
         slideId={'going to scene'}
@@ -302,13 +334,36 @@ const Carousel: FC<CarouselProps> = ({ slide, animation, endAnimation }) => {
 
       {animation && (
         <AnimatedSlide
-          key={animation.index}
+          key={slide.personaName}
           endAnimation={endAnimation}
           animation={slideTranslate?.movingOutOfScene}
           index={animation.index}
           slideId={'moving out of scene'}
         />
       )}
+
+      <button
+        style={{
+          zIndex: 3,
+          position: 'absolute',
+          left: 20,
+          top: '50%',
+        }}
+        onClick={prev}
+      >
+        <ArrowLeft />
+      </button>
+      <button
+        style={{
+          zIndex: 3,
+          position: 'absolute',
+          right: 20,
+          top: '50%',
+        }}
+        onClick={next}
+      >
+        <ArrowRight />
+      </button>
 
       <h1
         style={{
