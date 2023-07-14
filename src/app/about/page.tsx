@@ -7,7 +7,7 @@ import { summary } from '@/constants/summary'
 const About = () => {
   return (
     <main>
-      <Header.One>About Vojtech Prokop</Header.One>
+      <Header.One>About</Header.One>
 
       <PickAvatar />
 
