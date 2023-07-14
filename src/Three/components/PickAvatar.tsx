@@ -136,7 +136,6 @@ export const PickAvatar = () => {
     })
   }
   const endAnimation = () => {
-    console.log('endAnimation')
     setAnimating(null)
   }
 
@@ -186,6 +185,7 @@ const Slide: FC<SlideProps> = ({
   )
 
   useEffect(() => {
+    console.log(slideId, 'mount')
     setThisAnimation(createCSSProperties(animation?.end))
   }, [])
 
@@ -324,7 +324,10 @@ const Carousel: FC<CarouselProps> = ({
   const slideTranslate = useSlideTranslate(animation)
 
   return (
-    <div style={{ position: 'relative', height: '600px', overflow: 'hidden' }}>
+    <div
+      style={{ position: 'relative', height: '600px', overflow: 'hidden' }}
+      key={slide.personaName}
+    >
       <Slide
         key={slide.personaName}
         {...slide}
