@@ -2,7 +2,13 @@
 
 import { Canvas } from '@react-three/fiber'
 import { Guess } from '@/Three/Guess'
-import React, { CSSProperties, FC, ReactNode, useEffect, useState } from 'react'
+import React, {
+  CSSProperties,
+  FC,
+  ReactNode,
+  useLayoutEffect,
+  useState,
+} from 'react'
 import { HeaderThree, NormalText } from '@/components/DesignSystem'
 import { Model } from '@/Three/models'
 
@@ -27,42 +33,22 @@ enum Persona {
 
 const carousel: CarouselContent = [
   {
-    avatar: (
-      <Canvas camera={{ fov: 30 }}>
-        <ambientLight intensity={1} />
-        <Guess.models.man position={[0, -0.8, 0]} />
-      </Canvas>
-    ),
+    avatar: <Guess.models.man position={[0, -0.8, 0]} />,
     personaName: Persona.FeDeveloper,
     personaDescription: 'Ahoj 1',
   },
   {
-    avatar: (
-      <Canvas camera={{ fov: 30 }}>
-        <ambientLight intensity={1} />
-        <Model position={[0, -0.8, 0]} />
-      </Canvas>
-    ),
+    avatar: <Model position={[0, -0.8, 0]} />,
     personaName: Persona.FPVDronLerner,
     personaDescription: 'Ahoj 2',
   },
   {
-    avatar: (
-      <Canvas camera={{ fov: 30 }}>
-        <ambientLight intensity={1} />
-        <Guess.models.man position={[0, -0.8, 0]} />
-      </Canvas>
-    ),
+    avatar: <Guess.models.man position={[0, -0.8, 0]} />,
     personaName: Persona.GuitarLerner,
     personaDescription: 'Ahoj 3',
   },
   {
-    avatar: (
-      <Canvas camera={{ fov: 30 }}>
-        <ambientLight intensity={1} />
-        <Model position={[0, -0.8, 0]} />
-      </Canvas>
-    ),
+    avatar: <Model position={[0, -0.8, 0]} />,
     personaName: Persona.MLAIEnthusiast,
     personaDescription: 'Ahoj 4',
   },
@@ -172,6 +158,8 @@ enum Translate {
   Left = 'translateX(-100%)',
 }
 
+//TODO: vykreslit vsechny slidy a schovat za overflow
+
 const Slide: FC<SlideProps> = ({
   avatar,
   personaDescription,
@@ -184,8 +172,7 @@ const Slide: FC<SlideProps> = ({
     createCSSProperties(animation?.start)
   )
 
-  useEffect(() => {
-    console.log(slideId, 'mount')
+  useLayoutEffect(() => {
     setThisAnimation(createCSSProperties(animation?.end))
   }, [])
 
@@ -200,7 +187,12 @@ const Slide: FC<SlideProps> = ({
       }}
       onTransitionEnd={endAnimation}
     >
-      <div style={{ height: '500px' }}>{avatar}</div>
+      <div style={{ height: '500px' }}>
+        <Canvas camera={{ fov: 30 }}>
+          <ambientLight intensity={1} />
+          {avatar}
+        </Canvas>
+      </div>
       <div className={'flex flex-col items-center'}>
         <HeaderThree>{personaName}</HeaderThree>
         <NormalText>{personaDescription}</NormalText>
@@ -325,6 +317,7 @@ const Carousel: FC<CarouselProps> = ({
 
   return (
     <div
+      className="rounded-3xl"
       style={{ position: 'relative', height: '600px', overflow: 'hidden' }}
       key={slide.personaName}
     >
