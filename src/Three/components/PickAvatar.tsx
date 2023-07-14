@@ -2,7 +2,7 @@
 
 import { Canvas } from '@react-three/fiber'
 import { Guess } from '@/Three/Guess'
-import { CSSProperties, FC, ReactNode, useEffect, useState } from 'react'
+import React, { CSSProperties, FC, ReactNode, useEffect, useState } from 'react'
 import { NormalText } from '@/components/DesignSystem'
 import { Model } from '@/Three/models'
 
@@ -13,6 +13,10 @@ type Slide = {
 
 type CarouselContent = Array<Slide>
 
+enum MovementTranslate {
+  Default = 'transform 1s linear',
+}
+
 const carousel: CarouselContent = [
   {
     avatar: (
@@ -21,7 +25,7 @@ const carousel: CarouselContent = [
         <Guess.models.man position={[0, -0.8, 0]} />
       </Canvas>
     ),
-    description: 'Ahoj',
+    description: 'Ahoj 1',
   },
   {
     avatar: (
@@ -30,7 +34,7 @@ const carousel: CarouselContent = [
         <Model position={[0, -0.8, 0]} />
       </Canvas>
     ),
-    description: 'Ahoj',
+    description: 'Ahoj 2',
   },
   {
     avatar: (
@@ -39,7 +43,34 @@ const carousel: CarouselContent = [
         <Guess.models.man position={[0, -0.8, 0]} />
       </Canvas>
     ),
-    description: 'Ahoj',
+    description: 'Ahoj 3',
+  },
+  {
+    avatar: (
+      <Canvas camera={{ fov: 30 }}>
+        <ambientLight intensity={1} />
+        <Model position={[0, -0.8, 0]} />
+      </Canvas>
+    ),
+    description: 'Ahoj 4',
+  },
+  {
+    avatar: (
+      <Canvas camera={{ fov: 30 }}>
+        <ambientLight intensity={1} />
+        <Guess.models.man position={[0, -0.8, 0]} />
+      </Canvas>
+    ),
+    description: 'Ahoj 5',
+  },
+  {
+    avatar: (
+      <Canvas camera={{ fov: 30 }}>
+        <ambientLight intensity={1} />
+        <Model position={[0, -0.8, 0]} />
+      </Canvas>
+    ),
+    description: 'Ahoj 6',
   },
 ]
 
@@ -48,58 +79,71 @@ enum Direction {
   right = 'right',
 }
 
-type Animation = {
+type AnimatingNotFirst = {
   index: number
   direction: Direction
+  name: 'not-first'
 }
+
+type AnimatingFirstRender = {
+  index: number
+  name: 'first'
+}
+
+type Animating = AnimatingNotFirst | AnimatingFirstRender
 
 export const PickAvatar = () => {
   const [avatarIndex, setAvatarIndex] = useState<number>(0)
-  const [animation, setAnimation] = useState<Animation | null>(null)
+  const [animating, setAnimating] = useState<Animating | null>({
+    index: avatarIndex,
+    name: 'first',
+  })
 
   const next = () => {
     setAvatarIndex(previousIndex => {
       const tryNext = previousIndex + 1
 
       if (tryNext > carousel.length - 1) {
-        setAnimation({
+        setAnimating({
           direction: Direction.left,
           index: previousIndex,
+          name: 'not-first',
         })
         return 0
       }
 
-      setAnimation({
+      setAnimating({
         direction: Direction.right,
         index: previousIndex,
+        name: 'not-first',
       })
       return previousIndex + 1
     })
   }
-
   const prev = () => {
     setAvatarIndex(previousIndex => {
       const tryPrevious = previousIndex - 1
 
       if (tryPrevious < 0) {
-        setAnimation({
+        setAnimating({
           direction: Direction.right,
           index: previousIndex,
+          name: 'not-first',
         })
         return carousel.length - 1
       }
 
-      setAnimation({
+      setAnimating({
         direction: Direction.left,
         index: previousIndex,
+        name: 'not-first',
       })
       return tryPrevious
     })
   }
-
   const endAnimation = () => {
     console.log('endAnimation')
-    setAnimation(null)
+    setAnimating(null)
   }
 
   const slide = carousel[avatarIndex]
@@ -108,7 +152,7 @@ export const PickAvatar = () => {
     <div>
       <Carousel
         slide={slide}
-        animation={animation}
+        animation={animating}
         endAnimation={endAnimation}
       />
       <button onClick={prev}>Prev</button>
@@ -119,37 +163,43 @@ export const PickAvatar = () => {
 }
 
 type CarouselProps = {
-  slide: SlideProps
-  animation: Animation | null
+  slide: Omit<SlideProps, 'slideId'>
+  animation: Animating | null
   endAnimation: () => void
 }
 
 type SlideProps = {
+  slideId: string
   description: string
   avatar: ReactNode
   endAnimation?: () => void
-  animationCss?: CSSProperties
+  animation?: SlideAnimation
+}
+
+enum Translate {
+  Zero = 'translateX(0%)',
+  Right = 'translateX(100%)',
+  Left = 'translateX(-100%)',
 }
 
 const Slide: FC<SlideProps> = ({
   avatar,
   description,
-  animationCss,
   endAnimation,
+  animation,
+  slideId,
 }) => {
-  const [thisAnimation, setThisAnimation] = useState<CSSProperties>({
-    transform: 'translateX(0%)',
-  })
+  const [thisAnimation, setThisAnimation] = useState<CSSProperties>(
+    createCSSProperties(animation?.start)
+  )
 
   useEffect(() => {
-    console.log(thisAnimation, animationCss)
-    if (animationCss) {
-      setThisAnimation(animationCss)
-    }
+    setThisAnimation(createCSSProperties(animation?.end))
   }, [])
 
   return (
     <div
+      id={slideId}
       style={{
         ...thisAnimation,
         position: 'absolute',
@@ -159,7 +209,7 @@ const Slide: FC<SlideProps> = ({
       onTransitionEnd={endAnimation}
     >
       <div style={{ height: '500px' }}>{avatar}</div>
-      <div>
+      <div className={'flex flex-col items-center'}>
         <NormalText>{description}</NormalText>
       </div>
     </div>
@@ -167,43 +217,107 @@ const Slide: FC<SlideProps> = ({
 }
 
 type AnimatedSlideProps = {
-  animation: Animation
-} & Pick<CarouselProps, 'endAnimation'>
+  animation?: SlideAnimation
+  index: number
+} & Pick<CarouselProps, 'endAnimation'> &
+  Pick<SlideProps, 'slideId'>
 
-const createCSSProperties = (direction: Direction): CSSProperties => {
+const createCSSProperties = (
+  transform?: SlideAnimation['end']
+): CSSProperties => {
   return {
-    transform:
-      direction === Direction.right ? 'translateX(100%)' : 'translateX(-100%)',
-    transition: 'transform 1s linear',
+    transform: transform ?? Translate.Zero,
+    transition: MovementTranslate.Default,
   }
 }
 
-const AnimatedSlide: FC<AnimatedSlideProps> = ({ animation, endAnimation }) => {
-  console.log(animation)
-
-  const { index, direction } = animation
+const AnimatedSlide: FC<AnimatedSlideProps> = ({
+  animation,
+  endAnimation,
+  index,
+  slideId,
+}) => {
   const slide = carousel[index]
-  const animationCSS = createCSSProperties(direction)
 
   return (
-    <Slide {...slide} animationCss={animationCSS} endAnimation={endAnimation} />
+    <Slide
+      {...slide}
+      endAnimation={endAnimation}
+      animation={animation}
+      slideId={slideId}
+    />
   )
 }
 
+type SlideAnimation = {
+  start: Translate
+  end: Translate
+}
+
+const useSlideTranslate = (
+  animation: Animating | null
+): {
+  goingToScene: SlideAnimation
+  movingOutOfScene?: SlideAnimation
+} | null => {
+  if (!animation) {
+    return null
+  }
+
+  if (animation.name === 'not-first') {
+    const { direction } = animation
+
+    const goingToScene: SlideAnimation = {
+      start: direction === Direction.right ? Translate.Left : Translate.Right,
+      end: Translate.Zero,
+    }
+
+    const movingOutOfScene: SlideAnimation = {
+      start: Translate.Zero,
+      end: direction === Direction.right ? Translate.Right : Translate.Left,
+    }
+
+    return { goingToScene, movingOutOfScene }
+  }
+
+  const goingToScene: SlideAnimation = {
+    start: Translate.Zero,
+    end: Translate.Zero,
+  }
+
+  return { goingToScene }
+}
+
 const Carousel: FC<CarouselProps> = ({ slide, animation, endAnimation }) => {
+  const slideTranslate = useSlideTranslate(animation)
+
   return (
-    <div style={{ position: 'relative', height: '600px' }}>
-      <Slide key={slide.description} {...slide} />
+    <div style={{ position: 'relative', height: '600px', overflow: 'hidden' }}>
+      <Slide
+        key={slide.description}
+        {...slide}
+        animation={slideTranslate?.goingToScene}
+        slideId={'going to scene'}
+      />
 
       {animation && (
         <AnimatedSlide
           key={animation.index}
-          animation={animation}
           endAnimation={endAnimation}
+          animation={slideTranslate?.movingOutOfScene}
+          index={animation.index}
+          slideId={'moving out of scene'}
         />
       )}
 
-      {JSON.stringify(animation)}
+      <h1
+        style={{
+          marginTop: '60%',
+          textAlign: 'center',
+        }}
+      >
+        Vojtech Prokop
+      </h1>
     </div>
   )
 }
