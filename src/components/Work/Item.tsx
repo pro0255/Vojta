@@ -1,7 +1,7 @@
 import { WorkType } from '@/work/types'
 import React, { FC } from 'react'
 import Image from 'next/image'
-import { Card, GrayText, HeaderOne, Tag } from '@/components/DesignSystem'
+import { Card, GrayText, HeaderTwo, Tag } from '@/components/DesignSystem'
 
 type Props = {
   item: WorkType
@@ -26,15 +26,17 @@ export const Item: FC<Props> = ({ item }) => {
           }
           mainSlot={
             <div className="flex flex-row">
-              <Image
-                src={`/work/${thumbnail}`}
-                alt={thumbnail}
-                width={60}
-                height={60}
-              />
-              <div className="ml-10 flex flex-col">
+              <div className="mr-10">
+                <Image
+                  src={`/work/${thumbnail}`}
+                  alt={thumbnail}
+                  width={60}
+                  height={60}
+                />
+              </div>
+              <div className="flex flex-col">
                 <div>
-                  <HeaderOne>{title}</HeaderOne>
+                  <HeaderTwo>{title}</HeaderTwo>
                 </div>
                 <div>
                   <GrayText>{description}</GrayText>

@@ -2,7 +2,8 @@ import { WorkName, WorkTag, WorkType } from '@/work/types'
 
 export const bachelorDegree: WorkType = {
   title: 'Bachelor degree',
-  description: 'this is description',
+  description:
+    'Tohle je asdfasdf Tohle je asdfasdf Tohle je asdfasdf Tohle je asdfasdf Tohle je asdfasdf Tohle je asdfasdf Tohle je asdfasdf Tohle je asdfasdf Tohle je asdfasdf Tohle je asdfasdf Tohle je asdfasdf ',
   name: WorkName.school,
   work: [],
   tags: [WorkTag.FE, WorkTag.MOBX, WorkTag.React],
