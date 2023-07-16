@@ -48,24 +48,6 @@ const carousel: CarouselContent = [
   },
 ]
 
-enum Direction {
-  left = 'left',
-  right = 'right',
-}
-
-type AnimatingNotFirst = {
-  index: number
-  direction: Direction
-  name: 'not-first'
-}
-
-type AnimatingFirstRender = {
-  index: number
-  name: 'first'
-}
-
-type Animating = AnimatingNotFirst | AnimatingFirstRender
-
 export const PickAvatar = () => {
   const [avatarIndex, setAvatarIndex] = useState<number>(0)
 
@@ -96,16 +78,16 @@ export const PickAvatar = () => {
     <Carousel
       activeIndex={avatarIndex}
       slides={carousel}
-      next={next}
-      prev={prev}
+      next={avatarIndex === carousel.length - 1 ? undefined : next}
+      prev={avatarIndex === 0 ? undefined : prev}
     />
   )
 }
 
 type CarouselProps = {
   slides: CarouselContent
-  next: () => void
-  prev: () => void
+  next?: () => void
+  prev?: () => void
   activeIndex: number
 }
 
@@ -253,6 +235,7 @@ const Carousel: FC<CarouselProps> = ({ prev, next, slides, activeIndex }) => {
       </ul>
 
       <button
+        disabled={!prev}
         style={{
           zIndex: 3,
           position: 'absolute',
@@ -264,6 +247,7 @@ const Carousel: FC<CarouselProps> = ({ prev, next, slides, activeIndex }) => {
         <ArrowLeft />
       </button>
       <button
+        disabled={!next}
         style={{
           zIndex: 3,
           position: 'absolute',
