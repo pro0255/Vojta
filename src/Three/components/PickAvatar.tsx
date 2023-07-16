@@ -2,13 +2,7 @@
 
 import { Canvas } from '@react-three/fiber'
 import { Guess } from '@/Three/Guess'
-import React, {
-  CSSProperties,
-  FC,
-  ReactNode,
-  useLayoutEffect,
-  useState,
-} from 'react'
+import React, { CSSProperties, FC, ReactNode, useState } from 'react'
 import { HeaderThree, NormalText } from '@/components/DesignSystem'
 import { Model } from '@/Three/models'
 
@@ -21,7 +15,7 @@ type Slide = {
 type CarouselContent = Array<Slide>
 
 enum MovementTranslate {
-  Default = 'transform 1s linear',
+  Default = 'transform 0.5s ease-out',
 }
 
 enum Persona {
@@ -74,29 +68,15 @@ type Animating = AnimatingNotFirst | AnimatingFirstRender
 
 export const PickAvatar = () => {
   const [avatarIndex, setAvatarIndex] = useState<number>(0)
-  const [animating, setAnimating] = useState<Animating | null>({
-    index: avatarIndex,
-    name: 'first',
-  })
 
   const next = () => {
     setAvatarIndex(previousIndex => {
       const tryNext = previousIndex + 1
 
       if (tryNext > carousel.length - 1) {
-        setAnimating({
-          direction: Direction.left,
-          index: previousIndex,
-          name: 'not-first',
-        })
         return 0
       }
 
-      setAnimating({
-        direction: Direction.right,
-        index: previousIndex,
-        name: 'not-first',
-      })
       return previousIndex + 1
     })
   }
@@ -105,87 +85,48 @@ export const PickAvatar = () => {
       const tryPrevious = previousIndex - 1
 
       if (tryPrevious < 0) {
-        setAnimating({
-          direction: Direction.right,
-          index: previousIndex,
-          name: 'not-first',
-        })
         return carousel.length - 1
       }
 
-      setAnimating({
-        direction: Direction.left,
-        index: previousIndex,
-        name: 'not-first',
-      })
       return tryPrevious
     })
   }
-  const endAnimation = () => {
-    setAnimating(null)
-  }
-
-  const slide = carousel[avatarIndex]
 
   return (
     <Carousel
+      activeIndex={avatarIndex}
+      slides={carousel}
       next={next}
       prev={prev}
-      slide={slide}
-      animation={animating}
-      endAnimation={endAnimation}
     />
   )
 }
 
 type CarouselProps = {
-  slide: Omit<SlideProps, 'slideId'>
-  animation: Animating | null
-  endAnimation: () => void
+  slides: CarouselContent
   next: () => void
   prev: () => void
+  activeIndex: number
 }
 
 type SlideProps = {
+  slideIndex: number
   slideId: string
-  endAnimation?: () => void
-  animation?: SlideAnimation
 } & Slide
-
-enum Translate {
-  Zero = 'translateX(0%)',
-  Right = 'translateX(100%)',
-  Left = 'translateX(-100%)',
-}
-
-//TODO: vykreslit vsechny slidy a schovat za overflow
 
 const Slide: FC<SlideProps> = ({
   avatar,
   personaDescription,
   personaName,
-  endAnimation,
-  animation,
   slideId,
 }) => {
-  const [thisAnimation, setThisAnimation] = useState<CSSProperties>(
-    createCSSProperties(animation?.start)
-  )
-
-  useLayoutEffect(() => {
-    setThisAnimation(createCSSProperties(animation?.end))
-  }, [])
-
   return (
     <div
       id={slideId}
       style={{
-        ...thisAnimation,
         position: 'absolute',
         width: '100%',
-        zIndex: endAnimation ? 2 : 1,
       }}
-      onTransitionEnd={endAnimation}
     >
       <div style={{ height: '500px' }}>
         <Canvas camera={{ fov: 30 }}>
@@ -199,44 +140,6 @@ const Slide: FC<SlideProps> = ({
       </div>
     </div>
   )
-}
-
-type AnimatedSlideProps = {
-  animation?: SlideAnimation
-  index: number
-} & Pick<CarouselProps, 'endAnimation'> &
-  Pick<SlideProps, 'slideId'>
-
-const createCSSProperties = (
-  transform?: SlideAnimation['end']
-): CSSProperties => {
-  return {
-    transform: transform ?? Translate.Zero,
-    transition: MovementTranslate.Default,
-  }
-}
-
-const AnimatedSlide: FC<AnimatedSlideProps> = ({
-  animation,
-  endAnimation,
-  index,
-  slideId,
-}) => {
-  const slide = carousel[index]
-
-  return (
-    <Slide
-      {...slide}
-      endAnimation={endAnimation}
-      animation={animation}
-      slideId={slideId}
-    />
-  )
-}
-
-type SlideAnimation = {
-  start: Translate
-  end: Translate
 }
 
 const ArrowLeft = () => {
@@ -271,72 +174,83 @@ const ArrowRight = () => {
     ></div>
   )
 }
-
-const useSlideTranslate = (
-  animation: Animating | null
-): {
-  goingToScene: SlideAnimation
-  movingOutOfScene?: SlideAnimation
-} | null => {
-  if (!animation) {
-    return null
+const getTransform = (
+  thisIndex: number,
+  activeIndex: number,
+  maxIndex: number
+) => {
+  if (thisIndex === activeIndex) {
+    return 0
   }
 
-  if (animation.name === 'not-first') {
-    const { direction } = animation
-
-    const goingToScene: SlideAnimation = {
-      start: direction === Direction.right ? Translate.Left : Translate.Right,
-      end: Translate.Zero,
-    }
-
-    const movingOutOfScene: SlideAnimation = {
-      start: Translate.Zero,
-      end: direction === Direction.right ? Translate.Right : Translate.Left,
-    }
-
-    return { goingToScene, movingOutOfScene }
+  if (activeIndex === 0 && thisIndex === maxIndex - 1) {
+    return -1 * 100
   }
 
-  const goingToScene: SlideAnimation = {
-    start: Translate.Zero,
-    end: Translate.Zero,
+  if (activeIndex === maxIndex - 1 && thisIndex === 0) {
+    return 100
   }
 
-  return { goingToScene }
+  const diff = thisIndex - activeIndex
+
+  return diff * 100
 }
 
-const Carousel: FC<CarouselProps> = ({
-  slide,
-  animation,
-  endAnimation,
-  prev,
-  next,
-}) => {
-  const slideTranslate = useSlideTranslate(animation)
+const getVisibility = (
+  thisIndex: number,
+  activeIndex: number
+): CSSProperties['visibility'] => {
+  if (thisIndex === activeIndex) {
+    return 'visible'
+  }
 
+  const diff = Math.abs(thisIndex - activeIndex)
+
+  if (diff === 1) {
+    return 'visible'
+  }
+
+  return 'hidden'
+}
+
+const createCSSProperties = (
+  thisIndex: number,
+  activeIndex: number,
+  maxIndex: number
+): CSSProperties => {
+  const transform = getTransform(thisIndex, activeIndex, maxIndex)
+  const visibility = getVisibility(thisIndex, activeIndex)
+
+  return {
+    transform: `translate(${transform}%)`,
+    transition: MovementTranslate.Default,
+    visibility: visibility,
+  }
+}
+
+const Carousel: FC<CarouselProps> = ({ prev, next, slides, activeIndex }) => {
   return (
-    <div
-      className="rounded-3xl"
-      style={{ position: 'relative', height: '600px', overflow: 'hidden' }}
-      key={slide.personaName}
-    >
-      <Slide
-        key={slide.personaName}
-        {...slide}
-        animation={slideTranslate?.goingToScene}
-        slideId={'going to scene'}
-      />
-
-      {animation && (
-        <AnimatedSlide
-          key={slide.personaName}
-          endAnimation={endAnimation}
-          animation={slideTranslate?.movingOutOfScene}
-          index={animation.index}
-          slideId={'moving out of scene'}
-        />
-      )}
+    <div style={{ position: 'relative', height: '600px', overflow: 'hidden' }}>
+      <ul>
+        {slides.map(({ avatar, personaDescription, personaName }, index) => {
+          return (
+            <li
+              key={personaName}
+              style={{
+                ...createCSSProperties(index, activeIndex, slides.length),
+              }}
+            >
+              <Slide
+                slideIndex={index}
+                avatar={avatar}
+                personaName={personaName}
+                personaDescription={personaDescription}
+                slideId={personaName}
+              />
+            </li>
+          )
+        })}
+      </ul>
 
       <button
         style={{
