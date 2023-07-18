@@ -29,6 +29,7 @@ export const ChatWrapper = () => {
           fov: 30,
         }}
         style={{
+          zIndex: -1,
           position: 'fixed',
           top: '0',
           left: '0',

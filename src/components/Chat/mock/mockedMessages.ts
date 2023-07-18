@@ -4,7 +4,7 @@ import { faker } from '@faker-js/faker'
 const createMockMessage = (number: number): MessageType => {
   return {
     author: number % 2 == 0 ? Author.Guess : Author.Vojta,
-    text: faker.string.alpha(),
+    text: faker.lorem.text(),
     timestamp: new Date().getMilliseconds(),
   }
 }
