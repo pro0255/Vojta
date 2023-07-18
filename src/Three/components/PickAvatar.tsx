@@ -123,7 +123,12 @@ const Slide: FC<SlideProps> = ({
       <div className={'flex flex-col items-center'}>
         <HeaderThree>{personaName}</HeaderThree>
         <Paragraph>
-          <NormalText className={'flex text-center'}>
+          <NormalText
+            style={{
+              textAlign: 'center',
+              display: 'flex',
+            }}
+          >
             {personaDescription}
           </NormalText>
         </Paragraph>
