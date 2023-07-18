@@ -1,14 +1,15 @@
 'use client'
 
-import { FormEvent, useState } from 'react'
+import React, { FormEvent, useState } from 'react'
 import { useChatStore } from '@/components/Chat/store/chat'
 import { Author } from '@/components/Chat/types'
 import { Messages } from '@/components/Chat/domain/chat'
+import Image from 'next/image'
 
 const useInput = () => {
   const [value, setValue] = useState<string>('')
 
-  const onChange = (event: FormEvent<HTMLInputElement>) => {
+  const onChange = (event: FormEvent<HTMLTextAreaElement>) => {
     const newValue = event.currentTarget.value
     setValue(newValue)
   }
@@ -41,15 +42,25 @@ export const Input = () => {
   const { submit, onChange, isDisabled, value } = useInput()
 
   return (
-    <div className="flex flex-row">
-      <input
+    <div
+      className="p-4 rounded-lg flex flex-row border-2 border-b-slate-100 bg-white"
+      style={{
+        minWidth: '65%',
+      }}
+    >
+      <textarea
         disabled={isDisabled}
         value={value}
         onChange={onChange}
-        className="sticky bottom-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        className="focus:outline-0 block w-full bg-white resize-none"
       />
       <button disabled={isDisabled} onMouseDown={submit}>
-        SEND
+        <Image
+          src={`/assets/icons/send.png`}
+          alt={'sending'}
+          width={40}
+          height={40}
+        />
       </button>
     </div>
   )

@@ -19,7 +19,7 @@ export const ChatWrapper = () => {
   })
 
   return (
-    <div className="flex flex-row">
+    <div className="flex flex-col z-20">
       <MessagesContainer>
         <Messages />
       </MessagesContainer>
@@ -29,7 +29,7 @@ export const ChatWrapper = () => {
           fov: 30,
         }}
         style={{
-          zIndex: -1,
+          zIndex: 10,
           position: 'fixed',
           top: '0',
           left: '0',
