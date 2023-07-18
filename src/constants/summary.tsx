@@ -46,7 +46,7 @@ const ai: EmojiItem = {
 const dream: EmojiItem = {
   text: (
     <NormalText>
-      I would like to try to help with machine learning to save some lives.
+      I would like to try to help with machine learning to save some lives
     </NormalText>
   ),
   emoji: '🤔',
