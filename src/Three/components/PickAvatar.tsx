@@ -31,7 +31,7 @@ const carousel: CarouselContent = [
     avatar: <Guess.models.man position={[0, -0.8, 0]} />,
     personaName: Persona.FeDeveloper,
     personaDescription:
-      "My goal is to create impactful projects that positively impact people's lives. I specialize in implementing the frontend side of projects using technologies such as React, Next.js, Apollo, and MobX",
+      "My goal is to create impactful projects that positively impact people's lives. I specialize in implementing the frontend side of projects using technologies such as React, Next.js, Apollo, and MobX.",
   },
   {
     avatar: <Model position={[0, -0.8, 0]} />,
@@ -48,7 +48,8 @@ const carousel: CarouselContent = [
   {
     avatar: <Model position={[0, -0.8, 0]} />,
     personaName: Persona.MLAIEnthusiast,
-    personaDescription: 'Ahoj 4',
+    personaDescription:
+      "I'm passionate about ML and AI projects, especially their implementation in hospitals to improve outcomes and save lives. One intriguing project I'd love to try is using ML to assist psychiatrists in quickly delivering accurate medication to patients in need. It has the potential to significantly enhance mental healthcare.",
   },
 ]
 
