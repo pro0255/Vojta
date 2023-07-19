@@ -5,13 +5,25 @@ import { useChatStore } from '@/components/Chat/store/chat'
 import { Author } from '@/components/Chat/types'
 import { Messages } from '@/components/Chat/domain/chat'
 import Image from 'next/image'
+import { useModelManager } from '@/Three/store/useModelManager'
+import { GuessState } from '@/Three/store/types'
 
 const useInput = () => {
+  const setGuessState = useModelManager(state => state.setGuessState)
   const [value, setValue] = useState<string>('')
 
   const onChange = (event: FormEvent<HTMLTextAreaElement>) => {
     const newValue = event.currentTarget.value
-    setValue(newValue)
+
+    if (Messages.validate(newValue)) {
+      if (Messages.isEmpty(newValue)) {
+        setGuessState(GuessState.Init)
+      } else {
+        setGuessState(GuessState.Writing)
+      }
+
+      setValue(newValue)
+    }
   }
 
   const submit = (_: FormEvent<HTMLButtonElement>) => {

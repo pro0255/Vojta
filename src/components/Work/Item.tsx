@@ -1,7 +1,7 @@
-import { WorkType } from '@/work/types'
-import React, { FC } from 'react'
-import Image from 'next/image'
 import { Card, GrayText, HeaderTwo, Tag } from '@/components/DesignSystem'
+import { WorkType } from '@/work/types'
+import Image from 'next/image'
+import { FC } from 'react'
 
 type Props = {
   item: WorkType

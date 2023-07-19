@@ -14,6 +14,10 @@ export class Messages {
     return lastMessage.author === Author.Guess
   }
 
+  public static isEmpty = (newMessageValue: MessageType['text']) => {
+    return newMessageValue === '' || !newMessageValue
+  }
+
   public static validate = (newMessageValue: MessageType['text']) => {
     return true
   }
