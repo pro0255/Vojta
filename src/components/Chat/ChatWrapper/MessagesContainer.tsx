@@ -11,7 +11,7 @@ export const MessagesContainer: FC<Props> = ({ children }) => {
         <main>{children}</main>
       </section>
 
-      <footer className="fixed bottom-0 left-0 w-[calc(100%)] h-[20%] bg-slate-100 border-t-2 border-b-slate-100 z-[0] flex flex-row items-center justify-center z-40">
+      <footer className="fixed bottom-0 left-0 w-[calc(100%)] h-[20%] bg-slate-100 border-t-2 border-b-slate-100 z-40 flex flex-row items-center justify-center z-40">
         <Input />
       </footer>
     </div>
