@@ -14,11 +14,15 @@ export class Messages {
     return lastMessage.author === Author.Guess
   }
 
-  public static isEmpty = (newMessageValue: MessageType['text']) => {
+  public static isEmpty = (
+    newMessageValue: MessageType['text'] | undefined
+  ) => {
     return newMessageValue === '' || !newMessageValue
   }
 
-  public static validate = (newMessageValue: MessageType['text']) => {
+  public static validate = (
+    newMessageValue: MessageType['text'] | undefined
+  ) => {
     return true
   }
 }

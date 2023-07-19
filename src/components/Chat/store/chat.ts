@@ -1,8 +1,9 @@
 import { create, StoreApi, UseBoundStore } from 'zustand'
 import { MessageType } from '@/components/Chat/types'
 import { agent } from '@/components/Chat/domain/agent'
-import { useVojtaStore } from '@/components/Chat/store/vojta'
 import { createMockedMessages } from '@/components/Chat/mock/mockedMessages'
+import { useModelManager } from '@/Three/store/useModelManager'
+import { VojtaState } from '@/Three/store/types'
 
 export type ChatStore = {
   messages: Array<MessageType>
@@ -18,9 +19,15 @@ export const useChatStore: UseBoundStore<StoreApi<ChatStore>> = create(set => {
         messages: [...state.messages, message],
       }))
 
-      useVojtaStore.setState({ isThinking: true })
+      useModelManager.setState(state => ({
+        ...state,
+        vojtaState: VojtaState.Thinking,
+      }))
       const responseFromAgent = await agent.ask(message.text)
-      useVojtaStore.setState({ isThinking: false })
+      useModelManager.setState(state => ({
+        ...state,
+        vojtaState: VojtaState.Init,
+      }))
 
       set((state: ChatStore) => ({
         ...state,

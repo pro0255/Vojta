@@ -5,4 +5,5 @@ export enum GuessState {
 
 export enum VojtaState {
   Init = 'Init',
+  Thinking = 'Thinking',
 }

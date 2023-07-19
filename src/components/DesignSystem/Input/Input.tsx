@@ -12,9 +12,7 @@ const useInput = () => {
   const setGuessState = useModelManager(state => state.setGuessState)
   const [value, setValue] = useState<string>('')
 
-  const onChange = (event: FormEvent<HTMLTextAreaElement>) => {
-    const newValue = event.currentTarget.value
-
+  const setValueMiddleware = (newValue: string | undefined) => {
     if (Messages.validate(newValue)) {
       if (Messages.isEmpty(newValue)) {
         setGuessState(GuessState.Init)
@@ -22,8 +20,13 @@ const useInput = () => {
         setGuessState(GuessState.Writing)
       }
 
-      setValue(newValue)
+      setValue(newValue!)
     }
+  }
+
+  const onChange = (event: FormEvent<HTMLTextAreaElement>) => {
+    const newValue = event.currentTarget.value
+    setValueMiddleware(newValue)
   }
 
   const submit = (_: FormEvent<HTMLButtonElement>) => {
@@ -32,7 +35,7 @@ const useInput = () => {
       text: value,
       author: Author.Guess,
     })
-    setValue('')
+    setValueMiddleware('')
   }
 
   const { addMessage, messages } = useChatStore(state => ({
