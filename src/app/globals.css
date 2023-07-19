@@ -24,6 +24,7 @@ video {
 html {
     font-size: 18px;
     font-weight: bold;
+    scroll-behavior: smooth;
 }
 
 body {
