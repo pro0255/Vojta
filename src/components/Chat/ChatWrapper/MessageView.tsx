@@ -8,7 +8,7 @@ type Props = {
   text: string
 }
 
-export const Message: FC<Props> = ({ text, author, timestamp }) => {
+export const MessageView: FC<Props> = ({ text, author, timestamp }) => {
   const mainStyle = `flex flex-row ${
     author === Author.Guess ? 'justify-start' : 'justify-end'
   }`

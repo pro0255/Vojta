@@ -12,7 +12,7 @@ export type ChatStore = {
 
 export const useChatStore: UseBoundStore<StoreApi<ChatStore>> = create(set => {
   const value: ChatStore = {
-    messages: [...createMockedMessages(60)],
+    messages: [...createMockedMessages(2)],
     add: async (message: MessageType) => {
       set((state: ChatStore) => ({
         ...state,

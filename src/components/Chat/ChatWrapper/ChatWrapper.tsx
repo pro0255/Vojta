@@ -1,23 +1,11 @@
 import { Canvas } from '@react-three/fiber'
-import React, { useEffect } from 'react'
+import React from 'react'
 import { MessagesContainer } from '@/components/Chat/ChatWrapper/MessagesContainer'
 import { Messages } from '@/components/Chat/ChatWrapper/Messages'
 import { Model } from '@/Three/models'
 import { Guess } from '@/Three/Guess'
 
 export const ChatWrapper = () => {
-  useEffect(() => {
-    const call = async () => {
-      console.log('Calling')
-      // const res = await AIModel.call(
-      //   'What would be a good company name a company that makes colorful socks?'
-      // )
-      // console.log(res)
-    }
-
-    call()
-  })
-
   return (
     <div className="flex flex-col z-20">
       <MessagesContainer>
