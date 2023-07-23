@@ -6,7 +6,7 @@ type Props = {
   timestamp: number
   author: Author
   text: string
-  setNextRenderingMessage: () => void
+  setAsRendered: () => void
 }
 
 const createGenerator = function* (
@@ -25,7 +25,7 @@ export const RenderingMessage: FC<Props> = ({
   text,
   author,
   timestamp,
-  setNextRenderingMessage,
+  setAsRendered,
 }) => {
   const [renderedText, setRenderedText] = useState('')
 
@@ -39,7 +39,7 @@ export const RenderingMessage: FC<Props> = ({
         await new Promise(resolve => setTimeout(resolve, 10))
         renderChar()
       }
-      setNextRenderingMessage()
+      setAsRendered()
     }
 
     renderRest()

@@ -1,7 +1,6 @@
 import { create, StoreApi, UseBoundStore } from 'zustand'
 import { MessageType } from '@/components/Chat/types'
 import { agent } from '@/components/Chat/domain/agent'
-import { createMockedMessages } from '@/components/Chat/mock/mockedMessages'
 import { useModelManager } from '@/Three/store/useModelManager'
 import { VojtaState } from '@/Three/store/types'
 
@@ -12,7 +11,7 @@ export type ChatStore = {
 
 export const useChatStore: UseBoundStore<StoreApi<ChatStore>> = create(set => {
   const value: ChatStore = {
-    messages: [...createMockedMessages(2)],
+    messages: [],
     add: async (message: MessageType) => {
       set((state: ChatStore) => ({
         ...state,
