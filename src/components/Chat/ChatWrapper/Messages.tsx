@@ -3,19 +3,34 @@ import { MessageView } from '@/components/Chat/ChatWrapper/MessageView'
 import { ChatStore, useChatStore } from '@/components/Chat/store/chat'
 import { RenderingMessage } from '@/components/Chat/ChatWrapper/RenderingMessage'
 import { Author } from '@/components/Chat/types'
+import { useModelManager } from '@/Three/store/useModelManager'
+import { VojtaState } from '@/Three/store/types'
+import { scroll } from '@/helpers'
 
 type UseMessages = {
   renderedMessages: ChatStore['messages']
   renderingMessage: ChatStore['messages'][0] | undefined
   setAsRendered: () => void
+  setVojtaTalking: () => void
 }
 
 const useMessages = (): UseMessages => {
+  const setVojtaState = useModelManager(
+    modelManager => modelManager.setVojtaState
+  )
   const messages = useChatStore(state => state.messages)
   const [renderedCount, setRenderedCount] = useState(-1)
   const [renderingIndex, setRenderingIndex] = useState<number | undefined>(
     undefined
   )
+
+  useEffect(() => {
+    scroll.scrollToBottom()
+  }, [renderedCount])
+
+  const setVojtaTalking = () => {
+    setVojtaState(VojtaState.Talking)
+  }
 
   useEffect(() => {
     const lastMessage = messages.slice(-1)?.[0]
@@ -49,16 +64,22 @@ const useMessages = (): UseMessages => {
     : undefined
 
   const setAsRendered = () => {
-    console.log('calling next')
     setRenderedCount(lastCount => lastCount + 1)
     setRenderingIndex(undefined)
+    setVojtaState(VojtaState.Init)
   }
 
-  return { renderedMessages, renderingMessage, setAsRendered }
+  return {
+    renderedMessages,
+    renderingMessage,
+    setAsRendered,
+    setVojtaTalking,
+  }
 }
 
 export const Messages: FC = () => {
-  const { renderedMessages, renderingMessage, setAsRendered } = useMessages()
+  const { renderedMessages, renderingMessage, setAsRendered, setVojtaTalking } =
+    useMessages()
 
   return (
     <ul>
@@ -78,7 +99,8 @@ export const Messages: FC = () => {
         <li key={renderingMessage.timestamp}>
           <RenderingMessage
             {...renderingMessage}
-            setAsRendered={setAsRendered}
+            atStart={setVojtaTalking}
+            atEnd={setAsRendered}
           />
         </li>
       )}

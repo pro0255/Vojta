@@ -1,22 +1,16 @@
 'use client'
 
-import React, { FormEvent, useEffect, useState } from 'react'
+import React, { FormEvent, useState } from 'react'
 import { useChatStore } from '@/components/Chat/store/chat'
 import { Author } from '@/components/Chat/types'
 import { Messages } from '@/components/Chat/domain/chat'
 import Image from 'next/image'
 import { useModelManager } from '@/Three/store/useModelManager'
 import { GuessState } from '@/Three/store/types'
-import { scroll } from '@/helpers'
 
 const useInput = () => {
   const setGuessState = useModelManager(state => state.setGuessState)
-  const storedMessages = useChatStore(state => state.messages)
   const [value, setValue] = useState<string>('')
-
-  useEffect(() => {
-    scroll.scrollToBottom()
-  }, [storedMessages])
 
   const setValueMiddleware = (newValue: string | undefined) => {
     if (Messages.validate(newValue)) {
