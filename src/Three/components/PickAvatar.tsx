@@ -154,7 +154,7 @@ const ArrowLeft = () => {
     ></div>
   )
 }
-const ArrowRight = () => {
+export const ArrowRight = () => {
   return (
     <div
       style={{
