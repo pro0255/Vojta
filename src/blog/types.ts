@@ -8,5 +8,5 @@ export type PostType = {
   description: string
   linkToNotion: string
   tags: Array<PostTag>
-  date: Date
+  date: number
 }

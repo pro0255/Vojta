@@ -9,7 +9,7 @@ type CardFooterProps = {
 
 export const CardFooter: FC<CardFooterProps> = ({ timestamp, tags }) => {
   return (
-    <div className="flex flex-row">
+    <div className="flex flex-row justify-between">
       <ul className="flex flex-row">
         {tags.map(tag => {
           return (
