@@ -4,4 +4,8 @@ export class DateWrapper {
   now = () => {
     return new Date().getMilliseconds()
   }
+
+  format = (timestamp: number) => {
+    return `${timestamp}`
+  }
 }

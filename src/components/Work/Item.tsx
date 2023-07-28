@@ -1,4 +1,4 @@
-import { Card, GrayText, HeaderTwo, Tag } from '@/components/DesignSystem'
+import { Card, CardFooter, CardMain } from '@/components/DesignSystem'
 import { WorkType } from '@/work/types'
 import Image from 'next/image'
 import { FC } from 'react'
@@ -13,36 +13,20 @@ export const Item: FC<Props> = ({ item }) => {
     <a href={'https://www.seznam.cz/'} target={'_blank'}>
       <li className="w-full">
         <Card
-          footerSlot={
-            <ul className="flex flex-row">
-              {tags.map(tag => {
-                return (
-                  <li key={tag}>
-                    <Tag>{tag}</Tag>
-                  </li>
-                )
-              })}
-            </ul>
-          }
+          footerSlot={<CardFooter tags={tags} />}
           mainSlot={
-            <div className="flex flex-row">
-              <div className="mr-10">
+            <CardMain
+              title={title}
+              description={description}
+              image={
                 <Image
                   src={`/work/${thumbnail}`}
                   alt={thumbnail}
                   width={60}
                   height={60}
                 />
-              </div>
-              <div className="flex flex-col">
-                <div>
-                  <HeaderTwo>{title}</HeaderTwo>
-                </div>
-                <div>
-                  <GrayText>{description}</GrayText>
-                </div>
-              </div>
-            </div>
+              }
+            />
           }
         />
       </li>
