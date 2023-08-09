@@ -7,10 +7,19 @@ import { VojtaState } from '@/Three/store/types'
 export type ChatStore = {
   messages: Array<MessageType>
   add: (message: MessageType) => void
+  renderedMessagesCount: number
+  countAdd: () => void
 }
 
 export const useChatStore: UseBoundStore<StoreApi<ChatStore>> = create(set => {
   const value: ChatStore = {
+    renderedMessagesCount: 0,
+    countAdd: () => {
+      set(state => ({
+        ...state,
+        renderedMessagesCount: state.renderedMessagesCount + 1,
+      }))
+    },
     messages: [],
     add: async (message: MessageType) => {
       set((state: ChatStore) => ({

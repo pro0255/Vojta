@@ -18,15 +18,19 @@ const useMessages = (): UseMessages => {
   const setVojtaState = useModelManager(
     modelManager => modelManager.setVojtaState
   )
-  const messages = useChatStore(state => state.messages)
-  const [renderedCount, setRenderedCount] = useState(-1)
+  const { renderedMessagesCount, countAdd, messages } = useChatStore(state => ({
+    messages: state.messages,
+    renderedMessagesCount: state.renderedMessagesCount,
+    countAdd: state.countAdd,
+  }))
+
   const [renderingIndex, setRenderingIndex] = useState<number | undefined>(
     undefined
   )
 
   useEffect(() => {
     scroll.scrollToBottom()
-  }, [renderedCount])
+  }, [renderedMessagesCount])
 
   const setVojtaTalking = () => {
     setVojtaState(VojtaState.Talking)
@@ -43,7 +47,7 @@ const useMessages = (): UseMessages => {
       message => message === lastMessage
     )
 
-    const isRendered = renderedCount >= indexOfLastMessage
+    const isRendered = renderedMessagesCount >= indexOfLastMessage
     if (isRendered) {
       return
     }
@@ -51,20 +55,20 @@ const useMessages = (): UseMessages => {
     if (lastMessage.author === Author.Vojta) {
       setRenderingIndex(indexOfLastMessage)
     } else {
-      setRenderedCount(lastCount => lastCount + 1)
+      countAdd()
     }
   }, [messages])
 
   const renderedMessages: UseMessages['renderedMessages'] = messages.slice(
     0,
-    renderedCount + 1
+    renderedMessagesCount + 1
   )
   const renderingMessage: UseMessages['renderingMessage'] = renderingIndex
     ? messages[renderingIndex]
     : undefined
 
   const setAsRendered = () => {
-    setRenderedCount(lastCount => lastCount + 1)
+    countAdd()
     setRenderingIndex(undefined)
     setVojtaState(VojtaState.Init)
   }
