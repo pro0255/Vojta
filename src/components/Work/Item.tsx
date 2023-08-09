@@ -10,7 +10,7 @@ export const Item: FC<Props> = ({ item }) => {
   const { title, tags, description, thumbnail, link } = item
 
   return (
-    <a href={'https://www.seznam.cz/'} target={'_blank'}>
+    <a href={link} target={'_blank'}>
       <li className="w-full">
         <Card
           footerSlot={<CardFooter tags={tags} />}
