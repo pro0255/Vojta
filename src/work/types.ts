@@ -1,7 +1,7 @@
 export enum WorkName {
-  company = 'company',
-  school = 'school',
-  learn = 'learn',
+  Company = 'Company',
+  Education = 'Education',
+  Learn = 'Learn',
 }
 
 export enum WorkTag {
@@ -11,7 +11,6 @@ export enum WorkTag {
   Apollo = 'Apollo',
   Python = 'Python',
   DataScience = 'Data Science',
-  Education = 'Education',
   BE = 'Backend',
   ML = 'Machine learning',
   AI = 'Artificial intelligence',
@@ -38,15 +37,15 @@ type GeneralType = {
 }
 
 type CompanyType = {
-  name: WorkName.company
+  name: WorkName.Company
 } & GeneralType
 
 type SchoolType = {
-  name: WorkName.school
+  name: WorkName.Education
 } & GeneralType
 
 type LearnType = {
-  name: WorkName.learn
+  name: WorkName.Learn
 } & GeneralType
 
 export type WorkType = CompanyType | SchoolType | LearnType
