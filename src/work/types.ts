@@ -8,6 +8,13 @@ export enum WorkTag {
   FE = 'Frontend',
   React = 'React',
   MOBX = 'MobX',
+  Apollo = 'Apollo',
+  Python = 'Python',
+  DataScience = 'Data Science',
+  Education = 'Education',
+  BE = 'Backend',
+  ML = 'Machine learning',
+  AI = 'Artificial intelligence',
 }
 
 type Link = {
