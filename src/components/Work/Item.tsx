@@ -13,7 +13,7 @@ export const Item: FC<Props> = ({ item }) => {
     <a href={link} target={'_blank'}>
       <li className="w-full">
         <Card
-          footerSlot={<CardFooter tags={tags} />}
+          footerSlot={tags.length ? <CardFooter tags={tags} /> : null}
           mainSlot={
             <CardMain
               title={title}
