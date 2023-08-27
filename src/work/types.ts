@@ -15,6 +15,7 @@ export enum WorkTag {
   BE = 'Backend',
   ML = 'Machine learning',
   AI = 'Artificial intelligence',
+  Learning = 'Learning',
 }
 
 type Link = {

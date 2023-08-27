@@ -6,7 +6,7 @@ export const ataccama: WorkType = {
     'Development of a data management platform encompassing Data Quality, Data Governance, Data Integration, and Master Data Management. Addressing core frontend team challenges by providing an interface for other teams (verticals). System abstraction akin to a Content Management System (CMS), managing APIs for CRUD operations on general data-representing models, application translation, application modularization, documentation, and a decentralized system design',
   name: WorkName.company,
   work: [],
-  tags: [WorkTag.FE, WorkTag.MOBX, WorkTag.React],
+  tags: [WorkTag.FE, WorkTag.React],
   thumbnail: 'ataccama.jpeg',
   link: 'https://www.seznam.cz/',
 }
