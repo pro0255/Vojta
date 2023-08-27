@@ -1,17 +1,16 @@
 import { Header } from '@/components/DesignSystem'
 import { Paragraph } from '@/components/DesignSystem/Blocks/Paragraph'
-import { PickAvatar } from '@/Three/components/PickAvatar'
 import { EmojiList } from '@/components/DesignSystem/Blocks/EmojiList'
 import { summary } from '@/constants/summary'
 
 const About = () => {
   return (
     <main>
-      <Header.One>About</Header.One>
+      {/*<Header.One>About</Header.One>*/}
 
-      <PickAvatar />
+      {/*<PickAvatar />*/}
 
-      <hr />
+      {/*<hr />*/}
 
       <section>
         <Header.Two>What I offer</Header.Two>
