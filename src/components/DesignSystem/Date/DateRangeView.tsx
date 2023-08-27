@@ -1,4 +1,5 @@
 import { DateView } from '@/components/DesignSystem/Date/DateView'
+import { GrayText } from '@/components/DesignSystem'
 
 type Props = {
   start: Date | number
@@ -7,14 +8,16 @@ type Props = {
 
 export const DateRangeView = ({ end, start }: Props) => {
   return (
-    <span className="text-lg text-red-500">
-      <DateView date={start} />
-      {end ? (
-        <>
-          {' '}
-          - <DateView date={end} />{' '}
-        </>
-      ) : null}
-    </span>
+    <GrayText>
+      <>
+        <DateView date={start} />
+        {end ? (
+          <>
+            {' '}
+            - <DateView date={end} />{' '}
+          </>
+        ) : null}
+      </>
+    </GrayText>
   )
 }

@@ -1,9 +1,10 @@
 import { date } from '@/helpers'
+import { GrayText } from '@/components/DesignSystem'
 
 type Props = {
   date: Date | number
 }
 
 export const DateView = (props: Props) => {
-  return <span className="text-lg text-red-500">{date.format(props.date)}</span>
+  return <GrayText>{date.format(props.date)}</GrayText>
 }
