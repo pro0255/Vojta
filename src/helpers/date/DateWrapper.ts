@@ -5,7 +5,11 @@ export class DateWrapper {
     return new Date().getMilliseconds()
   }
 
-  format = (timestamp: number) => {
-    return `${timestamp}`
+  format = (dateValue: number | Date) => {
+    if (dateValue instanceof Date) {
+      return `${dateValue.toDateString()}`
+    }
+
+    return `${dateValue}`
   }
 }
