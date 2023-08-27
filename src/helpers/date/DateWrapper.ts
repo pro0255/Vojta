@@ -1,3 +1,6 @@
+import { format as dateFnsFormat } from 'date-fns'
+import { DateFormat } from '@/helpers'
+
 export class DateWrapper {
   constructor() {}
 
@@ -7,7 +10,7 @@ export class DateWrapper {
 
   format = (dateValue: number | Date) => {
     if (dateValue instanceof Date) {
-      return `${dateValue.toDateString()}`
+      return dateFnsFormat(dateValue, DateFormat.localized)
     }
 
     return `${dateValue}`

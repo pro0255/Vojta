@@ -1,3 +1,3 @@
 export enum DateFormat {
-  localized = 'pp',
+  localized = 'PP',
 }
