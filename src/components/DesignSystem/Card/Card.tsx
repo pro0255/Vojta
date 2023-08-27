@@ -4,10 +4,20 @@ type Props = {
   headerSlot?: ReactNode
   mainSlot: ReactNode
   footerSlot?: ReactNode
+  isDisabled?: boolean
 }
-export const Card: FC<Props> = ({ footerSlot, headerSlot, mainSlot }) => {
+export const Card: FC<Props> = ({
+  footerSlot,
+  headerSlot,
+  mainSlot,
+  isDisabled,
+}) => {
   return (
-    <div className="p-5 w-full hover:bg-slate-50">
+    <div
+      className={`p-5 w-full shadow-lg bg-gray-50 ${
+        isDisabled ? 'bg-gray-50 opacity-50' : 'hover:bg-gray-100'
+      }`}
+    >
       {headerSlot && (
         <>
           <header>{headerSlot}</header>

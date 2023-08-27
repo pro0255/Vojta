@@ -14,7 +14,7 @@ export const Item: FC<Props> = ({ item }) => {
 
   return (
     <a href={link} target={'_blank'}>
-      <li className="w-full">
+      <li className="w-full mt-2">
         <Card
           headerSlot={
             <CardHeader

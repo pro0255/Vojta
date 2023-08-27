@@ -1,10 +1,11 @@
-import { PostTag, PostType } from '@/blog/types'
+import { PostType } from '@/blog/types'
 import { date } from '@/helpers'
 
 export const prvni: PostType = {
   date: date.now(),
-  linkToNotion: 'asd',
-  name: 'This is prvni post',
-  tags: [PostTag.Prvni],
-  description: 'Lol',
+  name: 'Do you have portfolio? …why?',
+  tags: [],
+  description:
+    'Is creating a portfolio worthwhile? What motivated me to embark on this portfolio-building journey? Which technologies have I employed for this endeavor, and what valuable insights have I gained along the way?',
+  disabled: true,
 }

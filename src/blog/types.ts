@@ -6,7 +6,8 @@ export type PostType = {
   thumbnail?: string
   name: string
   description: string
-  linkToNotion: string
+  linkToNotion?: string
   tags: Array<PostTag>
   date: number
+  disabled: boolean
 }

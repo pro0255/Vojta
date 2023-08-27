@@ -1,13 +1,11 @@
 import { FC } from 'react'
 import { Tag } from '@/components/DesignSystem'
-import { date } from '@/helpers'
 
 type CardFooterProps = {
   tags: Array<string>
-  timestamp?: number
 }
 
-export const CardFooter: FC<CardFooterProps> = ({ timestamp, tags }) => {
+export const CardFooter: FC<CardFooterProps> = ({ tags }) => {
   return (
     <div className="flex flex-row justify-between">
       <ul className="flex flex-row">
@@ -19,7 +17,6 @@ export const CardFooter: FC<CardFooterProps> = ({ timestamp, tags }) => {
           )
         })}
       </ul>
-      {timestamp && <div>{date.format(timestamp)}</div>}
     </div>
   )
 }

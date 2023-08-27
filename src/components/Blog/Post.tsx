@@ -6,15 +6,29 @@ type Props = {
   post: PostType
 }
 export const Post: FC<Props> = ({ post }) => {
-  const { tags, linkToNotion, description, name, date } = post
+  const { linkToNotion, disabled } = post
+
+  if (disabled) {
+    return <PostContent post={post} />
+  }
+
   return (
     <a href={linkToNotion} target={'_blank'}>
-      <li className="w-full">
-        <Card
-          footerSlot={<CardFooter tags={tags} timestamp={date} />}
-          mainSlot={<CardMain title={name} description={description} />}
-        />
-      </li>
+      <PostContent post={post} />
     </a>
+  )
+}
+
+const PostContent = ({ post }: Props) => {
+  const { tags, description, name, disabled } = post
+
+  return (
+    <li className="w-full mt-2">
+      <Card
+        isDisabled={disabled}
+        footerSlot={tags.length ? <CardFooter tags={tags} /> : null}
+        mainSlot={<CardMain title={name} description={description} />}
+      />
+    </li>
   )
 }
