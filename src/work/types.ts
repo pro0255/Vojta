@@ -32,7 +32,7 @@ type GeneralType = {
   description: string
   tags: Array<WorkTag>
   work: Array<Link>
-  start?: Date
+  start: Date
   end?: Date
 }
 
