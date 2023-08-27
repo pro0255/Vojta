@@ -3,7 +3,7 @@ import { WorkName, WorkTag, WorkType } from '@/work/types'
 export const bachelorDegree: WorkType = {
   title: 'Bachelor degree',
   description:
-    'Having completed high school with a focus on medical knowledge, I made the decision to venture into the realm of information technology. While I harbored concerns about my ability to grasp the intricacies of this field and feared that mathematics might prove to be my downfall, my strong desire to command computers to carry out my intentions outweighed these reservations. Just a week prior to the deadline for the initial batch of applications, I resolved to submit an application to VSB - Technical University of Ostrava - VSB-TUO.',
+    'University education in the Czech Republic, where upon completion, an individual is rewarded with a certificate of expertise in a specific field. In my case, after high school with a focus on general (medically oriented) knowledge, I decided to change my field and learn the basics of IT',
   name: WorkName.school,
   work: [],
   tags: [WorkTag.FE, WorkTag.MOBX, WorkTag.React],
