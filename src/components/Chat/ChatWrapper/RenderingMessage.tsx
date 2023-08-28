@@ -39,7 +39,7 @@ export const RenderingMessage: FC<Props> = ({
     const renderRest = async () => {
       const generator = createGenerator(text, setRenderedText)
       for (const renderChar of generator) {
-        await new Promise(resolve => setTimeout(resolve, 10))
+        await new Promise(resolve => setTimeout(resolve, 50))
         renderChar()
       }
       atEnd()

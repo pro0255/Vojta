@@ -5,25 +5,40 @@ import { VojtaState } from '@/Three/store/types'
 import { useModelManager } from '@/Three/store/useModelManager'
 
 export const useVojtaAnimations = (ref: any) => {
-  const vojtaState = useModelManager(manager => manager.vojtaState)
+  const { setState, state } = useModelManager(manager => ({
+    state: manager.vojtaState,
+    setState: manager.setVojtaState,
+  }))
 
   const talkingAnimation = useVojtaAnimation({ animation: VojtaState.Talking })
   const initAnimation = useVojtaAnimation({ animation: VojtaState.Init })
   const thinkingAnimation = useVojtaAnimation({
     animation: VojtaState.Thinking,
   })
+  const wavingAnimation = useVojtaAnimation({
+    animation: VojtaState.Waving,
+  })
 
   const { actions } = useAnimations(
-    [talkingAnimation, initAnimation, thinkingAnimation],
+    [talkingAnimation, initAnimation, thinkingAnimation, wavingAnimation],
     ref
   )
 
   useEffect(() => {
+    setState(VojtaState.Waving)
+
+    setTimeout(() => {
+      console.log('now')
+      setState(VojtaState.Init)
+    }, 5000)
+  }, [])
+
+  useEffect(() => {
     if (actions !== null) {
-      actions[vojtaState]?.reset().play()
+      actions[state]?.reset().fadeIn(0.5).play()
     }
     return () => {
-      actions[vojtaState]?.fadeOut(2).stop()
+      actions[state]?.reset().fadeOut(1)
     }
-  }, [vojtaState])
+  }, [state])
 }
