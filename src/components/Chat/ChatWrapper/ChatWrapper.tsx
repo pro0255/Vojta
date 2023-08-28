@@ -2,8 +2,7 @@ import { Canvas } from '@react-three/fiber'
 import React from 'react'
 import { MessagesContainer } from '@/components/Chat/ChatWrapper/MessagesContainer'
 import { Messages } from '@/components/Chat/ChatWrapper/Messages'
-import { Model } from '@/Three/models'
-import { Guess } from '@/Three/Guess'
+import { GuessMan, VojtaYoungAdult } from '@/Three/models'
 
 export const ChatWrapper = () => {
   return (
@@ -23,10 +22,10 @@ export const ChatWrapper = () => {
           left: '0',
         }}
       >
-        <Guess.models.man scale={[0.5, 0.5, 0.5]} position={[-1.5, -0.5, 0]} />
+        <GuessMan scale={[0.5, 0.5, 0.5]} position={[-1.5, -0.5, 0]} />
         <ambientLight intensity={1} />
         <group position-y={-1}>
-          <Model scale={[0.5, 0.5, 0.5]} position={[1.5, 0.5, 0]} />
+          <VojtaYoungAdult scale={[0.5, 0.5, 0.5]} position={[1.5, 0.5, 0]} />
         </group>
       </Canvas>
     </div>

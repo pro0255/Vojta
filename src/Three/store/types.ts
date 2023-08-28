@@ -1,5 +1,5 @@
 export enum GuessState {
-  Writing = 'Writing',
+  Talking = 'Talking',
   Init = 'Init',
 }
 

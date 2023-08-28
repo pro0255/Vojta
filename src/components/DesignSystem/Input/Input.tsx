@@ -17,7 +17,7 @@ const useInput = () => {
       if (Messages.isEmpty(newValue)) {
         setGuessState(GuessState.Init)
       } else {
-        setGuessState(GuessState.Writing)
+        setGuessState(GuessState.Talking)
       }
 
       setValue(newValue!)

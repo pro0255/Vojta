@@ -1,11 +1,10 @@
 'use client'
 
 import { Canvas } from '@react-three/fiber'
-import { Guess } from '@/Three/Guess'
 import React, { CSSProperties, FC, ReactNode, useState } from 'react'
 import { HeaderThree, NormalText } from '@/components/DesignSystem'
-import { Model } from '@/Three/models'
 import { Paragraph } from '@/components/DesignSystem/Blocks/Paragraph'
+import { GuessMan, VojtaYoungAdult } from '@/Three/models'
 
 type Slide = {
   avatar: ReactNode
@@ -28,25 +27,25 @@ enum Persona {
 
 const carousel: CarouselContent = [
   {
-    avatar: <Guess.models.man position={[0, -0.8, 0]} />,
+    avatar: <GuessMan position={[0, -0.8, 0]} />,
     personaName: Persona.FeDeveloper,
     personaDescription:
       "My goal is to create impactful projects that positively impact people's lives. I specialize in implementing the frontend side of projects using technologies such as React, Next.js, Apollo, and MobX.",
   },
   {
-    avatar: <Model position={[0, -0.8, 0]} />,
+    avatar: <VojtaYoungAdult position={[0, -0.8, 0]} />,
     personaName: Persona.FPVDronLerner,
     personaDescription:
       "I am currently learning to fly FPV drones in a simulator, but I must admit that I'm not very skilled at it yet. However, my future goal is to improve my flying abilities and ultimately be able to produce videos that capture special moments and create lasting memories for myself.",
   },
   {
-    avatar: <Guess.models.man position={[0, -0.8, 0]} />,
+    avatar: <GuessMan position={[0, -0.8, 0]} />,
     personaName: Persona.GuitarLerner,
     personaDescription:
       "I've been playing the guitar since 2022, and at this point, I can play a few songs. I have a particular dislike for bar chords, but I absolutely love playing chords like C, G, Am, and D. Slow songs are the ones that truly resonate with me and capture my interest. If you have any recommendation for good acoustic playlist, please share it with me!",
   },
   {
-    avatar: <Model position={[0, -0.8, 0]} />,
+    avatar: <VojtaYoungAdult position={[0, -0.8, 0]} />,
     personaName: Persona.MLAIEnthusiast,
     personaDescription:
       "I'm passionate about ML and AI projects, especially their implementation in hospitals to improve outcomes and save lives. One intriguing project I'd love to try is using ML to assist psychiatrists in quickly delivering accurate medication to patients in need. It has the potential to significantly enhance mental healthcare.",

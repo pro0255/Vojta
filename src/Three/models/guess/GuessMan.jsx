@@ -6,7 +6,7 @@ Command: npx gltfjsx@6.2.7 public/models/guess/man/64af05a6091def2e57436cc6.glb
 import React from 'react'
 import { useGLTF } from '@react-three/drei'
 
-export function Model(props) {
+export function GuessMan(props) {
   const { nodes, materials } = useGLTF(
     'models/guess/man/64af05a6091def2e57436cc6.glb'
   )
