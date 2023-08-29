@@ -1,26 +1,19 @@
 import { useRef } from 'react'
-import { useVojtaAnimations } from '@/Three/hooks/useVojtaAnimations'
 import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
+import { useGuessAnimations } from '@/Three/hooks/useGuessAnimations'
 import { useModelManager } from '@/Three/store/useModelManager'
-import { VojtaState } from '@/Three/store/types'
+import { GuessState } from '@/Three/store/types'
 
-export const useVojta = () => {
+export const useGuess = () => {
   const groupRef = useRef(null)
-  const vojtaState = useModelManager(manager => manager.vojtaState)
+  const guessState = useModelManager(model => model.guessState)
 
-  useVojtaAnimations(groupRef)
+  useGuessAnimations(groupRef)
 
+  //https://github.com/pmndrs/react-three-fiber/discussions/807
   useFrame(state => {
-    if (
-      groupRef.current !== null &&
-      ![
-        VojtaState.Thinking,
-        VojtaState.Talking,
-        VojtaState.Waving,
-        VojtaState.Listening,
-      ].includes(vojtaState)
-    ) {
+    if (groupRef.current !== null && guessState !== GuessState.Talking) {
       const target = new THREE.Vector3(state.mouse.x, state.mouse.y, 1)
       ;(groupRef.current as any).getObjectByName('Head')?.lookAt(target)
       ;(groupRef.current as any).getObjectByName('Spine')?.lookAt(target)

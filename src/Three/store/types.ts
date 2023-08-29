@@ -8,4 +8,5 @@ export enum VojtaState {
   Thinking = 'Thinking',
   Talking = 'Talking',
   Waving = 'Waving',
+  Listening = 'Listening',
 }

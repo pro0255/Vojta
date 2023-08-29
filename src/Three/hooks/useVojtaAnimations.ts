@@ -18,9 +18,18 @@ export const useVojtaAnimations = (ref: any) => {
   const wavingAnimation = useVojtaAnimation({
     animation: VojtaState.Waving,
   })
+  const listeningAnimation = useVojtaAnimation({
+    animation: VojtaState.Listening,
+  })
 
   const { actions } = useAnimations(
-    [talkingAnimation, initAnimation, thinkingAnimation, wavingAnimation],
+    [
+      talkingAnimation,
+      initAnimation,
+      thinkingAnimation,
+      wavingAnimation,
+      listeningAnimation,
+    ],
     ref
   )
 
@@ -35,10 +44,10 @@ export const useVojtaAnimations = (ref: any) => {
 
   useEffect(() => {
     if (actions !== null) {
-      actions[state]?.reset().fadeIn(0.5).play()
+      actions[state]?.reset().fadeIn(2).play()
     }
     return () => {
-      actions[state]?.reset().fadeOut(1)
+      actions[state]?.reset().fadeOut(3)
     }
   }, [state])
 }

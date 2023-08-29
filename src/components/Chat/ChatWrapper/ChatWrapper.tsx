@@ -22,10 +22,10 @@ export const ChatWrapper = () => {
           left: '0',
         }}
       >
-        <GuessMan scale={[0.5, 0.5, 0.5]} position={[-1.5, -0.5, 0]} />
+        <GuessMan scale={[0.7, 0.7, 0.7]} position={[-1.5, -0.5, 0]} />
         <ambientLight intensity={1} />
         <group position-y={-1}>
-          <VojtaYoungAdult scale={[0.5, 0.5, 0.5]} position={[1.5, 0.5, 0]} />
+          <VojtaYoungAdult scale={[0.7, 0.7, 0.7]} position={[1.5, 0.5, 0]} />
         </group>
       </Canvas>
     </div>

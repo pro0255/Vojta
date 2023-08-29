@@ -6,10 +6,13 @@ import { Author } from '@/components/Chat/types'
 import { Messages } from '@/components/Chat/domain/chat'
 import Image from 'next/image'
 import { useModelManager } from '@/Three/store/useModelManager'
-import { GuessState } from '@/Three/store/types'
+import { GuessState, VojtaState } from '@/Three/store/types'
 
 const useInput = () => {
-  const setGuessState = useModelManager(state => state.setGuessState)
+  const { setGuessState, setVojtaState } = useModelManager(state => ({
+    setGuessState: state.setGuessState,
+    setVojtaState: state.setVojtaState,
+  }))
   const [value, setValue] = useState<string>('')
 
   const setValueMiddleware = (newValue: string | undefined) => {
@@ -18,6 +21,7 @@ const useInput = () => {
         setGuessState(GuessState.Init)
       } else {
         setGuessState(GuessState.Talking)
+        setVojtaState(VojtaState.Listening)
       }
 
       setValue(newValue!)
