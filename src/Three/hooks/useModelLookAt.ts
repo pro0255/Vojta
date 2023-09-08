@@ -37,7 +37,7 @@ export const useModelLookAt = ({
       setTargetVector(mouseVector)
     }
 
-    lookingAtVector?.lerp(targetVector, 0.005)
+    lookingAtVector?.lerp(targetVector, 0.025)
 
     head?.lookAt(lookingAtVector)
     spine?.lookAt(lookingAtVector)

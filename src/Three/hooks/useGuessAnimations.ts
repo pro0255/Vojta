@@ -16,7 +16,7 @@ export const useGuessAnimations = (ref: any) => {
 
   useEffect(() => {
     if (actions !== null) {
-      actions[state]?.reset().fadeIn(2).play()
+      actions[state]?.reset().fadeIn(5).play()
     }
     return () => {
       actions[state]?.reset().fadeOut(3)
