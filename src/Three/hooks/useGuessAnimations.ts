@@ -1,13 +1,15 @@
 import { useAnimations } from '@react-three/drei'
-import { VojtaState } from '@/Three/store/types'
+import { GuessState, VojtaState } from '@/Three/store/types'
 import { useModelManager } from '@/Three/store/useModelManager'
 import { useGuessAnimation } from '@/Three/hooks/useGuessAnimation'
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 
 export const useGuessAnimations = (ref: any) => {
   const { state } = useModelManager(manager => ({
     state: manager.guessState,
   }))
+
+  const previousState = useRef<GuessState | null>(null)
 
   const talkingAnimation = useGuessAnimation({ animation: VojtaState.Talking })
   const initAnimation = useGuessAnimation({ animation: VojtaState.Init })
@@ -15,11 +17,13 @@ export const useGuessAnimations = (ref: any) => {
   const { actions } = useAnimations([talkingAnimation, initAnimation], ref)
 
   useEffect(() => {
-    if (actions !== null) {
-      actions[state]?.reset().fadeIn(5).play()
+    if (previousState.current !== state && actions) {
+      if (previousState.current !== null) {
+        actions[previousState.current]?.fadeOut(3)
+      }
+
+      actions[state]?.reset().play()
+      previousState.current = state
     }
-    return () => {
-      actions[state]?.reset().fadeOut(3)
-    }
-  }, [state])
+  }, [actions, state])
 }

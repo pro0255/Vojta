@@ -1,6 +1,6 @@
 import { useVojtaAnimation } from '@/Three/hooks/useVojtaAnimation'
 import { useAnimations } from '@react-three/drei'
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { VojtaState } from '@/Three/store/types'
 import { useModelManager } from '@/Three/store/useModelManager'
 
@@ -9,6 +9,7 @@ export const useVojtaAnimations = (ref: any) => {
     state: manager.vojtaState,
     setState: manager.setVojtaState,
   }))
+  const previousState = useRef<VojtaState | null>(null)
 
   const talkingAnimation = useVojtaAnimation({ animation: VojtaState.Talking })
   const initAnimation = useVojtaAnimation({ animation: VojtaState.Init })
@@ -43,11 +44,22 @@ export const useVojtaAnimations = (ref: any) => {
   }, [])
 
   useEffect(() => {
-    if (actions !== null) {
+    if (previousState.current !== state && actions) {
+      if (previousState.current !== null) {
+        actions[previousState.current]?.fadeOut(3)
+      }
+
       actions[state]?.reset().fadeIn(2).play()
+      previousState.current = state
     }
-    return () => {
-      actions[state]?.reset().fadeOut(3)
-    }
-  }, [state])
+  }, [actions, state])
+
+  // useEffect(() => {
+  //   if (actions !== null) {
+  //     actions[state]?.reset().fadeIn(2).play()
+  //   }
+  //   return () => {
+  //     actions[state]?.reset().fadeOut(3)
+  //   }
+  // }, [state])
 }
