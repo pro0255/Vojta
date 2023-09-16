@@ -14,8 +14,10 @@ export const useModelLookAt = ({
   isMouseVector,
 }: Props) => {
   // TODO: fix a set looking at Vector ... should be probably as reference instead of state?
-  const [lookingAtVector] = useState<Vector3>(new Vector3())
-  const [targetVector, setTargetVector] = useState<Vector3>(new Vector3())
+  const [lookingAtVector] = useState<Vector3>(new Vector3(0, 0, 10))
+  const [targetVector, setTargetVector] = useState<Vector3>(
+    new Vector3(0, 0, 10)
+  )
 
   useFrame(state => {
     const model = modelRef.current as any
