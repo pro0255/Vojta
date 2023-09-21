@@ -7,12 +7,28 @@ import { Messages } from '@/components/Chat/domain/chat'
 import Image from 'next/image'
 import { useModelManager } from '@/Three/store/useModelManager'
 import { GuessState, VojtaState } from '@/Three/store/types'
+import { useMutation } from 'react-query'
+import { Endpoints, endpoints } from '@/fetcher/endpoints'
+
+const ask = async (message: string) => {
+  const endpoint = endpoints[Endpoints.Ask]
+  const response = await endpoint?.(message)
+  const aiMessage = await response?.json()
+
+  console.log(aiMessage)
+
+  return aiMessage
+}
 
 const useInput = () => {
   const { setGuessState, setVojtaState } = useModelManager(state => ({
     setGuessState: state.setGuessState,
     setVojtaState: state.setVojtaState,
   }))
+
+  const { isLoading, mutate } = useMutation('ask', ask)
+  console.log(isLoading)
+
   const [value, setValue] = useState<string>('')
 
   const setValueMiddleware = (newValue: string | undefined) => {
@@ -34,12 +50,13 @@ const useInput = () => {
     setValueMiddleware(newValue)
   }
 
-  const submit = (_: FormEvent<HTMLButtonElement>) => {
+  const submit = async (_: FormEvent<HTMLButtonElement>) => {
     addMessage({
       timestamp: new Date().getMilliseconds(),
       text: value,
       author: Author.Guess,
     })
+    mutate('Hello')
     setValueMiddleware('')
   }
 
