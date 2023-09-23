@@ -15,6 +15,10 @@ import { createHistory } from '@/components/Chat/utils/createHistory'
 import { MessagesContainer } from '@/components/Chat/ChatWrapper/MessagesContainer'
 import { motion } from 'framer-motion'
 import { VojtaThinking } from '@/components/Chat/components/Vojta/VojtaThinking'
+import {
+  ActionsBottom,
+  ActionsTop,
+} from '@/components/Chat/components/Actions/Actions'
 
 type UseMessages = {
   renderedMessages: ChatStore['messages']
@@ -111,6 +115,7 @@ export const Messages: FC = () => {
 
   return (
     <MessagesContainer>
+      <ActionsBottom />
       <motion.ul>
         {renderedMessages.map(message => {
           return (
@@ -143,6 +148,7 @@ export const Messages: FC = () => {
         )}
       </motion.ul>
       <VojtaThinking />
+      <ActionsTop />
     </MessagesContainer>
   )
 }
