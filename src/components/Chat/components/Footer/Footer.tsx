@@ -4,13 +4,30 @@ import React, { useCallback, useState } from 'react'
 import { motion } from 'framer-motion'
 import { CircleContainer } from '@/components/DesignSystem/Containers/CircleContainer'
 import { AiOutlineArrowDown, AiOutlineArrowUp } from 'react-icons/ai'
+import { useModelManager } from '@/Three/store/useModelManager'
+import { VojtaState } from '@/Three/store/types'
 
-export const Footer = () => {
+const useFooter = () => {
+  const { vojtaState } = useModelManager(state => ({
+    vojtaState: state.vojtaState,
+  }))
+
+  console.log(vojtaState)
+
   const [isVisible, setIsVisible] = useState(true)
 
   const toggle = useCallback(() => {
     setIsVisible(visible => !visible)
   }, [])
+
+  return {
+    isVisible: isVisible && vojtaState !== VojtaState.Talking,
+    toggle,
+  }
+}
+
+export const Footer = () => {
+  const { toggle, isVisible } = useFooter()
 
   return (
     <motion.footer
