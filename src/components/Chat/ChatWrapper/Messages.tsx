@@ -12,6 +12,7 @@ import { Endpoints, endpoints } from '@/fetcher/endpoints'
 import { HistoryMessage } from '@/fetcher/types'
 import { useMutation } from 'react-query'
 import { createHistory } from '@/components/Chat/utils/createHistory'
+import { MessagesContainer } from '@/components/Chat/ChatWrapper/MessagesContainer'
 
 type UseMessages = {
   renderedMessages: ChatStore['messages']
@@ -107,28 +108,30 @@ export const Messages: FC = () => {
     useMessages()
 
   return (
-    <ul>
-      {renderedMessages.map(message => {
-        return (
-          <li key={message.timestamp}>
-            <MessageView
-              author={message.author}
-              text={message.text}
-              timestamp={message.timestamp}
+    <MessagesContainer>
+      <ul>
+        {renderedMessages.map(message => {
+          return (
+            <li key={message.timestamp}>
+              <MessageView
+                author={message.author}
+                text={message.text}
+                timestamp={message.timestamp}
+              />
+            </li>
+          )
+        })}
+
+        {renderingMessage && (
+          <li key={renderingMessage.timestamp}>
+            <RenderingMessage
+              {...renderingMessage}
+              atStart={setVojtaTalking}
+              atEnd={setAsRendered}
             />
           </li>
-        )
-      })}
-
-      {renderingMessage && (
-        <li key={renderingMessage.timestamp}>
-          <RenderingMessage
-            {...renderingMessage}
-            atStart={setVojtaTalking}
-            atEnd={setAsRendered}
-          />
-        </li>
-      )}
-    </ul>
+        )}
+      </ul>
+    </MessagesContainer>
   )
 }

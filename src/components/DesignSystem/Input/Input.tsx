@@ -61,6 +61,7 @@ export const Input = () => {
     <div
       className="p-4 rounded-lg flex flex-row border-2 border-b-slate-100 bg-white"
       style={{
+        maxWidth: '65%',
         minWidth: '65%',
       }}
     >
