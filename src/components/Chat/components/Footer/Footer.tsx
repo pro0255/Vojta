@@ -1,5 +1,4 @@
 import { Input } from '@/components/DesignSystem'
-import { NavigateToHome } from '@/components/Chat/ChatWrapper/NavigateToHome'
 import React, { useCallback, useState } from 'react'
 import { motion } from 'framer-motion'
 import { CircleContainer } from '@/components/DesignSystem/Containers/CircleContainer'
@@ -63,7 +62,6 @@ export const Footer = () => {
           }}
         >
           <Input />
-          <NavigateToHome />
         </motion.div>
       ) : null}
     </motion.footer>
