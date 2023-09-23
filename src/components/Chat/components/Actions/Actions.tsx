@@ -1,5 +1,5 @@
 import { ScrollTo } from '@/components/Chat/components/Actions/ScrollTo'
-import { ResetConversation } from '@/components/Chat/components/Actions/ResetConversation'
+import { ResetConversation } from '@/components/Chat/components/Actions/ResetConversation/ResetConversation'
 import { ReactNode } from 'react'
 
 type Props = {

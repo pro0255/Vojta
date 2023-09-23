@@ -1,9 +1,16 @@
-import { NormalText } from '@/components/DesignSystem'
+import { BlueTextButton } from '@/components/DesignSystem/Actions/BlueTextButton'
+import { scroll } from '@/helpers'
 
 type Props = {
   target: 'top' | 'bottom'
 }
 
 export const ScrollTo = ({ target }: Props) => {
-  return <NormalText>Scroll {target}</NormalText>
+  return (
+    <BlueTextButton
+      onClick={target === 'bottom' ? scroll.scrollToBottom : scroll.scrollToTop}
+    >
+      Scroll {target}
+    </BlueTextButton>
+  )
 }

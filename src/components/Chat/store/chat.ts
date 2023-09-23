@@ -9,6 +9,7 @@ import { useModelManager } from '@/Three/store/useModelManager'
 export type ChatStore = {
   messages: Array<MessageType>
   add: (message: MessageType) => void
+  reset: () => void
   renderedMessagesCount: number
   countAdd: () => void
 }
@@ -25,6 +26,17 @@ export const useChatStore: UseBoundStore<StoreApi<ChatStore>> = create(
           }))
         },
         messages: [],
+        reset: async () => {
+          set(state => {
+            return {
+              ...state,
+              messages: [],
+            }
+          })
+
+          const endpoint = endpoints[Endpoints.ResetConversation]
+          await endpoint()
+        },
         add: async (message: MessageType) => {
           set((state: ChatStore) => ({
             ...state,
