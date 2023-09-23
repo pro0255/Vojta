@@ -1,6 +1,7 @@
 import { ScrollTo } from '@/components/Chat/components/Actions/ScrollTo'
 import { ResetConversation } from '@/components/Chat/components/Actions/ResetConversation/ResetConversation'
 import { ReactNode } from 'react'
+import { useIsScrollbar } from '@/hooks/useIsScrollbar'
 
 type Props = {
   children: ReactNode
@@ -15,6 +16,12 @@ const ActionsContainer = ({ children }: Props) => {
 }
 
 export const ActionsTop = () => {
+  const isScrollBar = useIsScrollbar()
+
+  if (!isScrollBar) {
+    return null
+  }
+
   return (
     <ActionsContainer>
       <ScrollTo target={'top'} />
@@ -24,6 +31,12 @@ export const ActionsTop = () => {
 }
 
 export const ActionsBottom = () => {
+  const isScrollBar = useIsScrollbar()
+
+  if (!isScrollBar) {
+    return null
+  }
+
   return (
     <ActionsContainer>
       <ScrollTo target={'bottom'} />
