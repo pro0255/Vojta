@@ -2,8 +2,8 @@ import { ReactNode } from 'react'
 import { AiOutlineArrowDown } from 'react-icons/ai'
 
 type Props = {
-  children?: ReactNode
-  onClick: () => void
+  children: ReactNode
+  onClick?: () => void
 }
 
 export const CircleContainer = ({
