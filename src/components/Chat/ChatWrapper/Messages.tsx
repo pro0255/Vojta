@@ -19,6 +19,7 @@ import {
   ActionsBottom,
   ActionsTop,
 } from '@/components/Chat/components/Actions/Actions'
+import { VojtaGPTText } from '@/components/Chat/components/VojtaGPTText'
 
 type UseMessages = {
   renderedMessages: ChatStore['messages']
@@ -116,6 +117,8 @@ export const Messages: FC = () => {
   return (
     <MessagesContainer>
       <ActionsBottom />
+      <VojtaGPTText />
+
       <motion.ul>
         {renderedMessages.map(message => {
           return (

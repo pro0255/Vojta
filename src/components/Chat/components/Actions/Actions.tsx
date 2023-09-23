@@ -31,12 +31,6 @@ export const ActionsTop = () => {
 }
 
 export const ActionsBottom = () => {
-  const isScrollBar = useIsScrollbar()
-
-  if (!isScrollBar) {
-    return null
-  }
-
   return (
     <ActionsContainer>
       <ScrollTo target={'bottom'} />
