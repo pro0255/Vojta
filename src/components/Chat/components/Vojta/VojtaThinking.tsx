@@ -1,7 +1,17 @@
 import { MessageView } from '@/components/Chat/ChatWrapper/MessageView'
 import { AiOutlineLoading3Quarters } from 'react-icons/ai'
+import { useModelManager } from '@/Three/store/useModelManager'
+import { VojtaState } from '@/Three/store/types'
 
 export const VojtaThinking = () => {
+  const { vojtaState } = useModelManager(modelManager => ({
+    vojtaState: modelManager.vojtaState,
+  }))
+
+  if (vojtaState !== VojtaState.Thinking) {
+    return null
+  }
+
   return (
     <MessageView
       content={
