@@ -1,8 +1,10 @@
 import { create, StoreApi, UseBoundStore } from 'zustand'
 import { MessageType } from '@/components/Chat/types'
-import { agent } from '@/components/Chat/domain/agent'
-import { useModelManager } from '@/Three/store/useModelManager'
+import { persist } from 'zustand/middleware'
+import { endpoints, Endpoints } from '@/fetcher/endpoints'
+import { createVojtaMessage } from '@/components/Chat/utils/createMessage'
 import { VojtaState } from '@/Three/store/types'
+import { useModelManager } from '@/Three/store/useModelManager'
 
 export type ChatStore = {
   messages: Array<MessageType>
@@ -11,41 +13,51 @@ export type ChatStore = {
   countAdd: () => void
 }
 
-export const useChatStore: UseBoundStore<StoreApi<ChatStore>> = create(set => {
-  const value: ChatStore = {
-    renderedMessagesCount: 0,
-    countAdd: () => {
-      set(state => ({
-        ...state,
-        renderedMessagesCount: state.renderedMessagesCount + 1,
-      }))
+export const useChatStore: UseBoundStore<StoreApi<ChatStore>> = create(
+  persist(
+    set => {
+      const value: ChatStore = {
+        renderedMessagesCount: 0,
+        countAdd: () => {
+          set(state => ({
+            ...state,
+            renderedMessagesCount: state.renderedMessagesCount + 1,
+          }))
+        },
+        messages: [],
+        add: async (message: MessageType) => {
+          set((state: ChatStore) => ({
+            ...state,
+            messages: [...state.messages, message],
+          }))
+          useModelManager.setState(state => ({
+            ...state,
+            vojtaState: VojtaState.Thinking,
+          }))
+
+          const endpoint = endpoints[Endpoints.Ask]
+          const response = await endpoint(message.text)
+          const aiMessage = await response.json()
+
+          useModelManager.setState(state => ({
+            ...state,
+            vojtaState: VojtaState.Init,
+          }))
+
+          set((state: ChatStore) => ({
+            ...state,
+            messages: [
+              ...state.messages,
+              createVojtaMessage(aiMessage.content),
+            ],
+          }))
+        },
+      }
+
+      return value
     },
-    messages: [],
-    add: async (message: MessageType) => {
-      set((state: ChatStore) => ({
-        ...state,
-        messages: [...state.messages, message],
-      }))
-
-      useModelManager.setState(state => ({
-        ...state,
-        vojtaState: VojtaState.Thinking,
-      }))
-      const responseFromAgent = await agent.ask(message.text)
-      useModelManager.setState(state => ({
-        ...state,
-        vojtaState: VojtaState.Init,
-      }))
-
-      set((state: ChatStore) => ({
-        ...state,
-        messages: [
-          ...state.messages,
-          agent.createMessage(responseFromAgent as string),
-        ],
-      }))
-    },
-  }
-
-  return value
-})
+    {
+      name: 'Chat',
+    }
+  )
+)

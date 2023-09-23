@@ -38,7 +38,6 @@ export const useVojtaAnimations = (ref: any) => {
     setState(VojtaState.Waving)
 
     setTimeout(() => {
-      console.log('now')
       setState(VojtaState.Init)
     }, 5000)
   }, [])
