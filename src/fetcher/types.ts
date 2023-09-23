@@ -1,6 +1,6 @@
 export enum MessageType {
-  ai = 'AI',
-  client = 'CLIENT',
+  ai = 'ai',
+  client = 'client',
 }
 
 export type HistoryMessage = {

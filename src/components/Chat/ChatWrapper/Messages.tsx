@@ -1,3 +1,5 @@
+'use client'
+
 import React, { FC, useEffect, useState } from 'react'
 import { MessageView } from '@/components/Chat/ChatWrapper/MessageView'
 import { ChatStore, useChatStore } from '@/components/Chat/store/chat'
@@ -6,6 +8,10 @@ import { Author } from '@/components/Chat/types'
 import { useModelManager } from '@/Three/store/useModelManager'
 import { VojtaState } from '@/Three/store/types'
 import { scroll } from '@/helpers'
+import { Endpoints, endpoints } from '@/fetcher/endpoints'
+import { HistoryMessage } from '@/fetcher/types'
+import { useMutation } from 'react-query'
+import { createHistory } from '@/components/Chat/utils/createHistory'
 
 type UseMessages = {
   renderedMessages: ChatStore['messages']
@@ -14,15 +20,30 @@ type UseMessages = {
   setVojtaTalking: () => void
 }
 
+const setConversation = async (history: Array<HistoryMessage>) => {
+  console.log(history)
+  const endpoint = endpoints[Endpoints.SetConversation]
+  return await endpoint(history)
+}
+
 const useMessages = (): UseMessages => {
   const setVojtaState = useModelManager(
     modelManager => modelManager.setVojtaState
   )
+
   const { renderedMessagesCount, countAdd, messages } = useChatStore(state => ({
     messages: state.messages,
     renderedMessagesCount: state.renderedMessagesCount,
     countAdd: state.countAdd,
   }))
+
+  const { mutate } = useMutation(Endpoints.SetConversation, () =>
+    setConversation(createHistory(messages))
+  )
+
+  useEffect(() => {
+    mutate()
+  }, [])
 
   const [renderingIndex, setRenderingIndex] = useState<number | undefined>(
     undefined
