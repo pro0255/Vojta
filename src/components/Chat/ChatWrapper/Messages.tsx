@@ -13,6 +13,7 @@ import { HistoryMessage } from '@/fetcher/types'
 import { useMutation } from 'react-query'
 import { createHistory } from '@/components/Chat/utils/createHistory'
 import { MessagesContainer } from '@/components/Chat/ChatWrapper/MessagesContainer'
+import { motion } from 'framer-motion'
 
 type UseMessages = {
   renderedMessages: ChatStore['messages']
@@ -109,29 +110,37 @@ export const Messages: FC = () => {
 
   return (
     <MessagesContainer>
-      <ul>
+      <motion.ul>
         {renderedMessages.map(message => {
           return (
-            <li key={message.timestamp}>
+            <motion.li
+              key={message.timestamp}
+              animate={{ opacity: [0, 1] }}
+              transition={{ ease: 'anticipate', duration: 2 }}
+            >
               <MessageView
                 author={message.author}
                 text={message.text}
                 timestamp={message.timestamp}
               />
-            </li>
+            </motion.li>
           )
         })}
 
         {renderingMessage && (
-          <li key={renderingMessage.timestamp}>
+          <motion.li
+            key={renderingMessage.timestamp}
+            animate={{ opacity: [0, 1] }}
+            transition={{ ease: 'anticipate', duration: 2 }}
+          >
             <RenderingMessage
               {...renderingMessage}
               atStart={setVojtaTalking}
               atEnd={setAsRendered}
             />
-          </li>
+          </motion.li>
         )}
-      </ul>
+      </motion.ul>
     </MessagesContainer>
   )
 }
