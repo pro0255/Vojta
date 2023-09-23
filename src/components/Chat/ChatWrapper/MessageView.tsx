@@ -1,14 +1,14 @@
-import { FC } from 'react'
+import { FC, ReactNode } from 'react'
 import { Author } from '@/components/Chat/types'
 import { NormalText } from '@/components/DesignSystem'
 
 type Props = {
-  timestamp: number
-  author: Author
-  text: string
+  timestamp?: number
+  author?: Author
+  content: string | ReactNode
 }
 
-export const MessageView: FC<Props> = ({ text, author, timestamp }) => {
+export const MessageView: FC<Props> = ({ content, author, timestamp }) => {
   const mainStyle = `flex flex-row ${
     author === Author.Guess ? 'justify-start' : 'justify-end'
   }`
@@ -20,11 +20,15 @@ export const MessageView: FC<Props> = ({ text, author, timestamp }) => {
   return (
     <div className={containerStyle}>
       <header className="flex flex-row justify-between">
-        <span id="author"></span>
-        <span id="date">{timestamp}</span>
+        {author && <span id="author"></span>}
+        {timestamp && <span id="date">{timestamp}</span>}
       </header>
       <main className={mainStyle}>
-        <NormalText>{text}</NormalText>
+        {typeof content === 'string' ? (
+          <NormalText>{content}</NormalText>
+        ) : (
+          content
+        )}
       </main>
     </div>
   )

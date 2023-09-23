@@ -14,6 +14,7 @@ import { useMutation } from 'react-query'
 import { createHistory } from '@/components/Chat/utils/createHistory'
 import { MessagesContainer } from '@/components/Chat/ChatWrapper/MessagesContainer'
 import { motion } from 'framer-motion'
+import { VojtaThinking } from '@/components/Chat/components/Vojta/VojtaThinking'
 
 type UseMessages = {
   renderedMessages: ChatStore['messages']
@@ -120,7 +121,7 @@ export const Messages: FC = () => {
             >
               <MessageView
                 author={message.author}
-                text={message.text}
+                content={message.text}
                 timestamp={message.timestamp}
               />
             </motion.li>
@@ -141,6 +142,7 @@ export const Messages: FC = () => {
           </motion.li>
         )}
       </motion.ul>
+      <VojtaThinking />
     </MessagesContainer>
   )
 }

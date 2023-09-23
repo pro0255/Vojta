@@ -49,6 +49,6 @@ export const RenderingMessage: FC<Props> = ({
   }, [text])
 
   return (
-    <MessageView timestamp={timestamp} author={author} text={renderedText} />
+    <MessageView timestamp={timestamp} author={author} content={renderedText} />
   )
 }

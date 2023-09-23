@@ -44,9 +44,11 @@ export const Footer = () => {
     >
       {isVisible}
       <div className={'absolute top-[-20px] left-[50%]'}>
-        <CircleContainer onClick={toggle}>
-          {isVisible ? <AiOutlineArrowDown /> : <AiOutlineArrowUp />}
-        </CircleContainer>
+        <button onClick={toggle}>
+          <CircleContainer>
+            {isVisible ? <AiOutlineArrowDown /> : <AiOutlineArrowUp />}
+          </CircleContainer>
+        </button>
       </div>
 
       {isVisible ? (
