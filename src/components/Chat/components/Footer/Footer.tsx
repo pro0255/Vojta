@@ -12,9 +12,7 @@ const useFooter = () => {
     vojtaState: state.vojtaState,
   }))
 
-  console.log(vojtaState)
-
-  const [isVisible, setIsVisible] = useState(true)
+  const [isVisible, setIsVisible] = useState(false)
 
   const toggle = useCallback(() => {
     setIsVisible(visible => !visible)
@@ -31,6 +29,7 @@ export const Footer = () => {
 
   return (
     <motion.footer
+      initial={false}
       variants={{
         hidden: {
           height: '5%',
