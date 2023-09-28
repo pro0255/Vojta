@@ -3,11 +3,11 @@
 import React, { FormEvent, useState } from 'react'
 import { useChatStore } from '@/components/Chat/store/chat'
 import { Messages } from '@/components/Chat/service/chat'
-import Image from 'next/image'
 import { useModelManager } from '@/Three/store/useModelManager'
 import { GuessState, VojtaState } from '@/Three/store/types'
 import { createGuessMessage } from '@/components/Chat/utils/createMessage'
 import { keySpecificEvent } from '@/helpers/mix/keySpecificEvent'
+import { AiOutlineSend } from 'react-icons/ai'
 
 const useInput = () => {
   const { setGuessState, setVojtaState } = useModelManager(state => ({
@@ -72,13 +72,8 @@ export const Input = () => {
         onChange={onChange}
         className="focus:outline-0 block w-full bg-white resize-none"
       />
-      <button disabled={isDisabled} onMouseDown={submit}>
-        <Image
-          src={`/assets/icons/send.png`}
-          alt={'sending'}
-          width={40}
-          height={40}
-        />
+      <button disabled={isDisabled} onMouseDown={submit} onKeyDown={submit}>
+        <AiOutlineSend width={40} height={40} />
       </button>
     </div>
   )
