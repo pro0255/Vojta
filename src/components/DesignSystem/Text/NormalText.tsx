@@ -6,5 +6,9 @@ type Props = {
   style?: CSSProperties
 }
 export const NormalText: FC<Props> = ({ children, ...props }) => {
-  return <span {...props}>{children}</span>
+  return (
+    <span {...props} className={`break-all`}>
+      {children}
+    </span>
+  )
 }

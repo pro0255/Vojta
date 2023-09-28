@@ -121,7 +121,7 @@ export const Messages: FC = () => {
             !isRenderedLast
 
           return (
-            <AnimatedListItem key={message.timestamp}>
+            <AnimatedListItem key={`${message.timestamp}`}>
               <SlowMessage
                 isSlowMessage={isRenderingMessage}
                 {...message}
