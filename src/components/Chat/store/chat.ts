@@ -58,17 +58,18 @@ export const useChatStore: UseBoundStore<StoreApi<ChatStore>> = create(
             newMessageTuple: true,
             messages: [...state.messages, message],
           }))
-
           scroll.scrollToBottom()
 
-          setTimeout(
-            () =>
-              useModelManager.setState(state => ({
-                ...state,
-                vojtaState: VojtaState.Thinking,
-              })),
-            500
-          )
+          setTimeout(() => {
+            useModelManager.setState(state => ({
+              ...state,
+              vojtaState: VojtaState.Thinking,
+            }))
+
+            setTimeout(() => {
+              scroll.scrollToBottom()
+            }, 100)
+          }, 500)
 
           await new Promise(resolve => setTimeout(resolve, 2000))
 
