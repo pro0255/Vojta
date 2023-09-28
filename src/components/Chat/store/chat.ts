@@ -47,6 +47,10 @@ export const useChatStore: UseBoundStore<StoreApi<ChatStore>> = create(
             vojtaState: VojtaState.Thinking,
           }))
 
+          await new Promise(resolve => {
+            setTimeout(resolve, 2000)
+          })
+
           const endpoint = endpoints[Endpoints.Ask]
           const response = await endpoint(message.text)
           const aiMessage = await response.json()

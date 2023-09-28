@@ -128,9 +128,16 @@ export const Messages: FC = () => {
         {renderedMessages.map(message => {
           return (
             <motion.li
+              initial={{
+                height: 0,
+                opacity: 0,
+              }}
               key={message.timestamp}
-              animate={{ opacity: [0, 1] }}
-              transition={{ ease: 'anticipate', duration: 2 }}
+              animate={{
+                height: 'auto',
+                opacity: [0, 1],
+              }}
+              transition={{ ease: 'anticipate', duration: 1 }}
             >
               <MessageView
                 author={message.author}
@@ -145,7 +152,7 @@ export const Messages: FC = () => {
           <motion.li
             key={renderingMessage.timestamp}
             animate={{ opacity: [0, 1] }}
-            transition={{ ease: 'anticipate', duration: 2 }}
+            transition={{ ease: 'anticipate', duration: 1 }}
           >
             <RenderingMessage
               {...renderingMessage}
