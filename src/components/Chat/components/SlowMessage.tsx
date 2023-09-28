@@ -6,8 +6,9 @@ type Props = {
   timestamp: number
   author: Author
   text: string
-  atStart: () => void
-  atEnd: () => void
+  atStart?: () => void
+  atEnd?: () => void
+  isSlowMessage: boolean
 }
 
 const createGenerator = function* (
@@ -22,30 +23,33 @@ const createGenerator = function* (
   }
 }
 
-export const RenderingMessage: FC<Props> = ({
+export const SlowMessage: FC<Props> = ({
   text,
   author,
   timestamp,
   atEnd,
   atStart,
+  isSlowMessage,
 }) => {
-  const [renderedText, setRenderedText] = useState('')
+  const [renderedText, setRenderedText] = useState(isSlowMessage ? '' : text)
 
   useEffect(() => {
-    atStart()
-    const firstChar = text[0]
-    setRenderedText(firstChar)
+    if (isSlowMessage) {
+      atStart?.()
+      const firstChar = text[0]
+      setRenderedText(firstChar)
 
-    const renderRest = async () => {
-      const generator = createGenerator(text, setRenderedText)
-      for (const renderChar of generator) {
-        await new Promise(resolve => setTimeout(resolve, 50))
-        renderChar()
+      const renderRest = async () => {
+        const generator = createGenerator(text, setRenderedText)
+        for (const renderChar of generator) {
+          await new Promise(resolve => setTimeout(resolve, 50))
+          renderChar()
+        }
+        atEnd?.()
       }
-      atEnd()
-    }
 
-    renderRest()
+      renderRest()
+    }
   }, [text])
 
   return (

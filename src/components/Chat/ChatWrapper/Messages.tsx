@@ -1,9 +1,8 @@
 'use client'
 
-import React, { FC, useEffect, useState } from 'react'
-import { MessageView } from '@/components/Chat/ChatWrapper/MessageView'
+import React, { FC, useEffect } from 'react'
 import { ChatStore, useChatStore } from '@/components/Chat/store/chat'
-import { RenderingMessage } from '@/components/Chat/ChatWrapper/RenderingMessage'
+import { SlowMessage } from '@/components/Chat/components/SlowMessage'
 import { Author } from '@/components/Chat/types'
 import { useModelManager } from '@/Three/store/useModelManager'
 import { VojtaState } from '@/Three/store/types'
@@ -24,10 +23,11 @@ import { StartingConversations } from '@/components/Chat/components/StartingConv
 import { AnimatedListItem } from '@/components/Chat/components/AnimatedListItem'
 
 type UseMessages = {
-  renderedMessages: ChatStore['messages']
-  renderingMessage: ChatStore['messages'][0] | undefined
+  messages: ChatStore['messages']
   setAsRendered: () => void
   setVojtaTalking: () => void
+  isVojtaThinking: boolean
+  isRenderedLast: boolean
 }
 
 const setConversation = async (history: Array<HistoryMessage>) => {
@@ -36,9 +36,12 @@ const setConversation = async (history: Array<HistoryMessage>) => {
 }
 
 const useMessages = (): UseMessages => {
-  const setVojtaState = useModelManager(
-    modelManager => modelManager.setVojtaState
-  )
+  const { vojtaState, setVojtaState } = useModelManager(modelManager => ({
+    setVojtaState: modelManager.setVojtaState,
+    vojtaState: modelManager.vojtaState,
+  }))
+
+  const isVojtaThinking = vojtaState === VojtaState.Thinking
 
   const { renderedMessagesCount, countAdd, messages } = useChatStore(state => ({
     messages: state.messages,
@@ -54,15 +57,12 @@ const useMessages = (): UseMessages => {
     mutate()
   }, [])
 
-  const [renderingIndex, setRenderingIndex] = useState<number | undefined>(
-    undefined
-  )
-
   useEffect(() => {
     scroll.scrollToBottom()
   }, [renderedMessagesCount])
 
   const setVojtaTalking = () => {
+    countAdd()
     setVojtaState(VojtaState.Talking)
   }
 
@@ -82,39 +82,36 @@ const useMessages = (): UseMessages => {
       return
     }
 
-    if (lastMessage.author === Author.Vojta) {
-      setRenderingIndex(indexOfLastMessage)
-    } else {
+    if (lastMessage.author !== Author.Vojta) {
       countAdd()
     }
   }, [messages])
 
-  const renderedMessages: UseMessages['renderedMessages'] = messages.slice(
-    0,
-    renderedMessagesCount + 1
-  )
-  const renderingMessage: UseMessages['renderingMessage'] = renderingIndex
-    ? messages[renderingIndex]
-    : undefined
-
   const setAsRendered = () => {
-    countAdd()
-    setRenderingIndex(undefined)
     setVojtaState(VojtaState.Init)
   }
 
+  const isRenderedLast = renderedMessagesCount === messages.length
+
   return {
-    renderedMessages,
-    renderingMessage,
+    isRenderedLast,
+    isVojtaThinking,
+    messages,
     setAsRendered,
     setVojtaTalking,
   }
 }
 
 export const Messages: FC = () => {
-  const { renderedMessages, renderingMessage, setAsRendered, setVojtaTalking } =
-    useMessages()
+  const {
+    messages,
+    setAsRendered,
+    setVojtaTalking,
+    isVojtaThinking,
+    isRenderedLast,
+  } = useMessages()
 
+  console.log(isRenderedLast)
   return (
     <MessagesContainer>
       <ActionsBottom />
@@ -125,33 +122,31 @@ export const Messages: FC = () => {
       </div>
 
       <motion.ul>
-        {renderedMessages.map(message => {
+        {messages.map((message, index) => {
+          const isRenderingMessage =
+            message.author === Author.Vojta &&
+            index === messages.length - 1 &&
+            !isRenderedLast
+
           return (
             <AnimatedListItem key={message.timestamp}>
-              <MessageView
-                author={message.author}
-                content={message.text}
-                timestamp={message.timestamp}
+              <SlowMessage
+                isSlowMessage={isRenderingMessage}
+                {...message}
+                atStart={setVojtaTalking}
+                atEnd={setAsRendered}
               />
             </AnimatedListItem>
           )
         })}
 
-        {renderingMessage && (
-          <motion.li
-            key={renderingMessage.timestamp}
-            animate={{ opacity: [0, 1] }}
-            transition={{ ease: 'anticipate', duration: 1 }}
-          >
-            <RenderingMessage
-              {...renderingMessage}
-              atStart={setVojtaTalking}
-              atEnd={setAsRendered}
-            />
-          </motion.li>
+        {isVojtaThinking && (
+          <AnimatedListItem key={'VOJTA_THINKING'}>
+            <VojtaThinking />
+          </AnimatedListItem>
         )}
       </motion.ul>
-      <VojtaThinking />
+
       <ActionsTop />
     </MessagesContainer>
   )
