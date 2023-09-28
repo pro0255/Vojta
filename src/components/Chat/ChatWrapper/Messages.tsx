@@ -21,6 +21,7 @@ import {
 } from '@/components/Chat/components/Actions/Actions'
 import { VojtaGPTText } from '@/components/Chat/components/VojtaGPTText'
 import { StartingConversations } from '@/components/Chat/components/StartingConversations/StartingConversations'
+import { AnimatedListItem } from '@/components/Chat/components/AnimatedListItem'
 
 type UseMessages = {
   renderedMessages: ChatStore['messages']
@@ -127,24 +128,13 @@ export const Messages: FC = () => {
       <motion.ul>
         {renderedMessages.map(message => {
           return (
-            <motion.li
-              initial={{
-                height: 0,
-                opacity: 0,
-              }}
-              key={message.timestamp}
-              animate={{
-                height: 'auto',
-                opacity: [0, 1],
-              }}
-              transition={{ ease: 'anticipate', duration: 1 }}
-            >
+            <AnimatedListItem key={message.timestamp}>
               <MessageView
                 author={message.author}
                 content={message.text}
                 timestamp={message.timestamp}
               />
-            </motion.li>
+            </AnimatedListItem>
           )
         })}
 
