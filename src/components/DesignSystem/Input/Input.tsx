@@ -48,16 +48,19 @@ const useInput = () => {
 
   const isDisabled = Messages.isLastFromGuess(messages)
 
+  const isSendDisabled = Messages.isEmpty(value)
+
   return {
     submit,
     value,
     onChange,
     isDisabled,
+    isSendDisabled,
   }
 }
 
 export const Input = () => {
-  const { submit, onChange, isDisabled, value } = useInput()
+  const { submit, onChange, isDisabled, value, isSendDisabled } = useInput()
 
   return (
     <div
@@ -68,14 +71,19 @@ export const Input = () => {
       }}
     >
       <textarea
+        placeholder="Ask Vojta anything..."
         onKeyDown={keySpecificEvent(submit, ['Enter'])}
         disabled={isDisabled}
         value={value}
         onChange={onChange}
         className="focus:outline-0 block w-full bg-white resize-none"
       />
-      <button disabled={isDisabled} onMouseDown={submit} onKeyDown={submit}>
-        <AiOutlineSend width={40} height={40} />
+      <button disabled={isSendDisabled} onMouseDown={submit} onKeyDown={submit}>
+        <AiOutlineSend
+          className={`${isSendDisabled ? 'fill-gray-500' : 'fill-blue-500'}`}
+          width={40}
+          height={40}
+        />
       </button>
     </div>
   )
