@@ -7,6 +7,7 @@ import Image from 'next/image'
 import { useModelManager } from '@/Three/store/useModelManager'
 import { GuessState, VojtaState } from '@/Three/store/types'
 import { createGuessMessage } from '@/components/Chat/utils/createMessage'
+import { keySpecificEvent } from '@/helpers/mix/keySpecificEvent'
 
 const useInput = () => {
   const { setGuessState, setVojtaState } = useModelManager(state => ({
@@ -65,6 +66,7 @@ export const Input = () => {
       }}
     >
       <textarea
+        onKeyDown={keySpecificEvent(submit, ['Enter'])}
         disabled={isDisabled}
         value={value}
         onChange={onChange}
