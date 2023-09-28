@@ -2,6 +2,7 @@ import { Dispatch, FC, SetStateAction, useEffect, useState } from 'react'
 import { Author } from '@/components/Chat/types'
 import { MessageView } from '@/components/Chat/ChatWrapper/MessageView'
 import { scroll } from '@/helpers'
+import { CopyButton } from '@/components/Chat/components/CopyButton'
 
 type Props = {
   timestamp: number | Date
@@ -57,6 +58,13 @@ export const SlowMessage: FC<Props> = ({
   }, [text])
 
   return (
-    <MessageView timestamp={timestamp} author={author} content={renderedText} />
+    <>
+      <MessageView
+        timestamp={timestamp}
+        author={author}
+        content={renderedText}
+        header={<CopyButton text={text} />}
+      />
+    </>
   )
 }

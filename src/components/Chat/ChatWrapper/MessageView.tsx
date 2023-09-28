@@ -8,9 +8,15 @@ type Props = {
   timestamp?: number | Date
   author?: Author
   content: string | ReactNode
+  header?: ReactNode
 }
 
-export const MessageView: FC<Props> = ({ content, author, timestamp }) => {
+export const MessageView: FC<Props> = ({
+  content,
+  author,
+  timestamp,
+  header,
+}) => {
   const mainStyle = `mt-6 flex flex-row ${
     author === Author.Guess ? 'justify-start' : 'justify-end'
   }`
@@ -23,7 +29,10 @@ export const MessageView: FC<Props> = ({ content, author, timestamp }) => {
     <div className={containerStyle}>
       <header className="flex flex-row justify-between">
         {author && <Avatar author={author} />}
-        {timestamp && <DateView date={timestamp} />}
+        <div className={'flex flex-row justify-around items-center'}>
+          {header && <span className={'mr-3'}>{header}</span>}
+          {timestamp && <DateView date={timestamp} />}
+        </div>
       </header>
       <main className={mainStyle}>
         {typeof content === 'string' ? (
