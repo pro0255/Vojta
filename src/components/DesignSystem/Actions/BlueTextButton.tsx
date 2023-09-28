@@ -6,7 +6,7 @@ type Props = {
 
 export const BlueTextButton = ({ children, ...props }: Props) => {
   return (
-    <button {...props} className={'text-blue-700 hover:underline'}>
+    <button {...props} className={'text-blue-500 hover:underline'}>
       {children}
     </button>
   )

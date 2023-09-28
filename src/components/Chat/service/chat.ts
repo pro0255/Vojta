@@ -25,4 +25,8 @@ export class Messages {
   ) => {
     return true
   }
+
+  public static canSend = (value: string) => {
+    return true
+  }
 }
