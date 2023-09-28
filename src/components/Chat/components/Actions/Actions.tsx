@@ -1,21 +1,38 @@
 import { ScrollTo } from '@/components/Chat/components/Actions/ScrollTo'
-import { ResetConversation } from '@/components/Chat/components/Actions/ResetConversation/ResetConversation'
-import { ReactNode } from 'react'
+import { ReactNode, useState } from 'react'
 import { useIsScrollbar } from '@/hooks/useIsScrollbar'
+import { AiOutlineMore } from 'react-icons/ai'
 
 type Props = {
   children: ReactNode
 }
 
 const ActionsContainer = ({ children }: Props) => {
+  const [isHovered, setIsHovered] = useState(false)
+  const isScrollBar = useIsScrollbar()
+
+  // if (!isScrollBar) {
+  //   return null
+  // }
+
   return (
-    <div className="p-2 flex flex-row items-center justify-around">
-      {children}
+    <div
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className="p-2 bg-blue-500 rounded-full fixed bottom-20 right-12"
+    >
+      {isHovered ? (
+        <div className={'flex flex-col items-center justify-between'}>
+          {children}
+        </div>
+      ) : (
+        <AiOutlineMore size={25} className={'fill-white'} />
+      )}
     </div>
   )
 }
 
-export const ActionsTop = () => {
+export const Actions = () => {
   const isScrollBar = useIsScrollbar()
 
   if (!isScrollBar) {
@@ -24,17 +41,12 @@ export const ActionsTop = () => {
 
   return (
     <ActionsContainer>
-      <ScrollTo target={'top'} />
-      <ResetConversation />
-    </ActionsContainer>
-  )
-}
-
-export const ActionsBottom = () => {
-  return (
-    <ActionsContainer>
-      <ScrollTo target={'bottom'} />
-      <ResetConversation />
+      <div>
+        <ScrollTo target={'top'} />
+      </div>
+      <div className={'mt-2'}>
+        <ScrollTo target={'bottom'} />
+      </div>
     </ActionsContainer>
   )
 }
