@@ -6,9 +6,9 @@ type Props = {
 }
 export const MessagesContainer: FC<Props> = ({ children }) => {
   return (
-    <div className="flex flex-col min-w-2xl max-w-2xl">
-      <main className={'mb-40'}>{children}</main>
+    <>
+      <main className={'mb-40 w-full'}>{children}</main>
       <Footer />
-    </div>
+    </>
   )
 }

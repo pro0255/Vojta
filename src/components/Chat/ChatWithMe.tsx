@@ -3,9 +3,9 @@ import 'dotenv/config'
 
 export const ChatWithMe = () => {
   return (
-    <main>
+    <>
       <ChatWrapper />
       {/*<NextLevel />*/}
-    </main>
+    </>
   )
 }

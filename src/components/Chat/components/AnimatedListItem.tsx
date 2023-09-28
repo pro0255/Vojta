@@ -8,6 +8,7 @@ type Props = {
 export const AnimatedListItem = ({ children }: Props) => {
   return (
     <motion.li
+      className={'w-full'}
       initial={{
         height: 0,
         opacity: 0,

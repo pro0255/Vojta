@@ -113,7 +113,7 @@ export const Messages: FC = () => {
         <StartingConversations />
       </div>
 
-      <motion.ul>
+      <motion.ul className={'w-full'}>
         {messages.map((message, index) => {
           const isRenderingMessage =
             message.author === Author.Vojta &&
