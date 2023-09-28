@@ -2,6 +2,7 @@ import { FC, ReactNode } from 'react'
 import { Author } from '@/components/Chat/types'
 import { NormalText } from '@/components/DesignSystem'
 import { DateView } from '@/components/DesignSystem/Date/DateView'
+import { Avatar } from '@/components/DesignSystem/Avatar'
 
 type Props = {
   timestamp?: number | Date
@@ -21,7 +22,7 @@ export const MessageView: FC<Props> = ({ content, author, timestamp }) => {
   return (
     <div className={containerStyle}>
       <header className="flex flex-row justify-between">
-        {author && <span id="author"></span>}
+        {author && <Avatar author={author} />}
         {timestamp && <DateView date={timestamp} />}
       </header>
       <main className={mainStyle}>
