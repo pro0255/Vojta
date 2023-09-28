@@ -111,14 +111,14 @@ export const Messages: FC = () => {
 
       <motion.ul className={'w-full'}>
         {messages.map((message, index) => {
-          const isRenderingMessage =
-            message.author === Author.Vojta &&
-            index === messages.length - 1 &&
-            !isRenderedLast
+          const isLastFromVojta =
+            message.author === Author.Vojta && index === messages.length - 1
+          const isRenderingMessage = isLastFromVojta && !isRenderedLast
 
           return (
             <AnimatedListItem key={`${message.timestamp}`}>
               <SlowMessage
+                isRenderedImmediately={isLastFromVojta}
                 isSlowMessage={isRenderingMessage}
                 {...message}
                 atStart={setVojtaTalking}
