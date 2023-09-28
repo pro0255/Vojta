@@ -12,7 +12,7 @@ export const VojtaGPTText = () => {
   }
 
   return (
-    <div className="w-full text-4xl text-center text-gray-500">
+    <div className="w-full mt-10 text-4xl text-center text-gray-500">
       {"Who's Vojtech?"}
     </div>
   )

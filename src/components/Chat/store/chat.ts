@@ -5,6 +5,7 @@ import { endpoints, Endpoints } from '@/fetcher/endpoints'
 import { createVojtaMessage } from '@/components/Chat/utils/createMessage'
 import { VojtaState } from '@/Three/store/types'
 import { useModelManager } from '@/Three/store/useModelManager'
+import { scroll } from '@/helpers'
 
 export type ChatStore = {
   newMessageTuple: boolean
@@ -56,6 +57,8 @@ export const useChatStore: UseBoundStore<StoreApi<ChatStore>> = create(
             messages: [...state.messages, message],
           }))
 
+          scroll.scrollToBottom()
+
           setTimeout(
             () =>
               useModelManager.setState(state => ({
@@ -83,6 +86,8 @@ export const useChatStore: UseBoundStore<StoreApi<ChatStore>> = create(
               createVojtaMessage(aiMessage.content),
             ],
           }))
+
+          scroll.scrollToBottom()
         },
       }
 

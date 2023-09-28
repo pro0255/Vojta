@@ -1,5 +1,4 @@
 import { scroll } from '@/helpers'
-import { useIsScrollbar } from '@/hooks/useIsScrollbar'
 import { CircleContainer } from '@/components/DesignSystem/Containers/CircleContainer'
 import { AiOutlineArrowDown, AiOutlineArrowUp } from 'react-icons/ai'
 
@@ -8,12 +7,6 @@ type Props = {
 }
 
 export const ScrollTo = ({ target }: Props) => {
-  const isScrollBar = useIsScrollbar()
-
-  if (!isScrollBar) {
-    return null
-  }
-
   if (target === 'top') {
     return (
       <CircleContainer onClick={scroll.scrollToTop}>

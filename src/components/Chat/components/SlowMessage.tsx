@@ -1,6 +1,7 @@
 import { Dispatch, FC, SetStateAction, useEffect, useState } from 'react'
 import { Author } from '@/components/Chat/types'
 import { MessageView } from '@/components/Chat/ChatWrapper/MessageView'
+import { scroll } from '@/helpers'
 
 type Props = {
   timestamp: number | Date
@@ -35,6 +36,8 @@ export const SlowMessage: FC<Props> = ({
 
   useEffect(() => {
     if (isSlowMessage) {
+      scroll.scrollToBottom()
+
       atStart?.()
       const firstChar = text[0]
       setRenderedText(firstChar)
@@ -44,6 +47,7 @@ export const SlowMessage: FC<Props> = ({
         for (const renderChar of generator) {
           await new Promise(resolve => setTimeout(resolve, 50))
           renderChar()
+          scroll.scrollToBottom()
         }
         atEnd?.()
       }

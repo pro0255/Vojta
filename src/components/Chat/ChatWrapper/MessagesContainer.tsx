@@ -8,7 +8,7 @@ type Props = {
 export const MessagesContainer: FC<Props> = ({ children }) => {
   return (
     <>
-      <main className={'mb-40 w-full'}>{children}</main>
+      <main className={'w-full'}>{children}</main>
       <Footer />
     </>
   )

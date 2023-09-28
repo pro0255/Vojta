@@ -105,7 +105,7 @@ export const Messages: FC = () => {
     <MessagesContainer>
       <VojtaGPTText />
 
-      <div className={'mt-40'}>
+      <div className={'mt-28'}>
         <StartingConversations />
       </div>
 
