@@ -19,7 +19,6 @@ const useInput = () => {
     if (Messages.validate(newValue)) {
       if (Messages.isEmpty(newValue)) {
         setGuessState(GuessState.Init)
-        setVojtaState(VojtaState.Init)
       } else {
         setGuessState(GuessState.Talking)
         setVojtaState(VojtaState.Listening)

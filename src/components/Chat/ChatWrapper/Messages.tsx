@@ -26,7 +26,6 @@ type UseMessages = {
   messages: ChatStore['messages']
   setAsRendered: () => void
   setVojtaTalking: () => void
-  isVojtaThinking: boolean
   isRenderedLast: boolean
 }
 
@@ -36,18 +35,17 @@ const setConversation = async (history: Array<HistoryMessage>) => {
 }
 
 const useMessages = (): UseMessages => {
-  const { vojtaState, setVojtaState } = useModelManager(modelManager => ({
+  const { setVojtaState } = useModelManager(modelManager => ({
     setVojtaState: modelManager.setVojtaState,
     vojtaState: modelManager.vojtaState,
   }))
-
-  const isVojtaThinking = vojtaState === VojtaState.Thinking
-
-  const { renderedMessagesCount, countAdd, messages } = useChatStore(state => ({
-    messages: state.messages,
-    renderedMessagesCount: state.renderedMessagesCount,
-    countAdd: state.countAdd,
-  }))
+  const { renderedMessagesCount, countAdd, messages, setNewMessagesTuple } =
+    useChatStore(state => ({
+      messages: state.messages,
+      renderedMessagesCount: state.renderedMessagesCount,
+      countAdd: state.countAdd,
+      setNewMessagesTuple: state.setNewMessageTuple,
+    }))
 
   const { mutate } = useMutation(Endpoints.SetConversation, () =>
     setConversation(createHistory(messages))
@@ -89,13 +87,13 @@ const useMessages = (): UseMessages => {
 
   const setAsRendered = () => {
     setVojtaState(VojtaState.Init)
+    setNewMessagesTuple(false)
   }
 
   const isRenderedLast = renderedMessagesCount === messages.length
 
   return {
     isRenderedLast,
-    isVojtaThinking,
     messages,
     setAsRendered,
     setVojtaTalking,
@@ -103,15 +101,9 @@ const useMessages = (): UseMessages => {
 }
 
 export const Messages: FC = () => {
-  const {
-    messages,
-    setAsRendered,
-    setVojtaTalking,
-    isVojtaThinking,
-    isRenderedLast,
-  } = useMessages()
+  const { messages, setAsRendered, setVojtaTalking, isRenderedLast } =
+    useMessages()
 
-  console.log(isRenderedLast)
   return (
     <MessagesContainer>
       <ActionsBottom />
@@ -140,11 +132,9 @@ export const Messages: FC = () => {
           )
         })}
 
-        {isVojtaThinking && (
-          <AnimatedListItem key={'VOJTA_THINKING'}>
-            <VojtaThinking />
-          </AnimatedListItem>
-        )}
+        <AnimatedListItem>
+          <VojtaThinking />
+        </AnimatedListItem>
       </motion.ul>
 
       <ActionsTop />

@@ -7,6 +7,8 @@ import { VojtaState } from '@/Three/store/types'
 import { useModelManager } from '@/Three/store/useModelManager'
 
 export type ChatStore = {
+  newMessageTuple: boolean
+  setNewMessageTuple: (value: boolean) => void
   messages: Array<MessageType>
   add: (message: MessageType) => void
   reset: () => void
@@ -16,8 +18,17 @@ export type ChatStore = {
 
 export const useChatStore: UseBoundStore<StoreApi<ChatStore>> = create(
   persist(
-    set => {
+    (set, get) => {
       const value: ChatStore = {
+        setNewMessageTuple: (newMessageTuple: boolean) => {
+          set(state => {
+            return {
+              ...state,
+              newMessageTuple,
+            }
+          })
+        },
+        newMessageTuple: false,
         renderedMessagesCount: 0,
         countAdd: () => {
           set(state => ({
@@ -41,12 +52,20 @@ export const useChatStore: UseBoundStore<StoreApi<ChatStore>> = create(
         add: async (message: MessageType) => {
           set((state: ChatStore) => ({
             ...state,
+            newMessageTuple: true,
             messages: [...state.messages, message],
           }))
-          useModelManager.setState(state => ({
-            ...state,
-            vojtaState: VojtaState.Thinking,
-          }))
+
+          setTimeout(
+            () =>
+              useModelManager.setState(state => ({
+                ...state,
+                vojtaState: VojtaState.Thinking,
+              })),
+            500
+          )
+
+          await new Promise(resolve => setTimeout(resolve, 2000))
 
           const endpoint = endpoints[Endpoints.Ask]
           const response = await endpoint(message.text)

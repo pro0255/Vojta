@@ -3,13 +3,10 @@ import React, { useCallback, useState } from 'react'
 import { motion } from 'framer-motion'
 import { CircleContainer } from '@/components/DesignSystem/Containers/CircleContainer'
 import { AiOutlineArrowDown, AiOutlineArrowUp } from 'react-icons/ai'
-import { useModelManager } from '@/Three/store/useModelManager'
-import { VojtaState } from '@/Three/store/types'
+import { useChatStore } from '@/components/Chat/store/chat'
 
 const useFooter = () => {
-  const { vojtaState } = useModelManager(state => ({
-    vojtaState: state.vojtaState,
-  }))
+  const isNewMessageTuple = useChatStore(state => state.newMessageTuple)
 
   const [isVisible, setIsVisible] = useState(false)
 
@@ -18,7 +15,7 @@ const useFooter = () => {
   }, [])
 
   return {
-    isVisible: isVisible && vojtaState !== VojtaState.Talking,
+    isVisible: isVisible && !isNewMessageTuple,
     toggle,
   }
 }
