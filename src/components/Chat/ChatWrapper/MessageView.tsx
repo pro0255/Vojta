@@ -8,6 +8,7 @@ type Props = {
   author?: Author
   content: string | ReactNode
   header?: ReactNode
+  footer?: ReactNode
 }
 
 export const MessageView: FC<Props> = ({
@@ -15,6 +16,7 @@ export const MessageView: FC<Props> = ({
   author,
   timestamp,
   header,
+  footer,
 }) => {
   const mainStyle = `mt-6 flex flex-row ${
     author === Author.Guess ? 'justify-start' : 'justify-end'
@@ -34,6 +36,7 @@ export const MessageView: FC<Props> = ({
           content
         )}
       </main>
+      {footer && footer}
     </div>
   )
 }
