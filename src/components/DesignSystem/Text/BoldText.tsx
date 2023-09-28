@@ -7,7 +7,7 @@ type Props = {
 }
 export const BoldText: FC<Props> = ({ children, ...props }) => {
   return (
-    <span className={'text-base font-bold text-black'} {...props}>
+    <span className={'text-base text-black'} {...props}>
       {children}
     </span>
   )

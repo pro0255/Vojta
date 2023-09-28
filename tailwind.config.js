@@ -1,5 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 module.exports = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -8,8 +10,17 @@ module.exports = {
   ],
   theme: {
     extend: {
+      animation: {
+        scale: 'scale 0.2s ease-in forwards',
+      },
+      keyframes: {
+        scale: {
+          '0%': { transform: 'scale(1)' },
+          '100%': { transform: 'scale(1.1)' },
+        },
+      },
       fontFamily: {
-        sans: ['futura'],
+        sans: ['var(--font-roboto)', ...defaultTheme.fontFamily.sans],
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

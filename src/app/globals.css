@@ -2,12 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-    @font-face {
-        font-family: 'futura';
-        src: url('../../public/assets/fonts/futura.otf') format('opentype');
-    }
-}
 
 h1, h2, h3, h4, h5, h6 {
     font-size: revert;
@@ -25,6 +19,10 @@ html {
     font-size: 18px;
     font-weight: bold;
     scroll-behavior: smooth;
+}
+
+html > * {
+    font-family: var(--font-roboto)
 }
 
 body {

@@ -14,7 +14,7 @@ export const StartingMessage = ({ description, title }: Props) => {
     <div
       onClick={startConversation}
       className={
-        'flex flex-col items-start justify-around p-4 bg-white border-solid border-2 border-slate-100 rounded-xl'
+        'flex flex-col items-start justify-around p-4 bg-white border-solid border-2 border-slate-100 rounded-xl hover:animate-scale'
       }
     >
       <BoldText>{title}</BoldText>
