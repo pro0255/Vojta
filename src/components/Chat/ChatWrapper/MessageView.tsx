@@ -1,8 +1,7 @@
 import { FC, ReactNode } from 'react'
 import { Author } from '@/components/Chat/types'
 import { NormalText } from '@/components/DesignSystem'
-import { DateView } from '@/components/DesignSystem/Date/DateView'
-import { Avatar } from '@/components/DesignSystem/Avatar'
+import { MessageHeader } from '@/components/Chat/components/MessageHeader'
 
 type Props = {
   timestamp?: number | Date
@@ -27,13 +26,7 @@ export const MessageView: FC<Props> = ({
 
   return (
     <div className={containerStyle}>
-      <header className="flex flex-row justify-between">
-        {author && <Avatar author={author} />}
-        <div className={'flex flex-row justify-around items-center'}>
-          {header && <span className={'mr-3'}>{header}</span>}
-          {timestamp && <DateView date={timestamp} />}
-        </div>
-      </header>
+      <MessageHeader header={header} author={author} timestamp={timestamp} />
       <main className={mainStyle}>
         {typeof content === 'string' ? (
           <NormalText>{content}</NormalText>
