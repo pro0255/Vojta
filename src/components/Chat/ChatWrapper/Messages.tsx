@@ -31,7 +31,6 @@ type UseMessages = {
 }
 
 const setConversation = async (history: Array<HistoryMessage>) => {
-  console.log(history)
   const endpoint = endpoints[Endpoints.SetConversation]
   return await endpoint(history)
 }

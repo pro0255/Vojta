@@ -30,6 +30,7 @@ export const useChatStore: UseBoundStore<StoreApi<ChatStore>> = create(
           set(state => {
             return {
               ...state,
+              renderedMessagesCount: 0,
               messages: [],
             }
           })
@@ -46,10 +47,6 @@ export const useChatStore: UseBoundStore<StoreApi<ChatStore>> = create(
             ...state,
             vojtaState: VojtaState.Thinking,
           }))
-
-          await new Promise(resolve => {
-            setTimeout(resolve, 2000)
-          })
 
           const endpoint = endpoints[Endpoints.Ask]
           const response = await endpoint(message.text)
