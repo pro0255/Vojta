@@ -32,10 +32,12 @@ export const useChatStore: UseBoundStore<StoreApi<ChatStore>> = create(
         newMessageTuple: false,
         renderedMessagesCount: 0,
         countAdd: () => {
-          set(state => ({
-            ...state,
-            renderedMessagesCount: state.renderedMessagesCount + 1,
-          }))
+          if (get().renderedMessagesCount < get().messages.length) {
+            set(state => ({
+              ...state,
+              renderedMessagesCount: state.renderedMessagesCount + 1,
+            }))
+          }
         },
         messages: [],
         reset: async () => {
