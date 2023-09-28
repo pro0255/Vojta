@@ -31,7 +31,7 @@ export const Footer = () => {
           height: '5%',
         },
         visible: {
-          height: '15%',
+          height: '17%',
         },
       }}
       animate={isVisible ? 'visible' : 'hidden'}
