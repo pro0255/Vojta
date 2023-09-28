@@ -71,6 +71,7 @@ export const Input = () => {
       }}
     >
       <textarea
+        autoFocus
         placeholder="Ask Vojta anything..."
         onKeyDown={keySpecificEvent(submit, ['Enter'])}
         disabled={isDisabled}

@@ -23,8 +23,8 @@ export const Avatar = ({ author }: Props) => {
   return (
     <Image
       className={'rounded-full'}
-      width={50}
-      height={50}
+      width={65}
+      height={65}
       alt={'avatar'}
       src={createLink(author)}
     />
