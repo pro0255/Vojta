@@ -1,7 +1,7 @@
 import { ScrollTo } from '@/components/Chat/components/Actions/ScrollTo'
 import { ReactNode, useState } from 'react'
-import { useIsScrollbar } from '@/hooks/useIsScrollbar'
 import { AiOutlineMore } from 'react-icons/ai'
+import { motion } from 'framer-motion'
 
 type Props = {
   children: ReactNode
@@ -9,42 +9,38 @@ type Props = {
 
 const ActionsContainer = ({ children }: Props) => {
   const [isHovered, setIsHovered] = useState(false)
-  const isScrollBar = useIsScrollbar()
-
-  // if (!isScrollBar) {
-  //   return null
-  // }
 
   return (
-    <div
+    <motion.button
+      initial={false}
+      onFocus={() => setIsHovered(true)}
+      onBlur={() => setIsHovered(false)}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="p-2 bg-blue-500 rounded-full fixed bottom-20 right-12"
+      animate={{
+        backgroundColor: isHovered ? '#ffffff' : '#f1f5f9',
+      }}
+      transition={{ ease: 'linear', duration: 0.2 }}
+      className="z-50 border-solid border-2 border-slate-200 p-2 rounded-full fixed bottom-20 right-12"
     >
       {isHovered ? (
-        <div className={'flex flex-col items-center justify-between'}>
+        <div className={'flex flex-row items-center justify-center'}>
           {children}
         </div>
       ) : (
-        <AiOutlineMore size={25} className={'fill-white'} />
+        <AiOutlineMore size={25} />
       )}
-    </div>
+    </motion.button>
   )
 }
 
 export const Actions = () => {
-  const isScrollBar = useIsScrollbar()
-
-  if (!isScrollBar) {
-    return null
-  }
-
   return (
     <ActionsContainer>
       <div>
         <ScrollTo target={'top'} />
       </div>
-      <div className={'mt-2'}>
+      <div className={'ml-2'}>
         <ScrollTo target={'bottom'} />
       </div>
     </ActionsContainer>
