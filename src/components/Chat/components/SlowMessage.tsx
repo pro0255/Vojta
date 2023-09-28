@@ -3,7 +3,7 @@ import { Author } from '@/components/Chat/types'
 import { MessageView } from '@/components/Chat/ChatWrapper/MessageView'
 
 type Props = {
-  timestamp: number
+  timestamp: number | Date
   author: Author
   text: string
   atStart?: () => void

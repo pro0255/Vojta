@@ -4,7 +4,7 @@ export enum Author {
 }
 
 export type MessageType = {
-  timestamp: number
+  timestamp: number | Date
   author: Author
   text: string
 }

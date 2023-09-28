@@ -1,15 +1,16 @@
 import { FC, ReactNode } from 'react'
 import { Author } from '@/components/Chat/types'
 import { NormalText } from '@/components/DesignSystem'
+import { DateView } from '@/components/DesignSystem/Date/DateView'
 
 type Props = {
-  timestamp?: number
+  timestamp?: number | Date
   author?: Author
   content: string | ReactNode
 }
 
 export const MessageView: FC<Props> = ({ content, author, timestamp }) => {
-  const mainStyle = `flex flex-row ${
+  const mainStyle = `mt-6 flex flex-row ${
     author === Author.Guess ? 'justify-start' : 'justify-end'
   }`
 
@@ -21,7 +22,7 @@ export const MessageView: FC<Props> = ({ content, author, timestamp }) => {
     <div className={containerStyle}>
       <header className="flex flex-row justify-between">
         {author && <span id="author"></span>}
-        {timestamp && <span id="date">{timestamp}</span>}
+        {timestamp && <DateView date={timestamp} />}
       </header>
       <main className={mainStyle}>
         {typeof content === 'string' ? (

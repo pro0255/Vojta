@@ -4,7 +4,7 @@ const createMessage = (message: string, author: Author): MessageType => {
   return {
     text: message,
     author: author,
-    timestamp: new Date().getMilliseconds(),
+    timestamp: new Date(),
   }
 }
 
