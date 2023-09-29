@@ -3,6 +3,7 @@ import { FC, ReactNode } from 'react'
 import Head from 'next/head'
 import { AppProviders } from '@/app/AppProviders'
 import { Roboto_Slab } from 'next/font/google'
+import { FlashMessageContainer } from '@/components/FlashMessage/FlashMessageContainer'
 
 const robotoSlab = Roboto_Slab({
   subsets: ['latin'],
@@ -21,6 +22,7 @@ const RootLayout: FC<LayoutProps> = ({ children }) => {
       </Head>
       <body className={`${robotoSlab.variable}`}>
         <AppProviders>{children}</AppProviders>
+        <FlashMessageContainer />
       </body>
     </html>
   )
