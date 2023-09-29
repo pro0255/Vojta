@@ -1,9 +1,9 @@
-import { create, StoreApi, UseBoundStore } from 'zustand/esm'
+import { create, StoreApi, UseBoundStore } from 'zustand'
 import { ReactNode } from 'react'
 import { v4 } from 'uuid'
 
 export type FlashMessageType = {
-  content: ReactNode
+  content: ReactNode | string
   title: string
   id: string
 }
@@ -12,7 +12,7 @@ export type FlashMessageInputType = Pick<FlashMessageType, 'content' | 'title'>
 
 export type FlashMessagesStore = {
   messages: Array<FlashMessageType>
-  add: (newFlashMessage: FlashMessageInputType, ttl: number) => void
+  add: (newFlashMessage: FlashMessageInputType, ttl?: number) => void
 }
 
 export const useFlashMessages: UseBoundStore<StoreApi<FlashMessagesStore>> =
