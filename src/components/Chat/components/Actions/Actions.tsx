@@ -21,7 +21,7 @@ const ActionsContainer = ({ children }: Props) => {
         backgroundColor: isHovered ? '#ffffff' : '#f1f5f9',
       }}
       transition={{ ease: 'linear', duration: 0.2 }}
-      className="z-50 border-solid border-2 border-slate-200 p-2 rounded-full fixed bottom-20 right-12"
+      className="z-50 border-solid border-2 border-slate-200 p-2 rounded-full fixed bottom-[20%] right-[5%]"
     >
       {isHovered ? (
         <div className={'flex flex-row items-center justify-center'}>
