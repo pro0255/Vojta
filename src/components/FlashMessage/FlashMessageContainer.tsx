@@ -22,8 +22,8 @@ export const FlashMessageContainer = () => {
   }))
 
   return (
-    <div className={'fixed bottom-[5%] left-[5%] z-50'}>
-      <ul>
+    <div className={'fixed bottom-[5%] left-0 z-50 max-w-[calc(100vw)] '}>
+      <ul className={'flex flex-col items-center justify-center'}>
         {flashMessages.map(flashMessage => {
           const startTrigger =
             manualRemove.includes(flashMessage.id) &&
