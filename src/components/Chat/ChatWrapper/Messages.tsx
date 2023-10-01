@@ -118,7 +118,6 @@ export const Messages: FC = () => {
           return (
             <AnimatedListItem key={`${message.timestamp}`}>
               <SlowMessage
-                isRenderedImmediately={isLastFromVojta}
                 isSlowMessage={isRenderingMessage}
                 {...message}
                 atStart={setVojtaTalking}

@@ -11,7 +11,7 @@ import { MessageView } from '@/components/Chat/ChatWrapper/MessageView'
 import { scroll } from '@/helpers'
 import { CopyButton } from '@/components/Chat/components/CopyButton'
 import { BlueTextButton } from '@/components/DesignSystem/Actions/BlueTextButton'
-import { motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 
 type Props = {
   timestamp: number | Date
@@ -42,7 +42,6 @@ export const SlowMessage: FC<Props> = ({
   atEnd,
   atStart,
   isSlowMessage,
-  isRenderedImmediately,
 }) => {
   const isRendered = useRef<boolean>(!isSlowMessage)
   const [renderedText, setRenderedText] = useState(isSlowMessage ? '' : text)
@@ -89,21 +88,25 @@ export const SlowMessage: FC<Props> = ({
         content={renderedText}
         header={<CopyButton text={text} />}
         footer={
-          isRenderedImmediately && (
-            <motion.div
-              animate={{
-                opacity: isFooterContent ? 1 : 0,
-              }}
-              transition={{ ease: 'anticipate', duration: 2 }}
-              className={
-                'mt-5 w-full flex flex-row items-center justify-center'
-              }
-            >
-              <BlueTextButton onClick={renderNow}>
-                Render immediately
-              </BlueTextButton>
-            </motion.div>
-          )
+          isSlowMessage ? (
+            <AnimatePresence>
+              {renderedText !== text && (
+                <motion.div
+                  animate={{
+                    opacity: isFooterContent ? 1 : 0,
+                  }}
+                  transition={{ ease: 'anticipate', duration: 1 }}
+                  className={
+                    'mt-5 w-full flex flex-row items-center justify-center'
+                  }
+                >
+                  <BlueTextButton onClick={renderNow}>
+                    Render immediately
+                  </BlueTextButton>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          ) : null
         }
       />
     </>
