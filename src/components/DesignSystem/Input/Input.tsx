@@ -47,7 +47,6 @@ const useInput = () => {
   }))
 
   const isDisabled = Messages.isLastFromGuess(messages)
-
   const isSendDisabled = Messages.isEmpty(value)
 
   return {

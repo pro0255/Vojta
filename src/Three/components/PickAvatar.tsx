@@ -259,7 +259,7 @@ const Carousel: FC<CarouselProps> = ({ prev, next, slides, activeIndex }) => {
         }}
         onClick={prev}
       >
-        <CircleContainer>
+        <CircleContainer isDisabled={!prev}>
           <AiOutlineArrowLeft />
         </CircleContainer>
       </button>
@@ -273,7 +273,7 @@ const Carousel: FC<CarouselProps> = ({ prev, next, slides, activeIndex }) => {
         }}
         onClick={next}
       >
-        <CircleContainer>
+        <CircleContainer isDisabled={!next}>
           <AiOutlineArrowRight />
         </CircleContainer>
       </button>

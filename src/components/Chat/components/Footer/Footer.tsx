@@ -37,7 +37,6 @@ export const Footer = () => {
       animate={isVisible ? 'visible' : 'hidden'}
       className="fixed bottom-0 left-0 w-[calc(100%)] bg-slate-100 border-t-2 border-b-slate-100 z-40 flex flex-col items-center justify-center z-40"
     >
-      {isVisible}
       <div className={'absolute top-[-20px] left-[50%]'}>
         <button onClick={toggle}>
           <CircleContainer>
