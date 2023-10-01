@@ -1,5 +1,10 @@
 import { useChatStore } from '@/components/Chat/store/chat'
-import { StartingMessage } from '@/components/Chat/components/StartingConversations/components/StartingMessage'
+import { WhoAreYou } from '@/components/Chat/components/StartingConversations/components/WhoAreYou'
+import { Hobbies } from '@/components/Chat/components/StartingConversations/components/Hobbies'
+import { AreYouLookingForAJob } from '@/components/Chat/components/StartingConversations/components/AreYouLookingForAJob'
+import { Projects } from '@/components/Chat/components/StartingConversations/components/Projects'
+import { Experiences } from '@/components/Chat/components/StartingConversations/components/Experiences'
+import { Future } from '@/components/Chat/components/StartingConversations/components/Future'
 
 export const StartingConversations = () => {
   const { messages } = useChatStore(chatStore => ({
@@ -14,30 +19,12 @@ export const StartingConversations = () => {
 
   return (
     <div className="grid grid-cols-3 gap-4">
-      <StartingMessage
-        title={'Lol'}
-        description={'this is description asdafsf'}
-      />
-      <StartingMessage
-        title={'Lol'}
-        description={'this is description asdafsf'}
-      />
-      <StartingMessage
-        title={'Lol'}
-        description={'this is description asdafsf'}
-      />
-      <StartingMessage
-        title={'Lol'}
-        description={'this is description asdafsf'}
-      />
-      <StartingMessage
-        title={'Lol'}
-        description={'this is description asdafsf'}
-      />
-      <StartingMessage
-        title={'Lol'}
-        description={'this is description asdafsf'}
-      />
+      <WhoAreYou />
+      <Hobbies />
+      <AreYouLookingForAJob />
+      <Projects />
+      <Experiences />
+      <Future />
     </div>
   )
 }
