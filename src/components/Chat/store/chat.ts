@@ -17,6 +17,19 @@ export type ChatStore = {
   countAdd: () => void
 }
 
+export type ChatStoreLoader = {
+  isHydrated: boolean
+}
+
+export const useChatLoader: UseBoundStore<StoreApi<ChatStoreLoader>> = create(
+  () => {
+    const value: ChatStoreLoader = {
+      isHydrated: false,
+    }
+    return value
+  }
+)
+
 export const useChatStore: UseBoundStore<StoreApi<ChatStore>> = create(
   persist(
     (set, get) => {
@@ -98,6 +111,9 @@ export const useChatStore: UseBoundStore<StoreApi<ChatStore>> = create(
     },
     {
       name: 'Chat',
+      onRehydrateStorage: () => () => {
+        useChatLoader.setState({ isHydrated: true })
+      },
     }
   )
 )

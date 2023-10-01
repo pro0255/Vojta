@@ -1,7 +1,11 @@
 'use client'
 
 import React, { FC, useEffect } from 'react'
-import { ChatStore, useChatStore } from '@/components/Chat/store/chat'
+import {
+  ChatStore,
+  useChatLoader,
+  useChatStore,
+} from '@/components/Chat/store/chat'
 import { SlowMessage } from '@/components/Chat/components/SlowMessage'
 import { Author } from '@/components/Chat/types'
 import { useModelManager } from '@/Three/store/useModelManager'
@@ -18,12 +22,14 @@ import { Actions } from '@/components/Chat/components/Actions/Actions'
 import { VojtaGPTText } from '@/components/Chat/components/VojtaGPTText'
 import { StartingConversations } from '@/components/Chat/components/StartingConversations/StartingConversations'
 import { AnimatedListItem } from '@/components/Chat/components/AnimatedListItem'
+import { Spinner } from '@/components/DesignSystem/Spinner'
 
 type UseMessages = {
   messages: ChatStore['messages']
   setAsRendered: () => void
   setVojtaTalking: () => void
   isRenderedLast: boolean
+  isHydrated: boolean
 }
 
 const setConversation = async (history: Array<HistoryMessage>) => {
@@ -43,6 +49,8 @@ const useMessages = (): UseMessages => {
       countAdd: state.countAdd,
       setNewMessagesTuple: state.setNewMessageTuple,
     }))
+
+  const isHydrated = useChatLoader(store => store.isHydrated)
 
   const { mutate } = useMutation(Endpoints.SetConversation, () =>
     setConversation(createHistory(messages))
@@ -94,12 +102,30 @@ const useMessages = (): UseMessages => {
     messages,
     setAsRendered,
     setVojtaTalking,
+    isHydrated,
   }
 }
 
 export const Messages: FC = () => {
-  const { messages, setAsRendered, setVojtaTalking, isRenderedLast } =
-    useMessages()
+  const {
+    messages,
+    setAsRendered,
+    setVojtaTalking,
+    isRenderedLast,
+    isHydrated,
+  } = useMessages()
+
+  if (!isHydrated) {
+    return (
+      <div
+        className={
+          'mt-[35%] flex flex-col items-center justify-center h-full w-full'
+        }
+      >
+        <Spinner />
+      </div>
+    )
+  }
 
   return (
     <MessagesContainer>
