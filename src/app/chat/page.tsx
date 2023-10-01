@@ -1,16 +1,16 @@
 'use client'
 
 import { ChatWithMe } from '@/components/Chat/ChatWithMe'
-import { PageContentContainer } from '@/components/DesignSystem/Layout'
+import { ChatPageContentContainer } from '@/components/DesignSystem/Layout'
 import { Header } from '@/components/Chat/components/Header'
 
 const Chat = () => {
   return (
     <>
       <Header />
-      <PageContentContainer>
+      <ChatPageContentContainer>
         <ChatWithMe />
-      </PageContentContainer>
+      </ChatPageContentContainer>
     </>
   )
 }

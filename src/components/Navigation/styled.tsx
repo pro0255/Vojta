@@ -1,6 +1,20 @@
-import Link from 'next/link'
-import { FC } from 'react'
+'use client'
 
-export const StyledLink: FC<React.ComponentProps<typeof Link>> = props => {
-  return <Link {...props} className="block p-1 w-full hover:bg-slate-50" />
+import Link from 'next/link'
+import React, { ComponentProps, FC } from 'react'
+import { usePathname } from 'next/navigation'
+
+export const StyledLink: FC<ComponentProps<typeof Link>> = props => {
+  const pathName = usePathname()
+
+  const isActive = pathName === props.href
+
+  return (
+    <Link
+      {...props}
+      className={`transition-all	duration-200 block p-1 w-full ${
+        isActive ? 'bg-slate-100' : 'hover:bg-slate-50'
+      }`}
+    />
+  )
 }

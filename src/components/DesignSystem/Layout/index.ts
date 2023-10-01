@@ -1,2 +1,2 @@
-export * from './PageContentContainer'
+export * from './ChatPageContentContainer'
 export * from './NavContentContainer'
