@@ -1,5 +1,5 @@
 import { useChatStore } from '@/components/Chat/store/chat'
-import { StartingMessage } from '@/components/Chat/components/StartingConversations/StartingMessage'
+import { StartingMessage } from '@/components/Chat/components/StartingConversations/components/StartingMessage'
 
 export const StartingConversations = () => {
   const { messages } = useChatStore(chatStore => ({

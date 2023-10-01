@@ -11,12 +11,12 @@ module.exports = {
   theme: {
     extend: {
       animation: {
-        scale: 'scale 0.2s ease-in forwards',
+        scaleUp: 'scale 0.2s ease-in forwards',
       },
       keyframes: {
         scale: {
           '0%': { transform: 'scale(1)' },
-          '100%': { transform: 'scale(1.3)' },
+          '100%': { transform: 'scale(1.25)' },
         },
       },
       fontFamily: {
