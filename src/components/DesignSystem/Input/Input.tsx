@@ -64,7 +64,7 @@ export const Input = () => {
 
   return (
     <div
-      className="p-4 rounded-lg flex flex-row border-2 border-slate-100 bg-white hover:border-blue-500 focus-within:border-blue-500"
+      className="transition-all duration-200 p-4 rounded-lg flex flex-row border-2 border-slate-100 bg-white hover:border-black focus-within:border-black"
       style={{
         maxWidth: '65%',
         minWidth: '65%',

@@ -5,6 +5,8 @@ import React, { CSSProperties, FC, ReactNode, useState } from 'react'
 import { HeaderThree, NormalText } from '@/components/DesignSystem'
 import { Paragraph } from '@/components/DesignSystem/Blocks/Paragraph'
 import { GuessMan, VojtaYoungAdult } from '@/Three/models'
+import { CircleContainer } from '@/components/DesignSystem/Containers/CircleContainer'
+import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai'
 
 type Slide = {
   avatar: ReactNode
@@ -257,7 +259,9 @@ const Carousel: FC<CarouselProps> = ({ prev, next, slides, activeIndex }) => {
         }}
         onClick={prev}
       >
-        <ArrowLeft />
+        <CircleContainer>
+          <AiOutlineArrowLeft />
+        </CircleContainer>
       </button>
       <button
         disabled={!next}
@@ -269,7 +273,9 @@ const Carousel: FC<CarouselProps> = ({ prev, next, slides, activeIndex }) => {
         }}
         onClick={next}
       >
-        <ArrowRight />
+        <CircleContainer>
+          <AiOutlineArrowRight />
+        </CircleContainer>
       </button>
 
       <h1
