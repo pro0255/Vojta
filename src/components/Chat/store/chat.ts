@@ -15,6 +15,7 @@ export type ChatStore = {
   reset: () => void
   renderedMessagesCount: number
   countAdd: () => void
+  setRendered: (message: MessageType) => void
 }
 
 export type ChatStoreLoader = {
@@ -34,6 +35,23 @@ export const useChatStore: UseBoundStore<StoreApi<ChatStore>> = create(
   persist(
     (set, get) => {
       const value: ChatStore = {
+        setRendered: inputMessage => {
+          set(store => {
+            return {
+              ...store,
+              messages: store.messages.map(message => {
+                if (message === inputMessage) {
+                  return {
+                    ...message,
+                    isRendered: true,
+                  }
+                }
+
+                return message
+              }),
+            }
+          })
+        },
         setNewMessageTuple: (newMessageTuple: boolean) => {
           set(state => {
             return {

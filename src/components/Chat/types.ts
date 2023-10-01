@@ -7,4 +7,5 @@ export type MessageType = {
   timestamp: number | Date
   author: Author
   text: string
+  isRendered: boolean
 }

@@ -61,7 +61,7 @@ export const useFlashMessages: UseBoundStore<StoreApi<FlashMessagesStore>> =
         })
       },
       messages: [],
-      add: (newFlashMessage, ttl = 2000) => {
+      add: (newFlashMessage, ttl = 3500) => {
         const messageId = v4()
         set(store => {
           return {

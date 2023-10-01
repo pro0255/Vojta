@@ -5,6 +5,7 @@ const createMessage = (message: string, author: Author): MessageType => {
     text: message,
     author: author,
     timestamp: new Date(),
+    isRendered: false,
   }
 }
 

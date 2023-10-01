@@ -6,7 +6,7 @@ import {
   useRef,
   useState,
 } from 'react'
-import { Author } from '@/components/Chat/types'
+import { MessageType } from '@/components/Chat/types'
 import { MessageView } from '@/components/Chat/ChatWrapper/MessageView'
 import { scroll } from '@/helpers'
 import { CopyButton } from '@/components/Chat/components/CopyButton'
@@ -14,13 +14,12 @@ import { BlueTextButton } from '@/components/DesignSystem/Actions/BlueTextButton
 import { AnimatePresence, motion } from 'framer-motion'
 
 type Props = {
-  timestamp: number | Date
-  author: Author
-  text: string
+  message: MessageType
   atStart?: () => void
   atEnd?: () => void
   isSlowMessage: boolean
   isRenderedImmediately?: boolean
+  setIsRendered: (message: MessageType) => void
 }
 
 const createGenerator = function* (
@@ -36,18 +35,25 @@ const createGenerator = function* (
 }
 
 export const SlowMessage: FC<Props> = ({
-  text,
-  author,
-  timestamp,
   atEnd,
   atStart,
   isSlowMessage,
+  setIsRendered,
+  message,
 }) => {
   const isRendered = useRef<boolean>(!isSlowMessage)
-  const [renderedText, setRenderedText] = useState(isSlowMessage ? '' : text)
+  const [renderedText, setRenderedText] = useState(
+    isSlowMessage ? '' : message.text
+  )
+
+  useEffect(() => {
+    if (!isSlowMessage) {
+      setIsRendered(message)
+    }
+  }, [isSlowMessage])
 
   const renderNow = () => {
-    setRenderedText(text)
+    setRenderedText(message.text)
     scroll.scrollToBottom()
     isRendered.current = true
     atEnd?.()
@@ -58,11 +64,11 @@ export const SlowMessage: FC<Props> = ({
       scroll.scrollToBottom()
 
       atStart?.()
-      const firstChar = text[0]
+      const firstChar = message.text[0]
       setRenderedText(firstChar)
 
       const renderRest = async () => {
-        const generator = createGenerator(text, setRenderedText)
+        const generator = createGenerator(message.text, setRenderedText)
         for (const renderChar of generator) {
           await new Promise(resolve => setTimeout(resolve, 50))
           if (!isRendered.current) {
@@ -72,25 +78,26 @@ export const SlowMessage: FC<Props> = ({
         }
         isRendered.current = true
         atEnd?.()
+        setIsRendered(message)
       }
 
       renderRest()
     }
-  }, [text])
+  }, [message.text])
 
   const isFooterContent = isSlowMessage && !isRendered.current
 
   return (
     <>
       <MessageView
-        timestamp={timestamp}
-        author={author}
+        timestamp={message.timestamp}
+        author={message.author}
         content={renderedText}
-        header={<CopyButton text={text} />}
+        header={<CopyButton text={message.text} />}
         footer={
           isSlowMessage ? (
             <AnimatePresence>
-              {renderedText !== text && (
+              {renderedText !== message.text && (
                 <motion.div
                   animate={{
                     opacity: isFooterContent ? 1 : 0,

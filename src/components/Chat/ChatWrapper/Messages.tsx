@@ -7,7 +7,7 @@ import {
   useChatStore,
 } from '@/components/Chat/store/chat'
 import { SlowMessage } from '@/components/Chat/components/SlowMessage'
-import { Author } from '@/components/Chat/types'
+import { Author, MessageType } from '@/components/Chat/types'
 import { useModelManager } from '@/Three/store/useModelManager'
 import { VojtaState } from '@/Three/store/types'
 import { scroll } from '@/helpers'
@@ -30,6 +30,7 @@ type UseMessages = {
   setVojtaTalking: () => void
   isRenderedLast: boolean
   isHydrated: boolean
+  setMessageAsRendered: (message: MessageType) => void
 }
 
 const setConversation = async (history: Array<HistoryMessage>) => {
@@ -42,13 +43,19 @@ const useMessages = (): UseMessages => {
     setVojtaState: modelManager.setVojtaState,
     vojtaState: modelManager.vojtaState,
   }))
-  const { renderedMessagesCount, countAdd, messages, setNewMessagesTuple } =
-    useChatStore(state => ({
-      messages: state.messages,
-      renderedMessagesCount: state.renderedMessagesCount,
-      countAdd: state.countAdd,
-      setNewMessagesTuple: state.setNewMessageTuple,
-    }))
+  const {
+    renderedMessagesCount,
+    countAdd,
+    messages,
+    setNewMessagesTuple,
+    setMessageAsRendered,
+  } = useChatStore(state => ({
+    messages: state.messages,
+    renderedMessagesCount: state.renderedMessagesCount,
+    countAdd: state.countAdd,
+    setNewMessagesTuple: state.setNewMessageTuple,
+    setMessageAsRendered: state.setRendered,
+  }))
 
   const isHydrated = useChatLoader(store => store.isHydrated)
 
@@ -98,6 +105,7 @@ const useMessages = (): UseMessages => {
   const isRenderedLast = renderedMessagesCount === messages.length
 
   return {
+    setMessageAsRendered,
     isRenderedLast,
     messages,
     setAsRendered,
@@ -113,6 +121,7 @@ export const Messages: FC = () => {
     setVojtaTalking,
     isRenderedLast,
     isHydrated,
+    setMessageAsRendered,
   } = useMessages()
 
   if (!isHydrated) {
@@ -135,17 +144,19 @@ export const Messages: FC = () => {
         <StartingConversations />
       </div>
 
-      <motion.ul className={'w-full'}>
+      <motion.ul className={'w-full mb-24'}>
         {messages.map((message, index) => {
           const isLastFromVojta =
             message.author === Author.Vojta && index === messages.length - 1
-          const isRenderingMessage = isLastFromVojta && !isRenderedLast
+          const isRenderingMessage =
+            isLastFromVojta && !isRenderedLast && !message.isRendered
 
           return (
             <AnimatedListItem key={`${message.timestamp}`}>
               <SlowMessage
+                message={message}
+                setIsRendered={setMessageAsRendered}
                 isSlowMessage={isRenderingMessage}
-                {...message}
                 atStart={setVojtaTalking}
                 atEnd={setAsRendered}
               />
