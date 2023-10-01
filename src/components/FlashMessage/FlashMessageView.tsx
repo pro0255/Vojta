@@ -1,12 +1,35 @@
 import { FlashMessageType } from '@/components/FlashMessage/flashMessagesStore'
 import { GrayText } from '@/components/DesignSystem'
 import { BoldText } from '@/components/DesignSystem/Text/BoldText'
+import { useEffect } from 'react'
 
-type Props = FlashMessageType
+type Props = FlashMessageType & {
+  onHover: (messageId: string | null) => void
+  onCloseClick: (messageId: string) => void
+  removeTrigger: boolean
+  removeFromManualRemove: (messageId: string) => void
+}
 
-export const FlashMessageView = ({ id, title, content }: Props) => {
+export const FlashMessageView = ({
+  id,
+  title,
+  content,
+  onHover,
+  onCloseClick,
+  removeTrigger,
+  removeFromManualRemove,
+}: Props) => {
+  useEffect(() => {
+    if (removeTrigger) {
+      onCloseClick(id)
+      removeFromManualRemove(id)
+    }
+  }, [removeTrigger])
+
   return (
     <div
+      onMouseOver={() => onHover(id)}
+      onMouseLeave={() => onHover(null)}
       className={
         'flex flex-row bg-white shadow-2xl rounded w-[400px] max-h-[150px] overflow-hidden'
       }
@@ -22,6 +45,7 @@ export const FlashMessageView = ({ id, title, content }: Props) => {
         </main>
       </div>
       <button
+        onClick={() => onCloseClick(id)}
         className={
           'transition-all duration-300 ease-in-out w-[25%] border-l-2 border-slate-100 hover:bg-slate-100 focus:bg-slate-100'
         }
