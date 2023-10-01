@@ -1,10 +1,11 @@
 import { Author, MessageType } from '@/components/Chat/types'
+import { date } from '@/helpers'
 
 const createMessage = (message: string, author: Author): MessageType => {
   return {
     text: message,
     author: author,
-    timestamp: new Date(),
+    timestamp: date.now(),
     isRendered: false,
   }
 }

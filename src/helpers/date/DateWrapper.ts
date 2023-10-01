@@ -5,7 +5,7 @@ export class DateWrapper {
   constructor() {}
 
   now = () => {
-    return new Date().getMilliseconds()
+    return new Date().getTime()
   }
 
   format = (dateValue: number | Date) => {
@@ -13,6 +13,6 @@ export class DateWrapper {
       return dateFnsFormat(dateValue, DateFormat.localized)
     }
 
-    return `${dateValue}`
+    return dateFnsFormat(dateValue, DateFormat.localized)
   }
 }
