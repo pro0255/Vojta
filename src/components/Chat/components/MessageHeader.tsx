@@ -19,7 +19,7 @@ export const MessageHeader = ({ timestamp, header, author }: Props) => {
       className="flex flex-row justify-between"
     >
       {author && <Avatar author={author} />}
-      <div className={'flex flex-row justify-around items-center'}>
+      <div className={'mx-3 flex flex-row justify-around items-center'}>
         {header && isHovered && <span className={'mx-3'}>{header}</span>}
         {timestamp && <DateView date={timestamp} />}
       </div>

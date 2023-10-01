@@ -8,7 +8,7 @@ type Props = {
 }
 
 const ActionsContainer = ({ children }: Props) => {
-  const [isHovered, setIsHovered] = useState(false)
+  const [isHovered, setIsHovered] = useState(true)
 
   return (
     <motion.button
@@ -24,7 +24,9 @@ const ActionsContainer = ({ children }: Props) => {
       className="z-50 border-solid border-2 border-slate-200 p-2 rounded-full fixed bottom-[20%] right-[5%]"
     >
       {isHovered ? (
-        <div className={'flex flex-row items-center justify-center'}>
+        <div
+          className={'flex flex-row items-center justify-center rounded-full'}
+        >
           {children}
         </div>
       ) : (
