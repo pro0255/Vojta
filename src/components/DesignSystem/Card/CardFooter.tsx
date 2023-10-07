@@ -12,7 +12,7 @@ export const CardFooter: FC<CardFooterProps> = ({ tags }) => {
         {tags.map(tag => {
           return (
             <li key={tag}>
-              <Tag>{tag}</Tag>
+              <Tag className={'bg-slate-200'}>{tag}</Tag>
             </li>
           )
         })}

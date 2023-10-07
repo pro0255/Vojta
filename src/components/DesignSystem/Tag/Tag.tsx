@@ -6,7 +6,5 @@ type Props = {
 }
 
 export const Tag: FC<Props> = ({ children, className }) => {
-  return (
-    <span className={`p-2 ml-2 bg-slate-100 ${className}`}>{children}</span>
-  )
+  return <span className={`p-2 ml-2 ${className}`}>{children}</span>
 }
