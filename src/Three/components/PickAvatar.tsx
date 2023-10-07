@@ -139,38 +139,6 @@ const Slide: FC<SlideProps> = ({
   )
 }
 
-const ArrowLeft = () => {
-  return (
-    <div
-      style={{
-        content: '',
-        borderLeft: '2px solid #000',
-        borderBottom: '2px solid #000',
-        width: '20px',
-        height: '20px',
-        transform: 'rotate(45deg)',
-        cursor: 'pointer',
-        display: 'block',
-      }}
-    ></div>
-  )
-}
-export const ArrowRight = () => {
-  return (
-    <div
-      style={{
-        content: '',
-        borderRight: '2px solid #000',
-        borderTop: '2px solid #000',
-        width: '20px',
-        height: '20px',
-        transform: 'rotate(45deg)',
-        cursor: 'pointer',
-        display: 'block',
-      }}
-    ></div>
-  )
-}
 const getTransform = (
   thisIndex: number,
   activeIndex: number,

@@ -1,3 +1,5 @@
+'use client'
+
 import { Card, CardFooter, CardMain } from '@/components/DesignSystem'
 import { WorkType } from '@/work/types'
 import Image from 'next/image'
@@ -5,6 +7,7 @@ import { FC } from 'react'
 import { CardHeader } from '@/components/DesignSystem/Card/CardHeader'
 import { DateRangeView } from '@/components/DesignSystem/Date/DateRangeView'
 import { WorkTypeBadge } from '@/components/Work/WorkTypeBadge'
+import { CopyButton } from '@/components/Chat/components/CopyButton'
 
 type Props = {
   item: WorkType
@@ -19,10 +22,13 @@ export const Item: FC<Props> = ({ item }) => {
           headerSlot={
             <CardHeader
               Right={
-                <>
+                <div className={'flex flex-row items-center justify-center'}>
+                  <span className={'mr-2'}>
+                    <CopyButton text={link} />
+                  </span>
                   <DateRangeView start={start} end={end} />{' '}
                   <WorkTypeBadge type={name} />
-                </>
+                </div>
               }
             />
           }

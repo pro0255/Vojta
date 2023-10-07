@@ -15,7 +15,7 @@ export const Card: FC<Props> = ({
   return (
     <div
       className={`transition-all duration-200 p-5 w-full shadow-lg bg-slate-50 ${
-        isDisabled ? 'disabled' : 'hover:hoveredBg'
+        isDisabled ? 'disabled' : 'hover:hoveredBg focus:hoveredBg'
       }`}
     >
       {headerSlot && (

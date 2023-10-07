@@ -13,7 +13,9 @@ export const StyledLink: FC<ComponentProps<typeof Link>> = props => {
     <Link
       {...props}
       className={`transition-all duration-200 block p-1 w-full ${
-        isActive ? 'bg-slate-50' : 'hover:hoveredWithoutBorder'
+        isActive
+          ? 'bg-slate-50'
+          : 'hover:hoveredWithoutBorder focus:hoveredWithoutBorder'
       }`}
     />
   )

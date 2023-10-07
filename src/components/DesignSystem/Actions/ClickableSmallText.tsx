@@ -6,7 +6,10 @@ type Props = {
 
 export const ClickableSmallText = ({ children, ...props }: Props) => {
   return (
-    <button {...props} className={'text-xs text-black hover:underline'}>
+    <button
+      {...props}
+      className={'text-xs text-black hover:underline focus:underline'}
+    >
       {children}
     </button>
   )

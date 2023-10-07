@@ -81,7 +81,9 @@ export const Input = () => {
       <button disabled={isSendDisabled} onMouseDown={submit} onKeyDown={submit}>
         <AiOutlineSend
           className={`${
-            isSendDisabled ? 'disabledIcon' : 'normalIcon hover:hoveredIcon'
+            isSendDisabled
+              ? 'disabledIcon'
+              : 'normalIcon hover:hoveredIcon focus:hoveredIcon'
           }`}
           size={25}
         />
