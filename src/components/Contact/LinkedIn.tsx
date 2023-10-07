@@ -1,10 +1,11 @@
-import { FooterButton } from '@/components/DesignSystem/FooterButtons/FooterButton'
+import { FooterAnchor } from '@/components/DesignSystem/FooterButtons/FooterAnchor'
 import { BiLogoLinkedin } from 'react-icons/bi'
 import { ICON_SIZE } from '@/components/Contact/config'
 
 export const LinkedIn = () => {
   return (
-    <FooterButton
+    <FooterAnchor
+      link={'https://www.linkedin.com/in/vojta-prokop-91b71b1a0/'}
       rawIcon
       text={'LinkedIn'}
       alt={'Vojtech Prokop - LinkedIn'}

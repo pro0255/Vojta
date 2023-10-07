@@ -1,10 +1,11 @@
-import { FooterButton } from '@/components/DesignSystem/FooterButtons/FooterButton'
+import { FooterAnchor } from '@/components/DesignSystem/FooterButtons/FooterAnchor'
 import { BiLogoGmail } from 'react-icons/bi'
 import { ICON_SIZE } from '@/components/Contact/config'
 
 export const Gmail = () => {
   return (
-    <FooterButton
+    <FooterAnchor
+      link={'mailto:prokop.vojtech@gmail.com?subject=Hello&body=Hello Vojta!'}
       rawIcon
       text={'Gmail'}
       alt={'Vojtech Prokop - Gmail Contact'}
