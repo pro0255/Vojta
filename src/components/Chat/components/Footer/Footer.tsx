@@ -17,11 +17,12 @@ const useFooter = () => {
   return {
     isVisible: isVisible && !isNewMessageTuple,
     toggle,
+    cannotOpen: isNewMessageTuple,
   }
 }
 
 export const Footer = () => {
-  const { toggle, isVisible } = useFooter()
+  const { toggle, isVisible, cannotOpen } = useFooter()
 
   return (
     <motion.footer
@@ -35,11 +36,13 @@ export const Footer = () => {
         },
       }}
       animate={isVisible ? 'visible' : 'hidden'}
-      className="fixed bottom-0 left-0 w-[calc(100%)] bg-slate-100 border-t-2 border-b-slate-100 z-40 flex flex-col items-center justify-center z-40"
+      className={`fixed bottom-0 left-0 w-[calc(100%)] bg-slate-100 z-40 flex flex-col items-center justify-center z-40 ${
+        cannotOpen ? 'disabled' : ''
+      }`}
     >
       <div className={'absolute top-[-20px] left-[50%]'}>
         <button onClick={toggle}>
-          <CircleContainer>
+          <CircleContainer isDisabled={cannotOpen}>
             {isVisible ? <AiOutlineArrowDown /> : <AiOutlineArrowUp />}
           </CircleContainer>
         </button>

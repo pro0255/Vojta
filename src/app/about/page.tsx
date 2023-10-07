@@ -70,10 +70,10 @@ const About = () => {
       <hr className="mb-10" />
 
       <section className="w-full flex flex-row items-center justify-between">
-        <button className="transition-all duration-200 hover:border-black hover:bg-slate-200 mr-2 w-full p-3 rounded-b border-solid border-2 border-slate-100">
+        <button className="transition-all duration-200 hover:hovered normal mr-2 w-full p-3 rounded-b">
           💼 Looking for a job
         </button>
-        <button className="transition-all duration-200 hover:border-black hover:bg-slate-200 ml-2 w-full p-3 rounded-b border-solid border-2 border-slate-100 ">
+        <button className="transition-all duration-200 hover:hovered normal mr-2 w-full p-3 rounded-b">
           🌱 Open to learn something new
         </button>
       </section>

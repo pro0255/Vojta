@@ -14,7 +14,7 @@ export const FooterButton: FC<Props> = ({
   rawIcon = false,
 }) => {
   return (
-    <button className="transition-all duration-200 hover:border-black focus:border-black hover:bg-slate-200 min-w-xl p-3 rounded-b border-solid border-2 border-b-slate-100 flex flex-row items-center justify-evenly">
+    <button className="transition-all duration-200 normal bg-white hover:hovered focus:hovered min-w-xl p-3 rounded-b flex flex-row items-center justify-evenly">
       {rawIcon ? (
         <span>{icon}</span>
       ) : (

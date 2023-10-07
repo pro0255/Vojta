@@ -10,7 +10,7 @@ import { MessageType } from '@/components/Chat/types'
 import { MessageView } from '@/components/Chat/ChatWrapper/MessageView'
 import { scroll } from '@/helpers'
 import { CopyButton } from '@/components/Chat/components/CopyButton'
-import { BlueTextButton } from '@/components/DesignSystem/Actions/BlueTextButton'
+import { ClickableSmallText } from '@/components/DesignSystem/Actions/ClickableSmallText'
 import { AnimatePresence, motion } from 'framer-motion'
 
 type Props = {
@@ -107,9 +107,9 @@ export const SlowMessage: FC<Props> = ({
                     'mt-5 w-full flex flex-row items-center justify-center'
                   }
                 >
-                  <BlueTextButton onClick={renderNow}>
+                  <ClickableSmallText onClick={renderNow}>
                     Render immediately
-                  </BlueTextButton>
+                  </ClickableSmallText>
                 </motion.div>
               )}
             </AnimatePresence>

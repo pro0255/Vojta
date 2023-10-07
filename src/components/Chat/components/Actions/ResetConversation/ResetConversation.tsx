@@ -1,4 +1,4 @@
-import { BlueTextButton } from '@/components/DesignSystem/Actions/BlueTextButton'
+import { ClickableSmallText } from '@/components/DesignSystem/Actions/ClickableSmallText'
 import { useResetConversation } from '@/components/Chat/components/Actions/ResetConversation/useResetConversation'
 import { useChatStore } from '@/components/Chat/store/chat'
 
@@ -14,5 +14,7 @@ export const ResetConversation = () => {
     return null
   }
 
-  return <BlueTextButton onClick={reset}>Reset conversation</BlueTextButton>
+  return (
+    <ClickableSmallText onClick={reset}>Reset conversation</ClickableSmallText>
+  )
 }

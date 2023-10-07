@@ -47,7 +47,7 @@ export const FlashMessageView = ({
       <button
         onClick={() => onCloseClick(id)}
         className={
-          'transition-all duration-300 ease-in-out w-[25%] border-l-2 border-slate-100 hover:bg-slate-100 focus:bg-slate-100'
+          'transition-all duration-300 ease-in-out w-[25%] border-l-2 border-slate-100 hover:hoveredWithoutBorder focus:hoveredWithoutBorder'
         }
       >
         <GrayText>Close</GrayText>

@@ -27,6 +27,7 @@ module.exports = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+
       minWidth: {
         '3xl': '48rem',
         '2xl': '30rem',

@@ -12,7 +12,7 @@ export const CopyButton = ({ text }: Props) => {
     <AiOutlineCopy
       onClick={copyToClipboard}
       size={20}
-      className={'fill-gray-500 hover:fill-black'}
+      className={'normalIcon hover:hoveredIcon'}
     />
   )
 }

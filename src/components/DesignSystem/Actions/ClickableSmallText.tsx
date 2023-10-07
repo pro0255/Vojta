@@ -4,7 +4,7 @@ type Props = {
   children: ReactNode
 } & ButtonHTMLAttributes<HTMLButtonElement>
 
-export const BlueTextButton = ({ children, ...props }: Props) => {
+export const ClickableSmallText = ({ children, ...props }: Props) => {
   return (
     <button {...props} className={'text-xs text-black hover:underline'}>
       {children}

@@ -3,6 +3,44 @@
 @tailwind utilities;
 
 
+@layer components {
+    .hoveredWithoutBorder {
+        @apply bg-slate-100 cursor-pointer
+    }
+
+
+    .hovered {
+        @apply border-2 border-black fill-black cursor-pointer
+
+    }
+
+    .hoveredBg {
+        @apply bg-white cursor-pointer
+    }
+
+
+    .normal {
+        @apply bg-slate-50 border-2 border-slate-200
+    }
+
+    .disabled {
+        @apply opacity-50 cursor-not-allowed;
+    }
+
+    .normalIcon {
+        @apply fill-slate-500
+    }
+
+    .hoveredIcon {
+        @apply fill-black cursor-pointer
+    }
+
+    .disabledIcon {
+        @apply fill-slate-500 opacity-50
+    }
+
+}
+
 h1, h2, h3, h4, h5, h6 {
     font-size: revert;
 }

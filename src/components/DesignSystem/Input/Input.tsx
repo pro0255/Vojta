@@ -63,7 +63,7 @@ export const Input = () => {
 
   return (
     <div
-      className="transition-all duration-200 p-4 rounded-lg flex flex-row border-2 border-slate-100 bg-white hover:border-black focus-within:border-black"
+      className="transition-all duration-200 p-4 rounded-lg flex flex-row normal bg-white focus-within:border-black"
       style={{
         maxWidth: '65%',
         minWidth: '65%',
@@ -80,7 +80,9 @@ export const Input = () => {
       />
       <button disabled={isSendDisabled} onMouseDown={submit} onKeyDown={submit}>
         <AiOutlineSend
-          className={`${isSendDisabled ? 'fill-slate-200' : 'fill-black'}`}
+          className={`${
+            isSendDisabled ? 'disabledIcon' : 'normalIcon hover:hoveredIcon'
+          }`}
           size={25}
         />
       </button>

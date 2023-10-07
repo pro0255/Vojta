@@ -15,8 +15,8 @@ export const CircleContainer = ({
   return (
     <div
       onClick={onClick}
-      className={`transition-all duration-200 p-2 rounded-full border-solid border-2 bg-slate-100 ${
-        isDisabled ? 'opacity-50' : 'hover:border-black'
+      className={`transition-all duration-200 p-2 rounded-full normal ${
+        isDisabled ? 'disabled' : 'hover:hovered'
       }`}
     >
       {children}

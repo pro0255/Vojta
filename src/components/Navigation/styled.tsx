@@ -12,8 +12,8 @@ export const StyledLink: FC<ComponentProps<typeof Link>> = props => {
   return (
     <Link
       {...props}
-      className={`transition-all	duration-200 block p-1 w-full ${
-        isActive ? 'bg-slate-100' : 'hover:bg-slate-50'
+      className={`transition-all duration-200 block p-1 w-full ${
+        isActive ? 'bg-slate-50' : 'hover:hoveredWithoutBorder'
       }`}
     />
   )
