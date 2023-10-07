@@ -18,7 +18,6 @@ import { createHistory } from '@/components/Chat/utils/createHistory'
 import { MessagesContainer } from '@/components/Chat/ChatWrapper/MessagesContainer'
 import { motion } from 'framer-motion'
 import { VojtaThinking } from '@/components/Chat/components/Vojta/VojtaThinking'
-import { Actions } from '@/components/Chat/components/Actions/Actions'
 import { VojtaGPTText } from '@/components/Chat/components/VojtaGPTText'
 import { StartingConversations } from '@/components/Chat/components/StartingConversations/StartingConversations'
 import { AnimatedListItem } from '@/components/Chat/components/AnimatedListItem'
@@ -168,8 +167,6 @@ export const Messages: FC = () => {
           <VojtaThinking />
         </AnimatedListItem>
       </motion.ul>
-
-      <Actions />
     </MessagesContainer>
   )
 }

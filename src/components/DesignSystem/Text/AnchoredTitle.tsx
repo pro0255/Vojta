@@ -27,10 +27,7 @@ export const AnchoredTitle = ({ href, children }: Props) => {
       {children}
 
       {isHovered && (
-        <span
-          onClick={copyToClipboard}
-          className={'text-gray-500 hover:text-black'}
-        >
+        <span onClick={copyToClipboard} className={'hover:text-blue-700'}>
           {' '}
           #
         </span>

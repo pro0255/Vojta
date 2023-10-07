@@ -1,22 +1,59 @@
 import { useLayoutEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
 
-export const useIsScrollbar = () => {
-  const [isScrollbar, seIsScrollbar] = useState<boolean>(false)
+type UseIsScrollbarValue = {
+  isScrollbar: boolean
+  canScrollBottom: boolean
+  canScrollTop: boolean
+}
+
+const calculateScrollAttributes = (): UseIsScrollbarValue | null => {
+  const htmlElement = document.querySelector('html')
+
+  if (!htmlElement) {
+    return null
+  }
+
+  const heightWithScroll = htmlElement.scrollHeight
+  const clientSeeHeight = htmlElement.clientHeight
+
+  const canScrollBottom =
+    htmlElement.scrollHeight -
+      htmlElement.scrollTop -
+      htmlElement.clientHeight >
+    0
+
+  const canScrollTop = htmlElement.scrollTop > 0
+  const isScrollbar = heightWithScroll > clientSeeHeight
+
+  return {
+    canScrollBottom,
+    canScrollTop,
+    isScrollbar,
+  }
+}
+
+export const useIsScrollbar = (): UseIsScrollbarValue => {
+  const [scroll, setScroll] = useState<UseIsScrollbarValue | null>(() =>
+    calculateScrollAttributes()
+  )
+
   const pathname = usePathname()
 
   useLayoutEffect(() => {
-    const htmlElement = document.querySelector('html')
-
-    if (!htmlElement) {
-      return
+    function listenToScroll() {
+      setScroll(calculateScrollAttributes())
     }
 
-    const heightWithScroll = htmlElement.scrollHeight
-    const clientSeeHeight = htmlElement.clientHeight
-
-    seIsScrollbar(heightWithScroll > clientSeeHeight)
+    window.addEventListener('scroll', listenToScroll)
+    return () => {
+      window.removeEventListener('scroll', listenToScroll)
+    }
   }, [pathname])
 
-  return isScrollbar
+  return {
+    canScrollBottom: scroll?.canScrollBottom ?? false,
+    canScrollTop: scroll?.canScrollTop ?? false,
+    isScrollbar: scroll?.isScrollbar ?? false,
+  }
 }

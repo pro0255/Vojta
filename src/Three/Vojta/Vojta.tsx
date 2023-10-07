@@ -7,7 +7,7 @@ import { usePathname } from 'next/navigation'
 import { ModelRenderer } from '@/Three/ModelRenderer/ModelRenderer'
 
 export const Vojta = () => {
-  const isScrollBar = useIsScrollbar()
+  const { isScrollbar } = useIsScrollbar()
   const pathName = usePathname()
 
   if (!isScrollBar && pathName !== '/') {
