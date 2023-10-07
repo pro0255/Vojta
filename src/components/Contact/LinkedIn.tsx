@@ -1,12 +1,14 @@
 import { FooterButton } from '@/components/DesignSystem/FooterButtons/FooterButton'
-import { createPath } from '@/components/Contact/utils'
+import { BiLogoLinkedin } from 'react-icons/bi'
+import { ICON_SIZE } from '@/components/Contact/config'
 
 export const LinkedIn = () => {
   return (
     <FooterButton
+      rawIcon
       text={'LinkedIn'}
       alt={'Vojtech Prokop - LinkedIn'}
-      icon={createPath('linkedin.jpg')}
+      icon={<BiLogoLinkedin size={ICON_SIZE} />}
     />
   )
 }

@@ -1,12 +1,14 @@
 import { FooterButton } from '@/components/DesignSystem/FooterButtons/FooterButton'
-import { createPath } from '@/components/Contact/utils'
+import { BiLogoGithub } from 'react-icons/bi'
+import { ICON_SIZE } from '@/components/Contact/config'
 
 export const GitHub = () => {
   return (
     <FooterButton
+      rawIcon
       text={'GitHub'}
       alt={'Vojtech Prokop - GitHub'}
-      icon={createPath('github.png')}
+      icon={<BiLogoGithub size={ICON_SIZE} />}
     />
   )
 }

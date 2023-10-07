@@ -1,5 +1,6 @@
 import { FC } from 'react'
 import Image from 'next/image'
+import { BsArrowUpRight } from 'react-icons/bs'
 
 export type InteractiveItemProps = {
   text: string
@@ -18,13 +19,14 @@ export const InteractiveItem: FC<InteractiveItemProps> = ({
       href={link}
     >
       <Image
-        className="mr-1"
+        className="mr-2"
         width={16}
         height={16}
         alt={thumbnailLink}
         src={thumbnailLink}
       />
       {text}
+      <BsArrowUpRight className={'ml-1 fill-slate-400'} />
     </a>
   )
 }
