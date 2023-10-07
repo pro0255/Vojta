@@ -80,7 +80,7 @@ export const Input = () => {
       />
       <button disabled={isSendDisabled} onMouseDown={submit} onKeyDown={submit}>
         <AiOutlineSend
-          className={`${isSendDisabled ? 'fill-gray-500' : 'fill-blue-500'}`}
+          className={`${isSendDisabled ? 'fill-slate-200' : 'fill-black'}`}
           size={25}
         />
       </button>

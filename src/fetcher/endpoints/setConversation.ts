@@ -6,6 +6,7 @@ export const setConversation = (history: Array<HistoryMessage>) => {
   return fetch(getUrl('/set-conversation'), {
     headers: HEADERS,
     method: 'PUT',
+    credentials: 'include',
     body: JSON.stringify(history),
   })
 }
