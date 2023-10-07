@@ -14,7 +14,7 @@ const About = () => {
       <hr />
 
       <section>
-        <Header.Two>What I offer</Header.Two>
+        <Header.Two name={'what-i-offer'}>What I offer</Header.Two>
         <Paragraph>
           I possess expertise in various domains based on my current
           experiences. Primarily, my knowledge revolves around frontend
@@ -48,7 +48,7 @@ const About = () => {
           all the new pokemons.
         </Paragraph>
 
-        <Header.Three>Data world</Header.Three>
+        <Header.Three name={'data-world'}>Data world</Header.Three>
         <Paragraph>
           I possess the ability to perform basic Exploratory Data Analysis (EDA)
           and subsequently select either a classic or advanced model, including

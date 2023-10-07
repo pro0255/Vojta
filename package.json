@@ -23,6 +23,7 @@
     "fp-ts": "^2.16.0",
     "framer-motion": "^10.16.4",
     "langchain": "^0.0.97",
+    "lodash": "^4.17.21",
     "next": "13.4.5",
     "postcss": "8.4.24",
     "react": "18.2.0",
@@ -37,6 +38,7 @@
   },
   "devDependencies": {
     "@faker-js/faker": "^8.0.2",
+    "@types/lodash": "^4.14.199",
     "prettier": "^2.8.8"
   }
 }
