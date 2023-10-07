@@ -15,6 +15,7 @@ export const InteractiveItem: FC<InteractiveItemProps> = ({
 }) => {
   return (
     <a
+      target="_blank"
       className="transition-all duration-200 normal hover:hovered focus:hovered ml-1 py-0.5 px-1.5 rounded inline-flex items-center justify-center"
       href={link}
     >
