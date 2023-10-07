@@ -8,7 +8,10 @@ import { ContactContainer } from '@/components'
 const Home = () => {
   return (
     <main>
-      <Header.One>hey there, stranger 👋🏼</Header.One>
+      <div className={'flex flex-row'}>
+        <Header.One>hey there, stranger</Header.One>{' '}
+        <Header.One className={'ml-5 animate-wavingHand'}>👋🏼</Header.One>
+      </div>
       <Paragraph>
         <NormalText>
           I am a software engineer specializing in frontend development,
