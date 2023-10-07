@@ -1,4 +1,4 @@
-import { GrayText, HeaderTwo } from '@/components/DesignSystem'
+import { GrayText, HeaderThree } from '@/components/DesignSystem'
 import { FC, ReactNode } from 'react'
 
 type CardMainProps = {
@@ -13,7 +13,7 @@ export const CardMain: FC<CardMainProps> = ({ image, description, title }) => {
       {image && <div className="mr-10">{image}</div>}
       <div className="flex flex-col">
         <div>
-          <HeaderTwo className="">{title}</HeaderTwo>
+          <HeaderThree className="">{title}</HeaderThree>
         </div>
         <div>
           <GrayText>{description}</GrayText>
