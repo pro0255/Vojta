@@ -14,7 +14,7 @@ const About = () => {
       <hr />
 
       <section>
-        <Header.Two name={'what-i-offer'}>What I offer</Header.Two>
+        <Header.Two isAnchored>What I offer</Header.Two>
         <Paragraph>
           I possess expertise in various domains based on my current
           experiences. Primarily, my knowledge revolves around frontend
@@ -22,7 +22,7 @@ const About = () => {
           data-related tasks, owing to my academic background in this field.
         </Paragraph>
 
-        <Header.Three>Frontend development</Header.Three>
+        <Header.Three isAnchored>Frontend development</Header.Three>
         <Paragraph>
           I possess the capability to handle day-to-day frontend tasks, wherein
           my focus lies in delivering solutions derived from thorough analysis.
@@ -39,7 +39,7 @@ const About = () => {
           MobX, Apollo Client, and others.
         </Paragraph>
 
-        <Header.Three>Software architect</Header.Three>
+        <Header.Three isAnchored>Software architect</Header.Three>
         <Paragraph>
           Although I have limited practical experience in this domain, I have
           invested significant effort in studying common books and gaining a
@@ -48,7 +48,7 @@ const About = () => {
           all the new pokemons.
         </Paragraph>
 
-        <Header.Three name={'data-world'}>Data world</Header.Three>
+        <Header.Three isAnchored>Data world</Header.Three>
         <Paragraph>
           I possess the ability to perform basic Exploratory Data Analysis (EDA)
           and subsequently select either a classic or advanced model, including
@@ -61,7 +61,7 @@ const About = () => {
       <hr className="mt-10" />
 
       <section className="pb-10">
-        <Header.Two>Summary</Header.Two>
+        <Header.Two isAnchored>Summary</Header.Two>
         <Paragraph>
           <EmojiList items={summary} />
         </Paragraph>
