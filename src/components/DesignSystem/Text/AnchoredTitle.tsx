@@ -10,13 +10,8 @@ type Props = {
 }
 
 export const AnchoredTitle = ({ href, children }: Props) => {
-  const _copyToClipboard = useCreateCopyToClipboard(prefixWithHost(href))
+  const copyToClipboard = useCreateCopyToClipboard(prefixWithHost(href))
   const [isHovered, setIsHovered] = useState(false)
-
-  const copyToClipboard = (e: React.MouseEvent<HTMLSpanElement>) => {
-    e.preventDefault()
-    _copyToClipboard()
-  }
 
   return (
     <a

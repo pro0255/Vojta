@@ -16,7 +16,7 @@ export const HeaderOne: FC<Props> = ({
   ...props
 }) => {
   return (
-    <h1 {...props} id={name}>
+    <h1 className={'font-black'} {...props} id={name}>
       <AnchorChildren name={name} isAnchored={isAnchored}>
         {children}
       </AnchorChildren>
@@ -31,7 +31,7 @@ export const HeaderTwo: FC<Props> = ({
   ...props
 }) => {
   return (
-    <h2 className="mt-5" {...props} id={name}>
+    <h2 className="mt-20 font-black" {...props} id={name}>
       <AnchorChildren name={name} isAnchored={isAnchored}>
         {children}
       </AnchorChildren>
@@ -46,7 +46,7 @@ export const HeaderThree: FC<Props> = ({
   ...props
 }) => {
   return (
-    <h3 className="mt-4" {...props} id={name}>
+    <h3 className="mt-12 font-black" {...props} id={name}>
       <AnchorChildren name={name} isAnchored={isAnchored}>
         {children}
       </AnchorChildren>
