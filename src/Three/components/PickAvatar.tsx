@@ -120,7 +120,7 @@ const Slide: FC<SlideProps> = ({
       }}
     >
       <div style={{ height: '500px' }}>
-        <Canvas camera={{ fov: 30 }}>
+        <Canvas camera={{ fov: 25 }}>
           <pointLight position={[5, 10, 10]} />
           <ambientLight intensity={1} />
           {avatar}
