@@ -16,7 +16,7 @@ export const Item: FC<Props> = ({ item }) => {
   const { title, tags, description, thumbnail, link, start, end, name } = item
 
   return (
-    <a href={link} target={'_blank'}>
+    <a className={'w-full'} href={link} target={'_blank'}>
       <li className="w-full mt-2">
         <Card
           headerSlot={

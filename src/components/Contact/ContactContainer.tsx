@@ -6,7 +6,7 @@ import { GitHub } from '@/components/Contact/GitHub'
 
 export const ContactContainer: FC = () => {
   return (
-    <div className="p-5 flex flex-row justify-around">
+    <div className="p-5 grid grid-cols-2 2xl:grid-cols-4 gap-4 justify-around">
       <LinkedIn />
       <Gmail />
       <Twitter />

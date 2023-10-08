@@ -8,10 +8,10 @@ type CardFooterProps = {
 export const CardFooter: FC<CardFooterProps> = ({ tags }) => {
   return (
     <div className="flex flex-row justify-between">
-      <ul className="flex flex-row">
+      <ul className="flex flex-row flex-wrap">
         {tags.map(tag => {
           return (
-            <li key={tag}>
+            <li className={'mt-4'} key={tag}>
               <Tag className={'bg-slate-200'}>{tag}</Tag>
             </li>
           )

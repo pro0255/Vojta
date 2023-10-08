@@ -5,5 +5,5 @@ type Props = {
 }
 
 export const Paragraph: FC<Props> = ({ children }) => {
-  return <p className="mt-5">{children}</p>
+  return <p className="mt-5 break-words">{children}</p>
 }

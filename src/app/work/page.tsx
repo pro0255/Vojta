@@ -21,7 +21,7 @@ const useWork = () => {
 const Work = () => {
   const { work } = useWork()
   return (
-    <main>
+    <main className={'w-full'}>
       <List work={work} />
     </main>
   )

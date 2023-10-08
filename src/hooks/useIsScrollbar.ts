@@ -1,4 +1,4 @@
-import { useLayoutEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
 
 type UseIsScrollbarValue = {
@@ -40,7 +40,7 @@ export const useIsScrollbar = (): UseIsScrollbarValue => {
 
   const pathname = usePathname()
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     function listenToScroll() {
       setScroll(calculateScrollAttributes())
     }

@@ -5,8 +5,6 @@ type Props = {
 }
 export const NotChatPageContentContainer: FC<Props> = ({ children }) => {
   return (
-    <div className="mt-36 mb-10 flex justify-center flex-row mx-auto">
-      {children}
-    </div>
+    <div className="mt-36 mb-10 flex justify-center flex-row">{children}</div>
   )
 }

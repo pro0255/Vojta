@@ -3,7 +3,7 @@ import { posts } from '@/blog'
 
 const Blog = () => {
   return (
-    <main>
+    <main className={'w-full'}>
       <List posts={posts} />
     </main>
   )
