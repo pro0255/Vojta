@@ -18,7 +18,7 @@ export const SmNavigation = () => {
             onClick={() => setIsVisible(true)}
             className={'mr-[10%] hover:text-blue-700'}
           >
-            <AiOutlineMenu />
+            <AiOutlineMenu size={25} />
           </button>
         )}
 
@@ -39,7 +39,7 @@ export const SmNavigation = () => {
                     className={'mr-[10%] hover:text-blue-700'}
                     onClick={() => setIsVisible(false)}
                   >
-                    <AiOutlineClose />
+                    <AiOutlineClose size={25} />
                   </button>
                 </header>
                 <main className={'mt-5'}>
