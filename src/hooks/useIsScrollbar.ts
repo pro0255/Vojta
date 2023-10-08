@@ -45,7 +45,7 @@ export const useIsScrollbar = (): UseIsScrollbarValue => {
       setScroll(calculateScrollAttributes())
     }
 
-    calculateScrollAttributes()
+    setScroll(calculateScrollAttributes())
 
     window.addEventListener('scroll', listenToScroll)
     return () => {
