@@ -6,7 +6,7 @@ type Props = {
 
 export const GrayText: FC<Props> = ({ children, ...props }) => {
   return (
-    <span {...props} className="text-sm text-gray-500">
+    <span {...props} className="text-sm text-gray-500 break-all">
       {children}
     </span>
   )

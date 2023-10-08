@@ -5,9 +5,9 @@ type Props = {
   className?: string
   style?: CSSProperties
 }
-export const BoldText: FC<Props> = ({ children, ...props }) => {
+export const BoldText: FC<Props> = ({ children, className, ...props }) => {
   return (
-    <span className={'text-base text-black'} {...props}>
+    <span className={`text-bold text-black break-all ${className}`} {...props}>
       {children}
     </span>
   )
