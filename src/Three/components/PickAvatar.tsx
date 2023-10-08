@@ -122,12 +122,11 @@ const Slide: FC<SlideProps> = ({
       <div style={{ height: '500px' }}>
         <Canvas camera={{ fov: 30 }}>
           <pointLight position={[5, 10, 10]} />
-
           <ambientLight intensity={1} />
           {avatar}
         </Canvas>
       </div>
-      <div className={'flex flex-col items-center'}>
+      <div className={'mt-10 flex flex-col items-center'}>
         <HeaderThree>{personaName}</HeaderThree>
         <Paragraph>
           <NormalText
@@ -200,7 +199,7 @@ const createCSSProperties = (
 
 const Carousel: FC<CarouselProps> = ({ prev, next, slides, activeIndex }) => {
   return (
-    <div style={{ position: 'relative', height: '700px', overflow: 'hidden' }}>
+    <div style={{ position: 'relative', height: '900px', overflow: 'hidden' }}>
       <ul>
         {slides.map(({ avatar, personaDescription, personaName }, index) => {
           return (
@@ -251,14 +250,17 @@ const Carousel: FC<CarouselProps> = ({ prev, next, slides, activeIndex }) => {
         </CircleContainer>
       </button>
 
-      <h1
+      <div
+        className={'w-full flex flex-row justify-center items-center'}
         style={{
-          marginTop: '60%',
           textAlign: 'center',
+          zIndex: 3,
+          position: 'absolute',
+          top: '60%',
         }}
       >
-        Vojtech Prokop
-      </h1>
+        <h1>Vojtech Prokop</h1>
+      </div>
     </div>
   )
 }
