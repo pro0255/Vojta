@@ -7,8 +7,6 @@ import { Paragraph } from '@/components/DesignSystem/Blocks/Paragraph'
 import { CircleContainer } from '@/components/DesignSystem/Containers/CircleContainer'
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai'
 import { Pilot } from '@/Three/models/vojta/pilot/Pilot'
-import { Programmer } from '@/Three/models/vojta/programmer/Programmer'
-import { Musician } from '@/Three/models'
 import { Robot } from '@/Three/models/vojta/robot/Robot'
 
 type Slide = {
@@ -43,18 +41,18 @@ const carousel: CarouselContent = [
     personaDescription:
       "I've been playing the guitar since 2022, and at this point, I can play a few songs. I have a particular dislike for bar chords, but I absolutely love playing chords like C, G, Am, and D. Slow songs are the ones that truly resonate with me and capture my interest. If you have any recommendation for good acoustic playlist, please share it with me!",
   },
-  {
-    avatar: <Programmer position={[0, -0.8, 0]} />,
-    personaName: Persona.FeDeveloper,
-    personaDescription:
-      "My goal is to create impactful projects that positively impact people's lives. I specialize in implementing the frontend side of projects using technologies such as React, Next.js, Apollo, and MobX.",
-  },
-  {
-    avatar: <Musician position={[0, -0.8, 0]} />,
-    personaName: Persona.FPVDronLerner,
-    personaDescription:
-      "I am currently learning to fly FPV drones in a simulator, but I must admit that I'm not very skilled at it yet. However, my future goal is to improve my flying abilities and ultimately be able to produce videos that capture special moments and create lasting memories for myself.",
-  },
+  // {
+  //   avatar: <Programmer position={[0, -0.8, 0]} />,
+  //   personaName: Persona.FeDeveloper,
+  //   personaDescription:
+  //     "My goal is to create impactful projects that positively impact people's lives. I specialize in implementing the frontend side of projects using technologies such as React, Next.js, Apollo, and MobX.",
+  // },
+  // {
+  //   avatar: <Musician position={[0, -0.8, 0]} />,
+  //   personaName: Persona.FPVDronLerner,
+  //   personaDescription:
+  //     "I am currently learning to fly FPV drones in a simulator, but I must admit that I'm not very skilled at it yet. However, my future goal is to improve my flying abilities and ultimately be able to produce videos that capture special moments and create lasting memories for myself.",
+  // },
 ]
 
 export const PickAvatar = () => {

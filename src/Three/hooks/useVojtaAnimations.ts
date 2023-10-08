@@ -52,13 +52,4 @@ export const useVojtaAnimations = (ref: any) => {
       previousState.current = state
     }
   }, [actions, state])
-
-  // useEffect(() => {
-  //   if (actions !== null) {
-  //     actions[state]?.reset().fadeIn(2).play()
-  //   }
-  //   return () => {
-  //     actions[state]?.reset().fadeOut(3)
-  //   }
-  // }, [state])
 }

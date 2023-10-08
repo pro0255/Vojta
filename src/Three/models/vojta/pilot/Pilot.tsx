@@ -1,8 +1,8 @@
 import React from 'react'
 import { useGLTF } from '@react-three/drei'
 import { createPathToVojta } from '@/Three/utils/paths'
-import { useVojta } from '@/Three/hooks/useVojta'
 import { VojtaType } from '@/Three/types'
+import { useVojta } from '@/Three/hooks/useVojta'
 
 const path = createPathToVojta(VojtaType.Pilot)
 

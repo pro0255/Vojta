@@ -1,13 +1,13 @@
 import React from 'react'
 import { useGLTF } from '@react-three/drei'
 import { createPathToVojta } from '@/Three/utils/paths'
-import { useVojta } from '@/Three/hooks/useVojta'
 import { VojtaType } from '@/Three/types'
+import { useAvatarCarousel } from '@/Three/hooks/useAvatarCarousel'
 
 const path = createPathToVojta(VojtaType.Programmer)
 
 export function Programmer(props: any) {
-  const { groupRef } = useVojta()
+  const { groupRef } = useAvatarCarousel(true, 'Sitting')
 
   const gltf: any = useGLTF(path)
   const { nodes, materials } = gltf

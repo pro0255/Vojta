@@ -1,8 +1,9 @@
 import { useFBX } from '@react-three/drei'
 import { GuessState, VojtaState } from '@/Three/store/types'
+import { CarouselAnimation } from '@/Three/hooks/useAvatarCarousel'
 
 type Props = {
-  animation: GuessState | VojtaState
+  animation: GuessState | VojtaState | CarouselAnimation
   path: string
 }
 
@@ -11,5 +12,6 @@ export const useAnimation = ({ animation, path }: Props) => {
 
   animations[0].name = animation
 
-  return animations[0]
+  const currentAnimation = animations[0]
+  return currentAnimation
 }

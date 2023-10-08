@@ -1,13 +1,13 @@
 import React from 'react'
 import { useGLTF } from '@react-three/drei'
-import { createPathToVojta } from '@/Three/utils/paths'
-import { useVojta } from '@/Three/hooks/useVojta'
-import { VojtaType } from '@/Three/types'
+import { createPathToVojta } from 'src/Three/utils/paths'
+import { VojtaType } from 'src/Three/types'
+import { useAvatarCarousel } from '@/Three/hooks/useAvatarCarousel'
 
 const path = createPathToVojta(VojtaType.Musician)
 
 export function Musician(props) {
-  const { groupRef } = useVojta()
+  const { groupRef } = useAvatarCarousel(true, 'Guitar')
 
   const gltf = useGLTF(path)
   const { nodes, materials } = gltf

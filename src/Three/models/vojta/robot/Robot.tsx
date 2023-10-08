@@ -2,15 +2,18 @@ import React from 'react'
 import { useGLTF } from '@react-three/drei'
 import { createPathToVojta } from '@/Three/utils/paths'
 import { VojtaType } from '@/Three/types'
+import { useVojta } from '@/Three/hooks/useVojta'
 
 const path = createPathToVojta(VojtaType.Robot)
 
 export function Robot(props: any) {
+  const { groupRef } = useVojta()
+
   const gltf: any = useGLTF(path)
   const { nodes, materials } = gltf
 
   return (
-    <group position={[0, 0, 0]} {...props} dispose={null}>
+    <group {...props} position={[0, 0, 0]} ref={groupRef} dispose={null}>
       <mesh
         geometry={nodes.M_Mask_Hi_Body_Mat_0.geometry}
         material={materials.Body_Mat}
