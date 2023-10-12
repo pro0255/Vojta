@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { CircleContainer } from '@/components/DesignSystem/Containers/CircleContainer'
 import { AiOutlineArrowRight } from 'react-icons/ai'
 
-export function chatFallbackError({ error }: FallbackProps) {
+export function chatFallbackError(_: FallbackProps) {
   return (
     <div
       className={
@@ -14,7 +14,11 @@ export function chatFallbackError({ error }: FallbackProps) {
       }
       role="alert"
     >
-      <div className={'m-w-[50%]'}>
+      <div
+        style={{
+          width: '70%',
+        }}
+      >
         <Card
           mainSlot={
             <div className={'flex flex-col justify-center items-center'}>
@@ -27,7 +31,7 @@ export function chatFallbackError({ error }: FallbackProps) {
                 </CircleContainer>
               </Link>
 
-              <Paragraph className={'text-red-500'}>
+              <Paragraph className={'text-red-500 break-all'}>
                 I kindly request you to report any bugs to:
                 <a
                   className={
