@@ -8,6 +8,8 @@ import { CircleContainer } from '@/components/DesignSystem/Containers/CircleCont
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai'
 import { Pilot } from '@/Three/models/vojta/pilot/Pilot'
 import { Robot } from '@/Three/models/vojta/robot/Robot'
+import { Programmer } from '@/Three/models/vojta/programmer/Programmer'
+import { Musician } from '@/Three/models'
 
 type Slide = {
   avatar: ReactNode
@@ -30,29 +32,29 @@ enum Persona {
 
 const carousel: CarouselContent = [
   {
-    avatar: <Robot position={[0, -80, -500]} />,
+    avatar: <Robot position={[0, -1, -0.4]} />,
     personaName: Persona.MLAIEnthusiast,
     personaDescription:
       "I'm passionate about ML and AI projects, especially their implementation in hospitals to improve outcomes and save lives. One intriguing project I'd love to try is using ML to assist psychiatrists in quickly delivering accurate medication to patients in need. It has the potential to significantly enhance mental healthcare.",
   },
   {
-    avatar: <Pilot position={[0, -0.8, 0]} />,
+    avatar: <Musician position={[0, -1, 0]} />,
     personaName: Persona.GuitarLerner,
     personaDescription:
       "I've been playing the guitar since 2022, and at this point, I can play a few songs. I have a particular dislike for bar chords, but I absolutely love playing chords like C, G, Am, and D. Slow songs are the ones that truly resonate with me and capture my interest. If you have any recommendation for good acoustic playlist, please share it with me!",
   },
-  // {
-  //   avatar: <Programmer position={[0, -0.8, 0]} />,
-  //   personaName: Persona.FeDeveloper,
-  //   personaDescription:
-  //     "My goal is to create impactful projects that positively impact people's lives. I specialize in implementing the frontend side of projects using technologies such as React, Next.js, Apollo, and MobX.",
-  // },
-  // {
-  //   avatar: <Musician position={[0, -0.8, 0]} />,
-  //   personaName: Persona.FPVDronLerner,
-  //   personaDescription:
-  //     "I am currently learning to fly FPV drones in a simulator, but I must admit that I'm not very skilled at it yet. However, my future goal is to improve my flying abilities and ultimately be able to produce videos that capture special moments and create lasting memories for myself.",
-  // },
+  {
+    avatar: <Programmer position={[0, -1, 0]} />,
+    personaName: Persona.FeDeveloper,
+    personaDescription:
+      "My goal is to create impactful projects that positively impact people's lives. I specialize in implementing the frontend side of projects using technologies such as React, Next.js, Apollo, and MobX.",
+  },
+  {
+    avatar: <Pilot position={[0, -1, 0]} />,
+    personaName: Persona.FPVDronLerner,
+    personaDescription:
+      "I am currently learning to fly FPV drones in a simulator, but I must admit that I'm not very skilled at it yet. However, my future goal is to improve my flying abilities and ultimately be able to produce videos that capture special moments and create lasting memories for myself.",
+  },
 ]
 
 export const PickAvatar = () => {
@@ -119,7 +121,6 @@ const Slide: FC<SlideProps> = ({
     >
       <div style={{ height: '500px' }}>
         <Canvas camera={{ fov: 25 }}>
-          <pointLight position={[5, 10, 10]} />
           <ambientLight intensity={1} />
           {avatar}
         </Canvas>

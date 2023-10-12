@@ -1,5 +1,5 @@
 import { Canvas } from '@react-three/fiber'
-import { GuessMan, VojtaYoungAdult } from '@/Three/models'
+import { GuessWoman, VojtaYoungAdult } from '@/Three/models'
 import React from 'react'
 
 export const Avatars = () => {
@@ -17,7 +17,7 @@ export const Avatars = () => {
       }}
     >
       <group>
-        <GuessMan scale={[0.7, 0.7, 0.7]} position={[-1.8, -1, 0]} />
+        <GuessWoman scale={[0.7, 0.7, 0.7]} position={[-1.8, -1, 0]} />
       </group>
       <ambientLight intensity={1} />
       <group position-y={-1}>
