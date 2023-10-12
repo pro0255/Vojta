@@ -5,10 +5,11 @@ import { ChatPageContentContainer } from '@/components/DesignSystem/Layout'
 import { Header } from '@/components/Chat/components/Header'
 import React from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
+import { chatFallbackError } from '@/components/Chat/components/ChatError'
 
 const Chat = () => {
   return (
-    <ErrorBoundary fallback={<div>Something went wrong</div>}>
+    <ErrorBoundary fallbackRender={chatFallbackError}>
       <Header />
       <ChatPageContentContainer>
         <ChatWithMe />
