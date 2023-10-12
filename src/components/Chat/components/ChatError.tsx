@@ -31,8 +31,8 @@ export function chatFallbackError(_: FallbackProps) {
                 </CircleContainer>
               </Link>
 
-              <Paragraph className={'text-red-500 break-all'}>
-                I kindly request you to report any bugs to:
+              <Paragraph className={'text-red-500 text-center'}>
+                I kindly request you to report any bugs to: <br />
                 <a
                   className={
                     'ml-2 text-md text-black hover:underline focus:underline'
