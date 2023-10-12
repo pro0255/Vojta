@@ -198,7 +198,7 @@ const createCSSProperties = (
 
 const Carousel: FC<CarouselProps> = ({ prev, next, slides, activeIndex }) => {
   return (
-    <div style={{ position: 'relative', height: '900px', overflow: 'hidden' }}>
+    <div style={{ position: 'relative', height: '920px', overflow: 'hidden' }}>
       <ul>
         {slides.map(({ avatar, personaDescription, personaName }, index) => {
           return (
@@ -255,7 +255,7 @@ const Carousel: FC<CarouselProps> = ({ prev, next, slides, activeIndex }) => {
           textAlign: 'center',
           zIndex: 3,
           position: 'absolute',
-          top: '60%',
+          top: '55%',
         }}
       >
         <h1>Vojtech Prokop</h1>

@@ -7,10 +7,10 @@ import { useAvatarCarousel } from '@/Three/hooks/useAvatarCarousel'
 const path = createPathToVojta(VojtaType.Programmer)
 
 export function Programmer(props: any) {
-  const { groupRef } = useAvatarCarousel(true, 'Sitting')
-
   const gltf: any = useGLTF(path)
   const { nodes, materials } = gltf
+
+  const { groupRef } = useAvatarCarousel(true, 'Sitting')
 
   return (
     <>

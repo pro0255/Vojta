@@ -2,17 +2,20 @@ import React from 'react'
 import { useGLTF } from '@react-three/drei'
 import { createPathToVojta } from '@/Three/utils/paths'
 import { VojtaType } from '@/Three/types'
+import { useVojta } from '@/Three/hooks/useVojta'
 
 const path = createPathToVojta(VojtaType.Robot)
 
 export function Robot(props: any) {
+  const { groupRef } = useVojta()
+
   const gltf: any = useGLTF(path)
   const { nodes, materials } = gltf
 
   return (
     <>
-      <group {...props} dispose={null}>
-        <group>
+      <group {...props} ref={groupRef} dispose={null}>
+        <group rotation-x={-Math.PI / 2}>
           <primitive object={nodes.Hips} />
           <skinnedMesh
             name={'Wolf3D_Outfit_Bottom'}

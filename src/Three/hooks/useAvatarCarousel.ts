@@ -1,5 +1,7 @@
-import { useRef } from 'react'
+import { useCallback, useEffect, useRef } from 'react'
 import { useModelLookAt } from '@/Three/hooks/useModelLookAt'
+import { useAnimations } from '@react-three/drei'
+import { useAnimation } from '@/Three/hooks/useAnimation'
 
 export type CarouselAnimation = 'Guitar' | 'Kneeling' | 'Robot' | 'Sitting'
 
@@ -15,15 +17,20 @@ export const useAvatarCarousel = (
     isCameraVector: !isSlideLoaded,
   })
 
-  // const animation = useAnimation({
-  //   path: 'animations/mix',
-  //   animation: desiredAnimation,
-  // })
-  // const { actions } = useAnimations([animation], groupRef)
-  //
-  // useEffect(() => {
-  //   actions['Kneeling']!.play()
-  // }, [actions, desiredAnimation])
+  const animation = useAnimation({
+    path: 'animations/mix',
+    animation: desiredAnimation,
+  })
+  const { actions } = useAnimations([animation], groupRef)
+
+  const playAnimation = useCallback(() => {
+    console.log('play animation', Object.keys(actions))
+    actions[desiredAnimation]?.play()
+  }, [actions, desiredAnimation])
+
+  useEffect(() => {
+    playAnimation()
+  }, [playAnimation])
 
   return {
     groupRef,
