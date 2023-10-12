@@ -58,8 +58,12 @@ const useMessages = (): UseMessages => {
 
   const isHydrated = useChatLoader(store => store.isHydrated)
 
-  const { mutate } = useMutation(Endpoints.SetConversation, () =>
-    setConversation(createHistory(messages))
+  const { mutate } = useMutation(
+    Endpoints.SetConversation,
+    () => setConversation(createHistory(messages)),
+    {
+      useErrorBoundary: true,
+    }
   )
 
   useEffect(() => {

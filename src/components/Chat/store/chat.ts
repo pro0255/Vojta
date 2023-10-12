@@ -102,26 +102,29 @@ export const useChatStore: UseBoundStore<StoreApi<ChatStore>> = create(
             }, 100)
           }, 500)
 
-          await new Promise(resolve => setTimeout(resolve, 2000))
+          try {
+            const endpoint = endpoints[Endpoints.Ask]
+            const response = await endpoint(message.text)
+            console.log(response)
+            const aiMessage = await response.json()
 
-          const endpoint = endpoints[Endpoints.Ask]
-          const response = await endpoint(message.text)
-          const aiMessage = await response.json()
+            useModelManager.setState(state => ({
+              ...state,
+              vojtaState: VojtaState.Init,
+            }))
 
-          useModelManager.setState(state => ({
-            ...state,
-            vojtaState: VojtaState.Init,
-          }))
+            set((state: ChatStore) => ({
+              ...state,
+              messages: [
+                ...state.messages,
+                createVojtaMessage(aiMessage.content),
+              ],
+            }))
 
-          set((state: ChatStore) => ({
-            ...state,
-            messages: [
-              ...state.messages,
-              createVojtaMessage(aiMessage.content),
-            ],
-          }))
-
-          scroll.scrollToBottom()
+            scroll.scrollToBottom()
+          } catch (e) {
+            throw e
+          }
         },
       }
 

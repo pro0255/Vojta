@@ -36,8 +36,13 @@ const useInput = () => {
 
   const submit = async (_: FormEvent<HTMLButtonElement>) => {
     if (Messages.canSend(value)) {
-      addMessage(createGuessMessage(value))
-      setValueMiddleware('')
+      try {
+        addMessage(createGuessMessage(value))
+        setValueMiddleware('')
+      } catch (e) {
+        console.log(e)
+        console.error(e)
+      }
     }
   }
 

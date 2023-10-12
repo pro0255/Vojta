@@ -8,28 +8,36 @@ type UseIsScrollbarValue = {
 }
 
 const calculateScrollAttributes = (): UseIsScrollbarValue | null => {
-  const htmlElement = document.querySelector('html')
+  if (document) {
+    const htmlElement = document.querySelector('html')
 
-  if (!htmlElement) {
-    return null
+    if (!htmlElement) {
+      return null
+    }
+
+    const heightWithScroll = htmlElement.scrollHeight
+    const clientSeeHeight = htmlElement.clientHeight
+
+    const canScrollBottom =
+      htmlElement.scrollHeight -
+        htmlElement.scrollTop -
+        htmlElement.clientHeight >
+      0
+
+    const canScrollTop = htmlElement.scrollTop > 0
+    const isScrollbar = heightWithScroll > clientSeeHeight
+
+    return {
+      canScrollBottom,
+      canScrollTop,
+      isScrollbar,
+    }
   }
 
-  const heightWithScroll = htmlElement.scrollHeight
-  const clientSeeHeight = htmlElement.clientHeight
-
-  const canScrollBottom =
-    htmlElement.scrollHeight -
-      htmlElement.scrollTop -
-      htmlElement.clientHeight >
-    0
-
-  const canScrollTop = htmlElement.scrollTop > 0
-  const isScrollbar = heightWithScroll > clientSeeHeight
-
   return {
-    canScrollBottom,
-    canScrollTop,
-    isScrollbar,
+    canScrollBottom: false,
+    canScrollTop: false,
+    isScrollbar: false,
   }
 }
 
