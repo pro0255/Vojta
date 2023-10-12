@@ -9,4 +9,5 @@ export enum VojtaType {
   Programmer = 'programmer',
   Pilot = 'pilot',
   Robot = 'robot',
+  Golf = 'golf',
 }

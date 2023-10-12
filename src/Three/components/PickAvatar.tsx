@@ -10,6 +10,7 @@ import { Pilot } from '@/Three/models/vojta/pilot/Pilot'
 import { Robot } from '@/Three/models/vojta/robot/Robot'
 import { Programmer } from '@/Three/models/vojta/programmer/Programmer'
 import { Musician } from '@/Three/models'
+import { Golfer } from '@/Three/models/vojta/golf/Golfer'
 
 type Slide = {
   avatar: ReactNode
@@ -28,6 +29,7 @@ enum Persona {
   MLAIEnthusiast = 'ML/AI Enthusiast',
   GuitarLerner = 'Guitar Lerner',
   FPVDronLerner = 'Future FPV pilot',
+  Golf = 'Golf beginner',
 }
 
 const carousel: CarouselContent = [
@@ -38,7 +40,7 @@ const carousel: CarouselContent = [
       "I'm passionate about ML and AI projects, especially their implementation in hospitals to improve outcomes and save lives. One intriguing project I'd love to try is using ML to assist psychiatrists in quickly delivering accurate medication to patients in need. It has the potential to significantly enhance mental healthcare.",
   },
   {
-    avatar: <Musician position={[0, -1, 0]} />,
+    avatar: <Musician position={[0, -1, -0.4]} />,
     personaName: Persona.GuitarLerner,
     personaDescription:
       "I've been playing the guitar since 2022, and at this point, I can play a few songs. I have a particular dislike for bar chords, but I absolutely love playing chords like C, G, Am, and D. Slow songs are the ones that truly resonate with me and capture my interest. If you have any recommendation for good acoustic playlist, please share it with me!",
@@ -50,7 +52,12 @@ const carousel: CarouselContent = [
       "My goal is to create impactful projects that positively impact people's lives. I specialize in implementing the frontend side of projects using technologies such as React, Next.js, Apollo, and MobX.",
   },
   {
-    avatar: <Pilot position={[0, -1, 0]} />,
+    avatar: <Golfer position={[0.2, -1, 0]} />,
+    personaName: Persona.Golf,
+    personaDescription: 'I am golf beginner! My favourite club is 8!',
+  },
+  {
+    avatar: <Pilot position={[0.15, -1, 0]} />,
     personaName: Persona.FPVDronLerner,
     personaDescription:
       "I am currently learning to fly FPV drones in a simulator, but I must admit that I'm not very skilled at it yet. However, my future goal is to improve my flying abilities and ultimately be able to produce videos that capture special moments and create lasting memories for myself.",

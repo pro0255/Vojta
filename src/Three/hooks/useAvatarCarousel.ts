@@ -1,38 +1,32 @@
-import { useCallback, useEffect, useRef } from 'react'
+import { useCallback, useEffect } from 'react'
 import { useModelLookAt } from '@/Three/hooks/useModelLookAt'
 import { useAnimations } from '@react-three/drei'
-import { useAnimation } from '@/Three/hooks/useAnimation'
-
-export type CarouselAnimation = 'Guitar' | 'Kneeling' | 'Robot' | 'Sitting'
+import {
+  CarouselAnimation,
+  usePickAvatarAnimations,
+} from '@/Three/hooks/usePickAvatarAnimation'
 
 export const useAvatarCarousel = (
   isSlideLoaded: boolean,
-  desiredAnimation: CarouselAnimation
+  desiredAnimation: CarouselAnimation,
+  ref: any
 ) => {
-  const groupRef = useRef(null)
-
   useModelLookAt({
-    modelRef: groupRef,
+    modelRef: ref,
     isMouseVector: isSlideLoaded,
     isCameraVector: !isSlideLoaded,
   })
 
-  const animation = useAnimation({
-    path: 'animations/mix',
-    animation: desiredAnimation,
-  })
-  const { actions } = useAnimations([animation], groupRef)
+  const animation = usePickAvatarAnimations({ animation: desiredAnimation })
+  const { actions, names } = useAnimations(Array(animation), ref)
 
   const playAnimation = useCallback(() => {
-    console.log('play animation', Object.keys(actions))
-    actions[desiredAnimation]?.play()
+    if (actions[names[0]]) {
+      actions[names[0]]?.reset().play()
+    }
   }, [actions, desiredAnimation])
 
   useEffect(() => {
     playAnimation()
   }, [playAnimation])
-
-  return {
-    groupRef,
-  }
 }

@@ -1,20 +1,21 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 import { createPathToVojta } from '@/Three/utils/paths'
 import { VojtaType } from '@/Three/types'
-import { useVojta } from '@/Three/hooks/useVojta'
+import { useAvatarCarousel } from '@/Three/hooks/useAvatarCarousel'
 
 const path = createPathToVojta(VojtaType.Pilot)
 
 export function Pilot(props: any) {
-  const { groupRef } = useVojta()
-
   const gltf: any = useGLTF(path)
   const { nodes, materials } = gltf
 
+  const ref = useRef(null)
+  useAvatarCarousel(false, 'Kneeling', ref)
+
   return (
     <>
-      <group {...props} ref={groupRef} dispose={null}>
+      <group {...props} ref={ref} dispose={null}>
         <group rotation-x={-Math.PI / 2}>
           <primitive object={nodes.Hips} />
           <skinnedMesh

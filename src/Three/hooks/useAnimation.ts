@@ -9,7 +9,6 @@ type Props = {
 
 export const useAnimation = ({ animation, path }: Props) => {
   const targetPath = `${path}/${animation}.fbx`
-  console.log(targetPath)
   const { animations } = useFBX(targetPath)
 
   animations[0].name = animation
