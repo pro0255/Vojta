@@ -11,6 +11,8 @@ import { Robot } from '@/Three/models/vojta/robot/Robot'
 import { Programmer } from '@/Three/models/vojta/programmer/Programmer'
 import { Musician } from '@/Three/models'
 import { Golfer } from '@/Three/models/vojta/golf/Golfer'
+import { Html } from '@react-three/drei'
+import Image from 'next/image'
 
 type Slide = {
   avatar: ReactNode
@@ -30,9 +32,17 @@ enum Persona {
   GuitarLerner = 'Guitar Lerner',
   FPVDronLerner = 'Future FPV pilot',
   Golf = 'Golf beginner',
+  Vojta = '',
 }
 
 const carousel: CarouselContent = [
+  {
+    avatar: (
+      <Html className={'flex flex-col items-center justify-center'}></Html>
+    ),
+    personaName: Persona.Vojta,
+    personaDescription: '',
+  },
   {
     avatar: <Robot position={[0, -1, -0.4]} />,
     personaName: Persona.MLAIEnthusiast,
@@ -126,7 +136,19 @@ const Slide: FC<SlideProps> = ({
         width: '100%',
       }}
     >
-      <div style={{ height: '500px' }}>
+      <div
+        className={'flex flex-row items-center justify-center'}
+        style={{ height: '500px' }}
+      >
+        {slideId === Persona.Vojta && (
+          <Image
+            className={'absolute rounded-full'}
+            width={200}
+            height={200}
+            alt={'Vojtech Prokop photo'}
+            src={'/assets/vojta_photo.png'}
+          />
+        )}
         <Canvas camera={{ fov: 25 }}>
           <ambientLight intensity={1} />
           {avatar}
