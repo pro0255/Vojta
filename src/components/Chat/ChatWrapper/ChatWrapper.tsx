@@ -8,7 +8,9 @@ export const ChatWrapper = () => {
   return (
     <main className="flex flex-col z-20 w-[55%]">
       <Messages />
-      <Avatars />
+      <div className={'hidden md:inline'}>
+        <Avatars />
+      </div>
     </main>
   )
 }
