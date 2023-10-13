@@ -9,11 +9,11 @@ const createLink = (author: Author): string => {
   const base = '/assets'
 
   if (author === Author.Vojta) {
-    return `${base}/vojta_avatar.jpeg`
+    return `${base}/avatar_vojta.png`
   }
 
   if (author === Author.Guess) {
-    return `${base}/guess_avatar.png`
+    return `${base}/avatar_guess.png`
   }
 
   throw new Error(`Unknown author ${author}`)
