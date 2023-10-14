@@ -4,14 +4,17 @@ import { InteractiveItem } from '@/components/DesignSystem/Blocks/InteractiveIte
 import { Factory } from '@/helpers/factories/Factory'
 import { c } from '@/constants'
 import { ContactContainer } from '@/components'
+import Image from 'next/image'
+import React from 'react'
 
 const Home = () => {
   return (
     <main>
       <div className={'flex flex-row items-center'}>
-        <Header.One>hey there, stranger</Header.One>{' '}
+        <Header.One>{"hey there, stranger, i'm Vojta"}</Header.One>{' '}
         <Header.One className={'ml-5 animate-wavingHand'}>👋🏼</Header.One>
       </div>
+
       <Paragraph>
         <NormalText>
           I am a software engineer specializing in frontend development,
@@ -21,6 +24,16 @@ const Home = () => {
           overseeing the development of core application modules.
         </NormalText>
       </Paragraph>
+
+      <div className={'mt-4 mb-4 flex flex-row items-center justify-center'}>
+        <Image
+          className={'rounded-full'}
+          width={200}
+          height={200}
+          alt={'Vojtech Prokop photo'}
+          src={'/assets/vojta_photo.png'}
+        />
+      </div>
 
       <Paragraph>
         <NormalText>
