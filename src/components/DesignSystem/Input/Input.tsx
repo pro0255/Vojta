@@ -19,6 +19,7 @@ const useInput = () => {
   const setValueMiddleware = (newValue: string | undefined) => {
     if (Messages.validate(newValue)) {
       if (Messages.isEmpty(newValue)) {
+        setVojtaState(VojtaState.Init)
         setGuessState(GuessState.Init)
       } else {
         setGuessState(GuessState.Talking)
