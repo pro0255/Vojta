@@ -7,8 +7,8 @@ import { VojtaState } from '@/Three/store/types'
 export const useVojta = () => {
   const groupRef = useRef(null)
   const vojtaState = useModelManager(manager => manager.vojtaState)
-  useVojtaAnimations(groupRef)
 
+  useVojtaAnimations(groupRef)
   useModelLookAt({
     modelRef: groupRef,
     isMouseVector: vojtaState === VojtaState.Init,

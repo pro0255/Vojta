@@ -8,6 +8,8 @@ export type ModelManagerState = {
   //vojta
   vojtaState: VojtaState
   setVojtaState: (value: VojtaState) => void
+  hasVojtaWaved: boolean
+  setVojtaWaved: (value: boolean) => void
 }
 
 export const useModelManager: UseBoundStore<StoreApi<ModelManagerState>> =
@@ -21,6 +23,16 @@ export const useModelManager: UseBoundStore<StoreApi<ModelManagerState>> =
             guessState: newGuessState,
           }
         }),
+
+      hasVojtaWaved: false,
+      setVojtaWaved: (value: boolean) => {
+        set(state => {
+          return {
+            ...state,
+            hasVojtaWaved: value,
+          }
+        })
+      },
       vojtaState: VojtaState.Init,
       setVojtaState: (newVojtaState: VojtaState) =>
         set(state => {

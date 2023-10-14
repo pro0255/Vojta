@@ -1,14 +1,18 @@
 import { useVojtaAnimation } from '@/Three/hooks/useVojtaAnimation'
 import { useAnimations } from '@react-three/drei'
-import { useEffect, useRef } from 'react'
+import { useCallback, useEffect, useRef } from 'react'
 import { VojtaState } from '@/Three/store/types'
 import { useModelManager } from '@/Three/store/useModelManager'
 
 export const useVojtaAnimations = (ref: any) => {
-  const { setState, state } = useModelManager(manager => ({
-    state: manager.vojtaState,
-    setState: manager.setVojtaState,
-  }))
+  const { setState, state, hasVojtaWaved, setVojtaWaved } = useModelManager(
+    manager => ({
+      state: manager.vojtaState,
+      setState: manager.setVojtaState,
+      hasVojtaWaved: manager.hasVojtaWaved,
+      setVojtaWaved: manager.setVojtaWaved,
+    })
+  )
   const previousState = useRef<VojtaState | null>(null)
 
   const talkingAnimation = useVojtaAnimation({ animation: VojtaState.Talking })
@@ -35,21 +39,31 @@ export const useVojtaAnimations = (ref: any) => {
   )
 
   useEffect(() => {
-    setState(VojtaState.Waving)
-
-    setTimeout(() => {
+    if (hasVojtaWaved) {
       setState(VojtaState.Init)
-    }, 5000)
+    } else {
+      setState(VojtaState.Waving)
+      setVojtaWaved(true)
+      setTimeout(() => {
+        setState(VojtaState.Init)
+      }, 5000)
+    }
+
+    /* eslint-disable-next-line */
   }, [])
 
-  useEffect(() => {
+  const playAnimation = useCallback(() => {
     if (previousState.current !== state && actions) {
       if (previousState.current !== null) {
         actions[previousState.current]?.fadeOut(3)
       }
 
-      actions[state]?.reset().fadeIn(2).play()
+      actions[state]?.reset().play()
       previousState.current = state
     }
   }, [actions, state])
+
+  useEffect(() => {
+    playAnimation()
+  }, [actions, playAnimation, state])
 }
