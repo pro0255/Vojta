@@ -73,7 +73,7 @@ const Home = () => {
           href={'/assets/vojta-prokop-resume.pdf'}
           className={'text-lg text-black hover:underline focus:underline'}
         >
-          Download Resume
+          Resume
         </a>
         <ContactContainer />
       </Paragraph>
