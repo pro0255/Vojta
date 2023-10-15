@@ -9,6 +9,6 @@ export class R3F extends Entity {
   altText: string = this.wholeName
 
   override getImage = () => {
-    return `/assets/icons/${this.iconLink}`
+    return `./assets/icons/${this.iconLink}`
   }
 }
