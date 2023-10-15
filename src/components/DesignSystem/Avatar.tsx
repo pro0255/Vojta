@@ -6,7 +6,7 @@ type Props = {
 }
 
 const createLink = (author: Author): string => {
-  const base = '/assets'
+  const base = './assets'
 
   if (author === Author.Vojta) {
     return `${base}/avatar_vojta.png`

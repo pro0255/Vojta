@@ -33,7 +33,7 @@ const Home = () => {
           width={200}
           height={200}
           alt={'Vojtech Prokop photo'}
-          src={'/assets/vojta_photo.png'}
+          src={'./assets/vojta_photo.png'}
         />
       </div>
 

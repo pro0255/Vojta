@@ -148,7 +148,7 @@ const Slide: FC<SlideProps> = ({
             width={200}
             height={200}
             alt={'Vojtech Prokop photo'}
-            src={'/assets/vojta_photo.png'}
+            src={'./assets/vojta_photo.png'}
           />
         )}
         <Canvas camera={{ fov: 25 }}>

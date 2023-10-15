@@ -39,7 +39,7 @@ export const Item: FC<Props> = ({ item }) => {
               description={description}
               image={
                 <Image
-                  src={`/work/${thumbnail}`}
+                  src={`./work/${thumbnail}`}
                   alt={thumbnail}
                   width={60}
                   height={60}
