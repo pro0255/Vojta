@@ -138,7 +138,11 @@ const Slide: FC<SlideProps> = ({
         width: '100%',
       }}
     >
-      <div className={'flex flex-row items-center justify-center h-[600px]'}>
+      <div
+        className={
+          'flex flex-row items-center justify-center h-[600px] md:h-[500px] xl:h-[400px]'
+        }
+      >
         {slideId === Persona.Vojta && (
           <Image
             className={'absolute rounded-full'}
