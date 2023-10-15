@@ -140,7 +140,7 @@ const Slide: FC<SlideProps> = ({
     >
       <div
         className={
-          'flex flex-row items-center justify-center h-[600px] md:h-[500px] xl:h-[400px]'
+          'flex flex-row items-center justify-center h-[600px] md:h-[500px] xl:h-[450px]'
         }
       >
         {slideId === Persona.Vojta && (
