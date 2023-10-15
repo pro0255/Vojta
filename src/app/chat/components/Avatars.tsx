@@ -2,7 +2,7 @@ import { Canvas } from '@react-three/fiber'
 import { GuessWoman, VojtaYoungAdult } from '@/3d/models'
 import React, { useEffect, useState } from 'react'
 
-const VALUE = 1300
+const VALUE = 1100
 
 export const Avatars = () => {
   const [positionX, setPositionX] = useState(() => {
