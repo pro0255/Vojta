@@ -68,7 +68,13 @@ const Home = () => {
         </NormalText>
       </Paragraph>
 
-      <Paragraph>
+      <Paragraph className={'text-center'}>
+        <a
+          href={'/assets/vojta-prokop-resume.pdf'}
+          className={'text-lg text-black hover:underline focus:underline'}
+        >
+          Download Resume
+        </a>
         <ContactContainer />
       </Paragraph>
     </main>
