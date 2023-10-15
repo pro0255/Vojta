@@ -2,17 +2,19 @@ import { Canvas } from '@react-three/fiber'
 import { GuessWoman, VojtaYoungAdult } from '@/3d/models'
 import React, { useEffect, useState } from 'react'
 
+const VALUE = 1300
+
 export const Avatars = () => {
   const [positionX, setPositionX] = useState(() => {
     if (typeof window !== 'undefined') {
-      return window.innerWidth / 840
+      return window.innerWidth / VALUE
     }
     return 0
   })
 
   useEffect(() => {
     const updatePositionX = () => {
-      setPositionX(window.innerWidth / 840)
+      setPositionX(window.innerWidth / VALUE)
     }
 
     updatePositionX()
