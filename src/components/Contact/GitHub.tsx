@@ -1,4 +1,4 @@
-import { FooterAnchor } from '@/components/DesignSystem/FooterButtons/FooterAnchor'
+import { FooterAnchor } from '@/components/DesignSystem/FooterAnchor'
 import { BiLogoGithub } from 'react-icons/bi'
 import { ICON_SIZE } from '@/components/Contact/config'
 

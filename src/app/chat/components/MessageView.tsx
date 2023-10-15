@@ -1,7 +1,8 @@
 import { FC, ReactNode } from 'react'
 import { Author } from '@/app/chat/types'
-import { NormalText } from '@/components/DesignSystem'
+
 import { MessageHeader } from '@/app/chat/components/MessageHeader'
+import { NormalText } from '@/components/DesignSystem/Text/NormalText'
 
 type Props = {
   timestamp?: number | Date

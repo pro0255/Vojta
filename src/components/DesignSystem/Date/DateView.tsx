@@ -1,5 +1,5 @@
 import { date } from '@/helpers'
-import { GrayText } from '@/components/DesignSystem'
+import { GrayText } from '@/components/DesignSystem/Text/GrayText'
 
 type Props = {
   date: Date | number

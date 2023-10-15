@@ -10,7 +10,7 @@ import { MessageType } from '@/app/chat/types'
 import { MessageView } from '@/app/chat/components/MessageView'
 import { scroll } from '@/helpers'
 import { CopyButton } from '@/app/chat/components/CopyButton'
-import { ClickableSmallText } from '@/components/DesignSystem/Actions/ClickableSmallText'
+import { ClickableSmallText } from '@/components/DesignSystem/Text/ClickableSmallText'
 import { AnimatePresence, motion } from 'framer-motion'
 
 type Props = {

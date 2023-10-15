@@ -1,10 +1,11 @@
 import { EmojiItem } from '@/components/DesignSystem/Blocks/EmojiList'
-import { NormalText } from '@/components/DesignSystem'
+
 import { Python } from '@/constants/entities/Python'
 import { Factory } from '@/helpers/factories/Factory'
 import { InteractiveItem } from '@/components/DesignSystem/Blocks/InteractiveItem'
 import { TypeScript } from '@/constants/entities/TypeScript'
 import { VSB } from '@/constants/entities/VSB'
+import { NormalText } from '@/components/DesignSystem/Text/NormalText'
 
 const highMedicalSchool: EmojiItem = {
   text: <NormalText>High school with medical focus</NormalText>,

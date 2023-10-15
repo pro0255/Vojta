@@ -1,6 +1,5 @@
 'use client'
 
-import { Card, CardFooter, CardMain } from '@/components/DesignSystem'
 import { WorkType } from '@/app/work/types'
 import Image from 'next/image'
 import { FC } from 'react'
@@ -8,6 +7,7 @@ import { CardHeader } from '@/components/DesignSystem/Card/CardHeader'
 import { DateRangeView } from '@/components/DesignSystem/Date/DateRangeView'
 import { WorkTypeBadge } from '@/app/work/components/WorkTypeBadge'
 import { CopyButton } from '@/app/chat/components/CopyButton'
+import { Card, CardFooter, CardMain } from '@/components/DesignSystem/Card'
 
 type Props = {
   item: WorkType

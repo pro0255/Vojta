@@ -1,8 +1,8 @@
-import { Header } from '@/components/DesignSystem'
 import { Paragraph } from '@/components/DesignSystem/Blocks/Paragraph'
 import { EmojiList } from '@/components/DesignSystem/Blocks/EmojiList'
 import { summary } from '@/constants/summary'
 import { PickAvatar } from '@/app/about/components/PickAvatar'
+import { Header } from '@/components/DesignSystem/Text/Header'
 
 const About = () => {
   return (

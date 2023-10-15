@@ -1,10 +1,12 @@
 import { FallbackProps } from 'react-error-boundary'
 import { Paragraph } from '@/components/DesignSystem/Blocks/Paragraph'
-import { Card, Header } from '@/components/DesignSystem'
+
 import React from 'react'
 import Link from 'next/link'
 import { CircleContainer } from '@/components/DesignSystem/Containers/CircleContainer'
 import { AiOutlineArrowRight } from 'react-icons/ai'
+import { Card } from '@/components/DesignSystem/Card'
+import { Header } from '@/components/DesignSystem/Text/Header'
 
 export function chatFallbackError(_: FallbackProps) {
   return (

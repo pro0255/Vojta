@@ -1,5 +1,6 @@
-import { GrayText, HeaderThree } from '@/components/DesignSystem'
 import { FC, ReactNode } from 'react'
+import { HeaderThree } from '@/components/DesignSystem/Text/Header'
+import { GrayText } from '@/components/DesignSystem/Text/GrayText'
 
 type CardMainProps = {
   image?: ReactNode

@@ -1,5 +1,5 @@
 import { WorkName } from '@/app/work/types'
-import { Tag } from '@/components/DesignSystem'
+import { Tag } from '@/components/DesignSystem/Tag'
 
 type Props = {
   type: WorkName

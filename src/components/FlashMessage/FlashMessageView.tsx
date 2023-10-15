@@ -1,7 +1,8 @@
 import { FlashMessageType } from '@/components/FlashMessage/flashMessagesStore'
-import { GrayText } from '@/components/DesignSystem'
+
 import { BoldText } from '@/components/DesignSystem/Text/BoldText'
 import { useEffect } from 'react'
+import { GrayText } from '@/components/DesignSystem/Text/GrayText'
 
 type Props = FlashMessageType & {
   onHover: (messageId: string | null) => void

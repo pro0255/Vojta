@@ -1,4 +1,4 @@
-import { ClickableSmallText } from '@/components/DesignSystem/Actions/ClickableSmallText'
+import { ClickableSmallText } from '@/components/DesignSystem/Text/ClickableSmallText'
 import { useResetConversation } from '@/app/chat/components/ResetConversation/useResetConversation'
 import { useChatStore } from '@/app/chat/chatStore'
 

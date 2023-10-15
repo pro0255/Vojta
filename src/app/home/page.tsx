@@ -1,4 +1,3 @@
-import { Header, NormalText } from '@/components/DesignSystem'
 import { Paragraph } from '@/components/DesignSystem/Blocks/Paragraph'
 import { InteractiveItem } from '@/components/DesignSystem/Blocks/InteractiveItem'
 import { Factory } from '@/helpers/factories/Factory'
@@ -7,6 +6,8 @@ import { c } from '@/constants'
 import Image from 'next/image'
 import React from 'react'
 import { ContactContainer } from '@/components/Contact/ContactContainer'
+import { NormalText } from '@/components/DesignSystem/Text/NormalText'
+import { Header } from '@/components/DesignSystem/Text/Header'
 
 const Home = () => {
   return (

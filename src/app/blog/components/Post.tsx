@@ -1,6 +1,6 @@
 import { PostType } from '@/app/blog/types'
 import { FC } from 'react'
-import { Card, CardFooter, CardMain } from '@/components/DesignSystem'
+import { Card, CardFooter, CardMain } from '@/components/DesignSystem/Card'
 
 type Props = {
   post: PostType

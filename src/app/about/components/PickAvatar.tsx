@@ -2,7 +2,7 @@
 
 import { Canvas } from '@react-three/fiber'
 import React, { CSSProperties, FC, ReactNode, useState } from 'react'
-import { HeaderThree, NormalText } from '@/components/DesignSystem'
+
 import { Paragraph } from '@/components/DesignSystem/Blocks/Paragraph'
 import { CircleContainer } from '@/components/DesignSystem/Containers/CircleContainer'
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai'
@@ -13,6 +13,8 @@ import { Musician } from '@/3d/models'
 import { Golfer } from '@/3d/models/vojta/golf/Golfer'
 import { Html } from '@react-three/drei'
 import Image from 'next/image'
+import { NormalText } from '@/components/DesignSystem/Text/NormalText'
+import { HeaderThree } from '@/components/DesignSystem/Text/Header'
 
 type Slide = {
   avatar: ReactNode

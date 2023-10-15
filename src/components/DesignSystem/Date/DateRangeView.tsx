@@ -1,5 +1,5 @@
 import { DateView } from '@/components/DesignSystem/Date/DateView'
-import { GrayText } from '@/components/DesignSystem'
+import { GrayText } from '@/components/DesignSystem/Text/GrayText'
 
 type Props = {
   start: Date | number

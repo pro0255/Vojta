@@ -1,9 +1,9 @@
-import { Input } from '@/components/DesignSystem'
 import React, { useCallback, useState } from 'react'
 import { motion } from 'framer-motion'
 import { CircleContainer } from '@/components/DesignSystem/Containers/CircleContainer'
 import { AiOutlineArrowDown, AiOutlineArrowUp } from 'react-icons/ai'
 import { useChatStore } from '@/app/chat/chatStore'
+import { Input } from '@/components/DesignSystem/Input'
 
 const useFooter = () => {
   const isNewMessageTuple = useChatStore(state => state.newMessageTuple)

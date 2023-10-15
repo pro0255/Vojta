@@ -1,6 +1,7 @@
 import { FC } from 'react'
-import { Tag } from '@/components/DesignSystem'
+
 import { PostTag } from '@/app/blog/types'
+import { Tag } from '@/components/DesignSystem/Tag'
 
 type CardFooterProps = {
   tags: Array<string | PostTag>

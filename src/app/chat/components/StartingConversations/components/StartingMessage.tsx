@@ -1,6 +1,6 @@
-import { GrayText } from '@/components/DesignSystem'
 import { BoldText } from '@/components/DesignSystem/Text/BoldText'
 import { useStartingMessage } from '@/app/chat/components/StartingConversations/useStartingMessage'
+import { GrayText } from '@/components/DesignSystem/Text/GrayText'
 
 type Props = {
   title: string
