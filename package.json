@@ -1,5 +1,5 @@
 {
-  "name": "my-portfolio",
+  "name": "vojta-portfolio",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -19,11 +19,9 @@
     "dotenv": "^16.3.1",
     "eslint": "8.42.0",
     "eslint-config-next": "13.4.5",
-    "faker-js": "^1.0.0",
     "focus-trap-react": "^10.2.2",
     "fp-ts": "^2.16.0",
     "framer-motion": "^10.16.4",
-    "langchain": "^0.0.97",
     "lodash": "^4.17.21",
     "next": "13.4.5",
     "postcss": "8.4.24",
