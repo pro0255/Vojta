@@ -4,17 +4,33 @@ import React, { useEffect, useState } from 'react'
 
 const VALUE = 1100
 
+const getValue = () => {
+  if (typeof window !== 'undefined') {
+    if (window.innerWidth > 2000) {
+      return 1300
+    }
+
+    if (window.innerWidth > 1000) {
+      return 1000
+    }
+
+    return 800
+  }
+
+  return VALUE
+}
+
 export const Avatars = () => {
   const [positionX, setPositionX] = useState(() => {
     if (typeof window !== 'undefined') {
-      return window.innerWidth / VALUE
+      return window.innerWidth / getValue()
     }
     return 0
   })
 
   useEffect(() => {
     const updatePositionX = () => {
-      setPositionX(window.innerWidth / VALUE)
+      setPositionX(window.innerWidth / getValue())
     }
 
     updatePositionX()
