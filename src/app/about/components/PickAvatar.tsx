@@ -138,10 +138,7 @@ const Slide: FC<SlideProps> = ({
         width: '100%',
       }}
     >
-      <div
-        className={'flex flex-row items-center justify-center'}
-        style={{ height: '500px' }}
-      >
+      <div className={'flex flex-row items-center justify-center h-[600px]'}>
         {slideId === Persona.Vojta && (
           <Image
             className={'absolute rounded-full'}
@@ -229,7 +226,10 @@ const createCSSProperties = (
 
 const Carousel: FC<CarouselProps> = ({ prev, next, slides, activeIndex }) => {
   return (
-    <div style={{ position: 'relative', height: '920px', overflow: 'hidden' }}>
+    <div
+      style={{ position: 'relative', overflow: 'hidden' }}
+      className={'h-[1100px] md:h-[900px] xl:h-[800px]'}
+    >
       <ul>
         {slides.map(({ avatar, personaDescription, personaName }, index) => {
           return (
