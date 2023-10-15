@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { Author } from '@/components/Chat/types'
+import { Author } from '@/app/chat/types'
 
 type Props = {
   author: Author

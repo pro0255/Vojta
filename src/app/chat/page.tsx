@@ -1,18 +1,18 @@
 'use client'
 
-import { ChatWithMe } from '@/components/Chat/ChatWithMe'
 import { ChatPageContentContainer } from '@/components/DesignSystem/Layout'
-import { Header } from '@/components/Chat/components/Header'
+import { Header } from '@/app/chat/components/Header'
 import React from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
-import { chatFallbackError } from '@/components/Chat/components/ChatError'
+import { chatFallbackError } from '@/app/chat/components/ChatError'
+import { ChatWithVojta } from '@/app/chat/components/ChatWithVojta'
 
 const Chat = () => {
   return (
     <ErrorBoundary fallbackRender={chatFallbackError}>
       <Header />
       <ChatPageContentContainer>
-        <ChatWithMe />
+        <ChatWithVojta />
       </ChatPageContentContainer>
     </ErrorBoundary>
   )

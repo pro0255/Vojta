@@ -7,7 +7,7 @@ import { FC } from 'react'
 import { CardHeader } from '@/components/DesignSystem/Card/CardHeader'
 import { DateRangeView } from '@/components/DesignSystem/Date/DateRangeView'
 import { WorkTypeBadge } from '@/components/Work/WorkTypeBadge'
-import { CopyButton } from '@/components/Chat/components/CopyButton'
+import { CopyButton } from '@/app/chat/components/CopyButton'
 
 type Props = {
   item: WorkType

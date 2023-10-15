@@ -1,13 +1,13 @@
 'use client'
 
 import React, { FormEvent, useState } from 'react'
-import { useChatStore } from '@/components/Chat/store/chat'
-import { Messages } from '@/components/Chat/service/chat'
+import { Messages } from '@/app/chat/chatDomain'
 import { useModelManager } from '@/3d/store/useModelManager'
 import { GuessState, VojtaState } from '@/3d/store/types'
-import { createGuessMessage } from '@/components/Chat/utils/createMessage'
+import { createGuessMessage } from '@/app/chat/utils/createMessage'
 import { keySpecificEvent } from '@/helpers/mix/keySpecificEvent'
 import { AiOutlineSend } from 'react-icons/ai'
+import { useChatStore } from '@/app/chat/chatStore'
 
 const useInput = () => {
   const { setGuessState, setVojtaState } = useModelManager(state => ({
