@@ -66,17 +66,6 @@ const About = () => {
           <EmojiList items={summary} />
         </Paragraph>
       </section>
-
-      <hr className="mb-10" />
-
-      <section className="w-full grid grid-cols-1 md:grid-cols-2 gap-2 items-center justify-between">
-        <button className="transition-all duration-200 hover:hovered focus:hovered normal mr-2 w-full p-3 rounded-b">
-          💼 Looking for a job
-        </button>
-        <button className="transition-all duration-200 hover:hovered focus:hovered normal mr-2 w-full p-3 rounded-b">
-          🌱 Open to learn something new
-        </button>
-      </section>
     </main>
   )
 }
