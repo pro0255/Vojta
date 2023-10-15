@@ -8,7 +8,7 @@ export const atlasInternship: WorkType = {
   work: [],
   tags: [WorkTag.FE, WorkTag.MOBX, WorkTag.React],
   thumbnail: 'atlas.jpeg',
-  link: 'https://www.seznam.cz/',
+  link: 'https://vojta-prokop.notion.site/ATLAS-GROUP-internship-3e89df1b88ca4d728913b8858b1f3035?pvs=4',
   start: new Date('Sep 18, 2019'),
   end: new Date('Jun 30, 2020'),
 }

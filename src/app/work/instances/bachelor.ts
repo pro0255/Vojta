@@ -8,7 +8,7 @@ export const bachelorDegree: WorkType = {
   work: [],
   tags: [],
   thumbnail: 'bachelorDegree.png',
-  link: 'https://vojta-prokop.notion.site/Bachelor-s-degree-b1d3a392adfb48728cba91df4665063e',
+  link: 'https://vojta-prokop.notion.site/Bachelor-s-degree-b1d3a392adfb48728cba91df4665063e?pvs=4',
   start: new Date('Sep 18, 2017'),
   end: new Date('May 31, 2020'),
 }

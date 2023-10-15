@@ -8,6 +8,6 @@ export const ataccama: WorkType = {
   work: [],
   tags: [WorkTag.FE, WorkTag.React],
   thumbnail: 'ataccama.jpeg',
-  link: 'https://www.seznam.cz/',
+  link: 'https://vojta-prokop.notion.site/Ataccama-5f5a85884d484371bd2a763d5288d41d?pvs=4',
   start: new Date('Oct 18, 2022'),
 }

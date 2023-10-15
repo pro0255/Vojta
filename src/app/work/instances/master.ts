@@ -8,7 +8,7 @@ export const masterDegree: WorkType = {
   work: [],
   tags: [WorkTag.Python, WorkTag.ML, WorkTag.AI],
   thumbnail: 'masterDegree.png',
-  link: 'https://www.seznam.cz/',
+  link: 'https://vojta-prokop.notion.site/Master-s-degree-467624eb017c4729854887444902ccc9?pvs=4',
   start: new Date('Sep 18, 2020'),
   end: new Date('May 31, 2022'),
 }

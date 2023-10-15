@@ -8,7 +8,7 @@ export const atlas: WorkType = {
   work: [],
   tags: [WorkTag.FE, WorkTag.Apollo, WorkTag.React, WorkTag.BE, WorkTag.Python],
   thumbnail: 'atlas.jpeg',
-  link: 'https://www.seznam.cz/',
+  link: 'https://vojta-prokop.notion.site/ATLAS-developer-f2b3bc86b307402eb1e754bdb338707d?pvs=4',
   start: new Date('Jul 1, 2020'),
   end: new Date('Nov 30, 2021'),
 }

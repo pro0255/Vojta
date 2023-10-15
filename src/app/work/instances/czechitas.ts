@@ -8,6 +8,6 @@ export const czechitas: WorkType = {
   work: [],
   tags: [WorkTag.Python, WorkTag.DataScience, WorkTag.Learning],
   thumbnail: 'czechitas.jpg',
-  link: 'https://www.seznam.cz/',
+  link: 'https://vojta-prokop.notion.site/Czechitas-933b1fbb0fa64620bdf135abf62c7412?pvs=4',
   start: new Date('May 1, 2023'),
 }
