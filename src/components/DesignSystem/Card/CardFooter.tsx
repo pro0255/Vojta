@@ -1,8 +1,9 @@
 import { FC } from 'react'
 import { Tag } from '@/components/DesignSystem'
+import { PostTag } from '@/app/blog/types'
 
 type CardFooterProps = {
-  tags: Array<string>
+  tags: Array<string | PostTag>
 }
 
 export const CardFooter: FC<CardFooterProps> = ({ tags }) => {

@@ -1,6 +1,6 @@
 import { PostType } from '@/app/blog/types'
 import { FC } from 'react'
-import { Post } from '@/components/Blog/Post'
+import { Post } from '@/app/blog/components/Post'
 
 type Props = {
   posts: Array<PostType>

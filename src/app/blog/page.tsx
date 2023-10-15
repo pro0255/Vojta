@@ -1,4 +1,4 @@
-import { List } from '@/components/Blog/List'
+import { List } from '@/app/blog/components/List'
 import { posts } from '@/app/blog/posts'
 
 const Blog = () => {
