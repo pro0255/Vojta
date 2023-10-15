@@ -8,7 +8,7 @@ export abstract class Entity implements IEntity {
   abstract wholeName: string
 
   getImage = () => {
-    return `/work/${this.iconLink}`
+    return `./work/${this.iconLink}`
   }
 
   getInteractiveLabel = () => {

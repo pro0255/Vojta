@@ -42,7 +42,7 @@ export const SmNavigation = () => {
                     <AiOutlineClose size={25} />
                   </button>
                 </header>
-                <main className={'mt-5'}>
+                <main className={'mt-5 p-2'}>
                   <NavigationView />
                 </main>
               </div>
