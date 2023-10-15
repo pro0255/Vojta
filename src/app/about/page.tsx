@@ -2,7 +2,7 @@ import { Header } from '@/components/DesignSystem'
 import { Paragraph } from '@/components/DesignSystem/Blocks/Paragraph'
 import { EmojiList } from '@/components/DesignSystem/Blocks/EmojiList'
 import { summary } from '@/constants/summary'
-import { PickAvatar } from '@/Three/components/PickAvatar'
+import { PickAvatar } from '@/app/about/components/PickAvatar'
 
 const About = () => {
   return (

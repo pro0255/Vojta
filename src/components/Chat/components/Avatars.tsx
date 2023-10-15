@@ -1,5 +1,5 @@
 import { Canvas } from '@react-three/fiber'
-import { GuessWoman, VojtaYoungAdult } from '@/Three/models'
+import { GuessWoman, VojtaYoungAdult } from '@/3d/models'
 import React, { useEffect, useState } from 'react'
 
 export const Avatars = () => {

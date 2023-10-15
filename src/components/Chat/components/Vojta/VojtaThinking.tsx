@@ -1,7 +1,7 @@
 import { MessageView } from '@/components/Chat/ChatWrapper/MessageView'
 import { AiOutlineLoading3Quarters } from 'react-icons/ai'
-import { useModelManager } from '@/Three/store/useModelManager'
-import { VojtaState } from '@/Three/store/types'
+import { useModelManager } from '@/3d/store/useModelManager'
+import { VojtaState } from '@/3d/store/types'
 
 export const VojtaThinking = () => {
   const { vojtaState } = useModelManager(modelManager => ({

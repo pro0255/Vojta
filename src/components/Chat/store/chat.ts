@@ -3,8 +3,8 @@ import { MessageType } from '@/components/Chat/types'
 import { persist } from 'zustand/middleware'
 import { endpoints, Endpoints } from '@/fetcher/endpoints'
 import { createVojtaMessage } from '@/components/Chat/utils/createMessage'
-import { VojtaState } from '@/Three/store/types'
-import { useModelManager } from '@/Three/store/useModelManager'
+import { VojtaState } from '@/3d/store/types'
+import { useModelManager } from '@/3d/store/useModelManager'
 import { scroll } from '@/helpers'
 
 export type ChatStore = {

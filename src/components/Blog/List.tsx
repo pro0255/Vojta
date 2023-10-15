@@ -1,4 +1,4 @@
-import { PostType } from '@/blog/types'
+import { PostType } from '@/app/blog/types'
 import { FC } from 'react'
 import { Post } from '@/components/Blog/Post'
 

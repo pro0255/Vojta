@@ -1,5 +1,5 @@
 import { List } from '@/components/Blog/List'
-import { posts } from '@/blog'
+import { posts } from '@/app/blog/posts'
 
 const Blog = () => {
   return (

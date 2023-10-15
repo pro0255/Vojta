@@ -1,4 +1,4 @@
-import { HEADERS } from '@/fetcher/constants/HEADERS'
+import { HEADERS } from '@/fetcher/utils/HEADERS'
 import { getUrl } from '@/fetcher/utils/getUrl'
 import { HistoryMessage } from '@/fetcher/types'
 
