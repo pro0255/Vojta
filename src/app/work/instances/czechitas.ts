@@ -1,4 +1,4 @@
-import { WorkName, WorkTag, WorkType } from '@/work/types'
+import { WorkName, WorkTag, WorkType } from '@/app/work/types'
 
 export const czechitas: WorkType = {
   title: 'Czechitas',

@@ -1,5 +1,5 @@
 import { List } from '@/components/Work'
-import { work } from '@/work'
+import { work } from '@/app/work/instances'
 
 const useWork = () => {
   let resultWork = work

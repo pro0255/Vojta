@@ -1,4 +1,4 @@
-import { WorkName } from '@/work/types'
+import { WorkName } from '@/app/work/types'
 import { Tag } from '@/components/DesignSystem'
 
 type Props = {

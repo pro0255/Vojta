@@ -1,7 +1,7 @@
 'use client'
 
 import { Card, CardFooter, CardMain } from '@/components/DesignSystem'
-import { WorkType } from '@/work/types'
+import { WorkType } from '@/app/work/types'
 import Image from 'next/image'
 import { FC } from 'react'
 import { CardHeader } from '@/components/DesignSystem/Card/CardHeader'

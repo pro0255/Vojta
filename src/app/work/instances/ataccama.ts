@@ -1,4 +1,4 @@
-import { WorkName, WorkTag, WorkType } from '@/work/types'
+import { WorkName, WorkTag, WorkType } from '@/app/work/types'
 
 export const ataccama: WorkType = {
   title: 'Ataccama Software, s.r.o.',
