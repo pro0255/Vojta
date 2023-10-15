@@ -1,6 +1,6 @@
 import { FC } from 'react'
-import { NavigationItem } from '@/components/Navigation/types'
-import { StyledLink } from '@/components/Navigation/styled'
+import { NavigationItem } from '@/layouts/Navigation/types'
+import { StyledLink } from '@/layouts/Navigation/styled'
 import { NormalText } from '@/components/DesignSystem'
 
 export const Item: FC<NavigationItem> = ({ text, link }) => {

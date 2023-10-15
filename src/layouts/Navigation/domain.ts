@@ -1,7 +1,7 @@
-import { Navigation, NavigationItem } from '@/components/Navigation/types'
+import { Navigation, NavigationItem } from '@/layouts/Navigation/types'
 import { tu } from '@/helpers/text'
 import { pipe } from 'fp-ts/function'
-import { navigation } from '@/components/Navigation/constants'
+import { navigation } from '@/layouts/Navigation/routes'
 
 const transformNavigationItem = ({
   text,

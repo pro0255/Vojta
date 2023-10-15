@@ -1,5 +1,5 @@
-import { List } from '@/components/Navigation/view/List'
-import { navigationItems } from '@/components/Navigation/domain'
+import { List } from '@/layouts/Navigation/view/List'
+import { navigationItems } from '@/layouts/Navigation/domain'
 
 export const NavigationView = () => {
   return (

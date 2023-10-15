@@ -1,3 +1,3 @@
-import { LayoutWithNavigation } from '@/layouts/WithNavigation'
+import { LayoutWithNavigation } from '@/layouts/LayoutWithNavigation'
 
 export default LayoutWithNavigation

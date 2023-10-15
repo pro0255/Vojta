@@ -1,6 +1,6 @@
-import { Navigation } from '@/components/Navigation/types'
+import { Navigation } from '@/layouts/Navigation/types'
 import { FC } from 'react'
-import { Item } from '@/components/Navigation/view/Item'
+import { Item } from '@/layouts/Navigation/view/Item'
 
 type Props = {
   navigationItems: Navigation

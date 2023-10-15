@@ -6,7 +6,7 @@ import Image from 'next/image'
 import { FC } from 'react'
 import { CardHeader } from '@/components/DesignSystem/Card/CardHeader'
 import { DateRangeView } from '@/components/DesignSystem/Date/DateRangeView'
-import { WorkTypeBadge } from '@/components/Work/WorkTypeBadge'
+import { WorkTypeBadge } from '@/app/work/components/WorkTypeBadge'
 import { CopyButton } from '@/app/chat/components/CopyButton'
 
 type Props = {

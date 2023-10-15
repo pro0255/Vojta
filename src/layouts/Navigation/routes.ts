@@ -1,4 +1,4 @@
-import { Navigation } from '@/components/Navigation/types'
+import { Navigation } from '@/layouts/Navigation/types'
 
 export const navigation: Navigation = [
   { link: '/', text: 'Talk with me!' },

@@ -1,6 +1,6 @@
 import { WorkType } from '@/app/work/types'
 import { FC } from 'react'
-import { Item } from '@/components/Work/Item'
+import { Item } from '@/app/work/components/Item'
 
 type Props = {
   work: Array<WorkType>

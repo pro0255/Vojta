@@ -2,8 +2,8 @@
 
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai'
 import { useState } from 'react'
-import { NavigationView } from '@/components'
 import FocusTrap from 'focus-trap-react'
+import { NavigationView } from '@/layouts/Navigation/NavigationView'
 
 export const SmNavigation = () => {
   const [isVisible, setIsVisible] = useState(false)

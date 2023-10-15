@@ -3,9 +3,10 @@ import { Paragraph } from '@/components/DesignSystem/Blocks/Paragraph'
 import { InteractiveItem } from '@/components/DesignSystem/Blocks/InteractiveItem'
 import { Factory } from '@/helpers/factories/Factory'
 import { c } from '@/constants'
-import { ContactContainer } from '@/components'
+
 import Image from 'next/image'
 import React from 'react'
+import { ContactContainer } from '@/components/Contact/ContactContainer'
 
 const Home = () => {
   return (
