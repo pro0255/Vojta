@@ -7,7 +7,7 @@ type Props = {
 }
 export const NavContentContainer: FC<Props> = ({ content, nav }) => {
   return (
-    <div className="max-w-[80%] md:max-w-[65%] xl:max-w-[60%] 2xl:max-w-[40%]">
+    <div className="w-[80%] md:w-[65%] xl:w-[50%] 2xl:w-[40%]">
       <SmNavigation />
       <div className={'flex flex-row '}>
         <div className={'hidden md:inline'}>{nav}</div>
