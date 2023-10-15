@@ -1,3 +1,5 @@
+'use client'
+
 export const prefixWithHost = (text: string) => {
   if (!window) {
     return text

@@ -1,3 +1,5 @@
+'use client'
+
 export const scroll = {
   scrollToTop: () => {
     const scrollElement = document.querySelector('html')
