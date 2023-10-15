@@ -1,7 +1,7 @@
 'use client'
 
 export const prefixWithHost = (text: string) => {
-  if (!window) {
+  if (typeof window === 'undefined') {
     return text
   }
   const host = window.location.href

@@ -3,12 +3,14 @@ import { GuessWoman, VojtaYoungAdult } from '@/3d/models'
 import React, { useEffect, useState } from 'react'
 
 export const Avatars = () => {
-  const [positionX, setPositionX] = useState(window.innerWidth / 840)
+  const [positionX, setPositionX] = useState(0)
 
   useEffect(() => {
     const updatePositionX = () => {
       setPositionX(window.innerWidth / 840)
     }
+
+    updatePositionX()
 
     window.addEventListener('resize', updatePositionX)
 

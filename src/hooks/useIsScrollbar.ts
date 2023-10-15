@@ -10,7 +10,7 @@ type UseIsScrollbarValue = {
 }
 
 const calculateScrollAttributes = (): UseIsScrollbarValue | null => {
-  if (document) {
+  if (typeof document !== 'undefined') {
     const htmlElement = document.querySelector('html')
 
     if (!htmlElement) {

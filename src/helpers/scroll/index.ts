@@ -2,21 +2,25 @@
 
 export const scroll = {
   scrollToTop: () => {
-    const scrollElement = document.querySelector('html')
+    if (typeof document !== 'undefined') {
+      const scrollElement = document.querySelector('html')
 
-    if (scrollElement === null) {
-      return
+      if (scrollElement === null) {
+        return
+      }
+
+      scrollElement.scrollTop = 0
     }
-
-    scrollElement.scrollTop = 0
   },
   scrollToBottom: () => {
-    const scrollElement = document.querySelector('html')
+    if (typeof document !== 'undefined') {
+      const scrollElement = document.querySelector('html')
 
-    if (scrollElement === null) {
-      return
+      if (scrollElement === null) {
+        return
+      }
+
+      scrollElement.scrollTop = scrollElement.scrollHeight
     }
-
-    scrollElement.scrollTop = scrollElement.scrollHeight
   },
 }
