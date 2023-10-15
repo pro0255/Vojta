@@ -1,3 +1,7 @@
 import Chat from './chat/page'
 
-export default Chat
+const RootPage = () => {
+  return <Chat />
+}
+
+export default RootPage
