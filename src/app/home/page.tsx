@@ -6,7 +6,6 @@ import { c } from '@/constants'
 import Image from 'next/image'
 import React from 'react'
 import { ContactContainer } from '@/components/Contact/ContactContainer'
-import { NormalText } from '@/components/DesignSystem/Text/NormalText'
 import { Header } from '@/components/DesignSystem/Text/Header'
 
 const Home = () => {
@@ -18,13 +17,11 @@ const Home = () => {
       </div>
 
       <Paragraph>
-        <NormalText>
-          I am a software engineer specializing in frontend development,
-          currently employed at
-          <InteractiveItem {...Factory.interactiveItemsProps(c.ataccama)} />.
-          Within the company, I am an integral member of a team responsible for
-          overseeing the development of core application modules.
-        </NormalText>
+        I am a software engineer specializing in frontend development, currently
+        employed at
+        <InteractiveItem {...Factory.interactiveItemsProps(c.ataccama)} />.
+        Within the company, I am an integral member of a team responsible for
+        overseeing the development of core application modules.
       </Paragraph>
 
       <div className={'mt-4 mb-4 flex flex-row items-center justify-center'}>
@@ -38,34 +35,27 @@ const Home = () => {
       </div>
 
       <Paragraph>
-        <NormalText>
-          In addition to my professional endeavors, I actively seek
-          opportunities to share information and knowledge. One of my current
-          endeavors involves coaching within the wonderful community known as
-          <InteractiveItem {...Factory.interactiveItemsProps(c.czechitas)} />.
-          As I progress, I aspire to contribute valuable blog posts in the
-          future.
-        </NormalText>
+        In addition to my professional endeavors, I actively seek opportunities
+        to share information and knowledge. One of my current endeavors involves
+        coaching within the wonderful community known as
+        <InteractiveItem {...Factory.interactiveItemsProps(c.czechitas)} />. As
+        I progress, I aspire to contribute valuable blog posts in the future.
       </Paragraph>
 
       <Paragraph>
-        <NormalText>
-          The foundation of this portfolio was laid by acquiring proficiency in
-          <InteractiveItem {...Factory.interactiveItemsProps(c.nextjs)} /> and
-          <InteractiveItem {...Factory.interactiveItemsProps(c.langchain)} />,
-          <InteractiveItem {...Factory.interactiveItemsProps(c.r3f)} />, as well
-          as setting up a platform for disseminating information through blog
-          posts.
-        </NormalText>
+        The foundation of this portfolio was laid by acquiring proficiency in
+        <InteractiveItem {...Factory.interactiveItemsProps(c.nextjs)} /> and
+        <InteractiveItem {...Factory.interactiveItemsProps(c.langchain)} />,
+        <InteractiveItem {...Factory.interactiveItemsProps(c.r3f)} />, as well
+        as setting up a platform for disseminating information through blog
+        posts.
       </Paragraph>
 
       <Paragraph>
-        <NormalText>
-          I have a genuine affinity for the concept of artificial intelligence.
-          Feel free to engage in a conversation with me through the chat
-          section! However, I kindly request that you be considerate in your
-          interactions with me. 😬
-        </NormalText>
+        I have a genuine affinity for the concept of artificial intelligence.
+        Feel free to engage in a conversation with me through the chat section!
+        However, I kindly request that you be considerate in your interactions
+        with me. 😬
       </Paragraph>
 
       <Paragraph className={'text-center'}>

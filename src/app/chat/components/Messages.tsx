@@ -21,6 +21,7 @@ import { Spinner } from '@/components/DesignSystem/Spinner'
 import { ChatStore, useChatLoader, useChatStore } from '@/app/chat/chatStore'
 
 type UseMessages = {
+  isLoading: boolean
   messages: ChatStore['messages']
   setAsRendered: () => void
   setVojtaTalking: () => void
@@ -55,7 +56,7 @@ const useMessages = (): UseMessages => {
 
   const isHydrated = useChatLoader(store => store.isHydrated)
 
-  const { mutate } = useMutation(
+  const { mutate, isLoading } = useMutation(
     Endpoints.SetConversation,
     () => setConversation(createHistory(messages)),
     {
@@ -105,6 +106,7 @@ const useMessages = (): UseMessages => {
   const isRenderedLast = renderedMessagesCount === messages.length
 
   return {
+    isLoading,
     setMessageAsRendered,
     isRenderedLast,
     messages,
@@ -122,9 +124,11 @@ export const Messages: FC = () => {
     isRenderedLast,
     isHydrated,
     setMessageAsRendered,
+    isLoading,
   } = useMessages()
 
-  if (!isHydrated) {
+  console.log('Starting a AI service', isLoading)
+  if (!isHydrated || isLoading) {
     return (
       <div
         className={

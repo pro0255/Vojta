@@ -100,9 +100,11 @@ export const useChatStore: UseBoundStore<StoreApi<ChatStore>> = create(
             scroll.scrollToBottom()
           }, 100)
 
+          console.log('Asking..', message.text)
           const endpoint = endpoints[Endpoints.Ask]
           const response = await endpoint(message.text)
           const aiMessage = await response?.json()
+          console.log('AI..', aiMessage)
 
           useModelManager.setState(state => ({
             ...state,

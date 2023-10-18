@@ -10,8 +10,8 @@ type CardMainProps = {
 
 export const CardMain: FC<CardMainProps> = ({ image, description, title }) => {
   return (
-    <div className="flex flex-row">
-      {image && <div className="mr-10">{image}</div>}
+    <div className="flex flex-col md:flex-row ">
+      {image && <div className="mb-7 md:mb-0 md:mr-10">{image}</div>}
       <div className="flex flex-col">
         <div>
           <HeaderThree className="">{title}</HeaderThree>

@@ -10,7 +10,11 @@ const getValue = () => {
       return 1300
     }
 
-    if (window.innerWidth > 1000) {
+    if (window.innerWidth > 1200) {
+      return 1100
+    }
+
+    if (window.innerWidth > 1100) {
       return 1000
     }
 
